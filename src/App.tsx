@@ -7,12 +7,9 @@ import Navbar from './componentes/estaticos/Navbar/Navbar';
 function App() {
   return (
 	<>
-
-	<h1>teste</h1>
 	<Footer/> 
-	<Home />
+	<	Home />
 	<Navbar/>
-
 	</>
   );
 }
