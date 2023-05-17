@@ -6,8 +6,8 @@ import Home from './paginas/home/Home'
 function App() {
   return (
 	<>
-	<Footer/> 
 	<Home />
+	<Footer/> 
 	</>
   );
 }
