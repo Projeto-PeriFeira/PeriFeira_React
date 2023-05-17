@@ -5,56 +5,47 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { Stack } from '@mui/material';
 
-function Navbar() {
-  return (
-    <>
+function  Navbar() { 
+  return(
+  <>
       <AppBar position="static" className="navbar">
-        <Toolbar>
-          <Grid container alignItems={"center"} justifyContent={"space-between"}>
-            <Box className="cursor">
+        <Toolbar variant="dense">
+          <Grid container justifyContent={'space-between'}>
+            <Box style={{ cursor: 'pointer' }}>
               <Typography variant="h5" color="inherit">
                 BlogPessoal
               </Typography>
             </Box>
-            <Stack alignItems={"center"} justifyContent="start" flexDirection={"row"} gap={"40px"}>
-              <Box className="item-menu" p={1} mx={1}>
-                <Typography variant="body2" color="inherit">
+
+            <Box display="flex" justifyContent="start">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   home
                 </Typography>
               </Box>
-              <Box p={1} className="item-menu" mx={1}
-              >
-                <Typography variant="subtitle1" color="inherit">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   postagens
                 </Typography>
               </Box>
-              <Box
-                p={1}
-                className="item-menu"
-                mx={1}
-              >
-                <Typography variant="subtitle1" color="inherit">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   temas
                 </Typography>
               </Box>
-              <Box
-                p={1}
-                className="item-menu"
-                mx={1}
-              >
-                <Typography variant="subtitle1" color="inherit">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   cadastrar tema
                 </Typography>
               </Box>
-              <Link to='/'>
-              <Box mx={1}>
-                  <Button size="large" className="botao" variant="outlined" href="#outlined-buttons"
-                  >
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Link to="/login">
+                  <Typography variant="h6" color="inherit">
                     logout
-                  </Button>
-                </Box>
+                  </Typography>
                 </Link>
-            </Stack>
+              </Box>
+            </Box>
           </Grid>
         </Toolbar>
       </AppBar>
