@@ -1,0 +1,14 @@
+.caixa {
+  padding: 60px 0;
+  background-color: #FFF7EE;
+}
+.image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.botao {
+  border-radius: 0.5rem !important;
+  color: #FFF7EE !important;
+  background-color: #EA6017 !important;
+}
