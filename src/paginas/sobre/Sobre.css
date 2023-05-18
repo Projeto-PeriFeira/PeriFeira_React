@@ -1,0 +1,57 @@
+:root {
+	--fundo: #fff7ee;
+	--barra: #d9d9d9;
+}
+* {
+	font-family: 'Poppins' !important;
+}
+.fundo, .secao, h1 {
+	background-color: var(--fundo);
+}
+.perfil {
+	width: 20vh;
+	height: 20vh;
+	margin-bottom: 10px;
+	border-radius: 20%;
+	transition: 0.5s;
+}
+.perfil:hover {
+	width: 25vh;
+	height: 25vh;
+	transition: 0.5s;
+}
+h1 {
+	text-align: center;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+h2 {
+	text-align: left;
+}
+.barra {
+	padding: 60px 15% 60px 15%;
+	background-color: var(--barra);
+	text-align: center;
+}
+.cores {
+	display: flex;
+	justify-content: center;
+}
+.cores2 {
+	background-color: #d2cccc52;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.linha2 {
+	margin-top: 30px;
+}
+/*.secao {
+	padding-top: 100px;
+}*/
+.subsecao {
+	padding-left: 10vh;
+	padding-right: 10vh;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	text-align: left;
+}
