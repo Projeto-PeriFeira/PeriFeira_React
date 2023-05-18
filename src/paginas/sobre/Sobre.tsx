@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sobre.css'
-import { Grid, Avatar, Typography, Item, Container } from '@mui/material'
+import { Grid, Avatar, Typography, Container } from '@mui/material'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
@@ -8,7 +8,7 @@ function Sobre() {
 	return (
 			<>
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
-<div className fundo>
+<div className='fundo'>
 			<h1>Sobre nós</h1>
 			<div className="barra">
 			<Grid container

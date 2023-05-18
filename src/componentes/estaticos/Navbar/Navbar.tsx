@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, AppBar, Toolbar, Typography, Box } from "@material-ui/core";
 import "./Navbar.css";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function  Navbar() { 
@@ -37,19 +37,13 @@ function  Navbar() {
                   sobre nós 
                 </Typography>
               </Box>
-              <Box mx={1} style={{ cursor: 'pointer' }}>
-<<<<<<< HEAD
-                
-=======
->>>>>>> f06cee59b1003b234d16b1a8e0bed5cca915e477
-                  <Typography variant="h6" color="inherit">
-                    login
-                  </Typography>
-<<<<<<< HEAD
-                
-=======
->>>>>>> f06cee59b1003b234d16b1a8e0bed5cca915e477
-              </Box>
+              <Link to='/login'>
+                <Box mx={1} style={{ cursor: 'pointer' }}>
+                    <Typography variant="h6" color="inherit">
+                      login
+                    </Typography>
+                </Box>
+              </Link>
             </Box>
           </Grid>
         </Toolbar>
