@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, AppBar, Toolbar, Typography, Box } from "@material-ui/core";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 
 function  Navbar() { 
@@ -37,11 +37,9 @@ function  Navbar() {
                 </Typography>
               </Box>
               <Box mx={1} style={{ cursor: 'pointer' }}>
-                <Link to="/login">
                   <Typography variant="h6" color="inherit">
                     logout
                   </Typography>
-                </Link>
               </Box>
             </Box>
           </Grid>
