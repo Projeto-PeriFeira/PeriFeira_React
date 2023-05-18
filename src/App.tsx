@@ -8,10 +8,9 @@ function App() {
   return (
 	<>
 
-	<h1>teste</h1>
-	<Footer/> 
+    <Navbar/>
 	<Home />
-	<Navbar/>
+	<Footer/> 
 
 	</>
   );
