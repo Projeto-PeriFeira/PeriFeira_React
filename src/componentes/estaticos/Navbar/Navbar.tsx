@@ -4,7 +4,7 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 
-function  Navbar() { 
+function Navbar() { 
   return(
   <>
       <AppBar position="static" className="navbar" style={{ backgroundColor: '#F4A460' }}>
