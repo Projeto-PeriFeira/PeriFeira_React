@@ -8,7 +8,7 @@ import { Stack } from '@mui/material';
 function  Navbar() { 
   return(
   <>
-      <AppBar position="static" className="navbar" style={{ backgroundColor: '#D2691E' }}>
+      <AppBar position="static" className="navbar" style={{ backgroundColor: '#F4A460' }}>
         <Toolbar variant="dense">
           <Grid container justifyContent={'space-between'}>
             <Box style={{ cursor: 'pointer' }}>
@@ -19,29 +19,29 @@ function  Navbar() {
             </Box>
 
             <Box display="flex" justifyContent="start">
-              <Box mx={2} style={{ cursor: 'pointer' }}>
-                <Typography variant="h7" color="inherit">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   inicio 
                 </Typography>
               </Box>
-              <Box mx={2} style={{ cursor: 'pointer' }}>
-                <Typography variant="h7" color="inherit">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   cestas
                 </Typography>
               </Box>
-              <Box mx={2} style={{ cursor: 'pointer' }}>
-                <Typography variant="h7" color="inherit">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   loja
                 </Typography>
               </Box>
-              <Box mx={2} style={{ cursor: 'pointer' }}>
-                <Typography variant="h7" color="inherit">
+              <Box mx={1} style={{ cursor: 'pointer' }}>
+                <Typography variant="h6" color="inherit">
                   sobre nós 
                 </Typography>
               </Box>
-              <Box mx={2} style={{ cursor: 'pointer' }}>
+              <Box mx={1} style={{ cursor: 'pointer' }}>
                 
-                  <Typography variant="h7" color="inherit">
+                  <Typography variant="h6" color="inherit">
                     login
                   </Typography>
                 
