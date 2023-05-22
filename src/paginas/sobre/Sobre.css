@@ -1,11 +1,27 @@
 :root {
 	--fundo: #fff7ee;
 	--barra: #d9d9d9;
+	--barra2: #69ff0047;
+}
+.numeros {
+	background-color: #FFEFDD;
+	color: #996D51;
+	border: 1px solid #996D51;
+	border-radius: 20px;
+	padding: 1% 3%;
+	margin-bottom: 45px;
 }
 * {
-	font-family: 'Poppins' !important;
+	font-family: "Poppins" !important;
 }
-.fundo, .secao, h1 {
+h1, h2, h3, h4 {
+	font-weight: 600 !important;
+}
+h4 {
+	font-size: 42px !important;
+	color: #8D6145;
+}
+.fundo, .secao{
 	background-color: var(--fundo);
 }
 .perfil {
@@ -20,38 +36,64 @@
 	height: 25vh;
 	transition: 0.5s;
 }
-h1 {
-	text-align: center;
-	padding-bottom: 50px;
-	padding-top: 50px;
+.block_text {
+	justify-content: center;
+	text-align: center !important;
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+	padding-left: 6vh;
+	padding-right: 6vh;
 }
-h2 {
-	text-align: left;
+.etapas {
+	background-color: var(--barra) !important;
+	border-radius: 20px;
+	padding: 20px;
+	padding-bottom: 0px;
+	height: 100%;
+}
+.interno {
 }
 .barra {
-	padding: 60px 15% 60px 15%;
-	background-color: var(--barra);
+	/* padding: 10px 5% 10px 5%; */
+	margin: 70px 10% 70px 10%;
 	text-align: center;
+	border-radius: 20px;
+}
+.barra2 {
+	background-color: var(--barra);
 }
 .cores {
-	display: flex;
-	justify-content: center;
+	background-color: var(--barra2);
 }
-.cores2 {
-	background-color: #d2cccc52;
-	padding-top: 40px;
-	padding-bottom: 40px;
+.borda {
+	border-radius: 20px;
+padding: 10px;
+}
+.bloco1 {
+ background-color: #996d51;
+}
+.bloco2 {
+ background-color: #996d51d1;
+ margin-left:22px;
+ margin-right:22px;
+}
+.bloco3 {
+ background-color: #996d51bd;
 }
 .linha2 {
 	margin-top: 30px;
 }
-/*.secao {
-	padding-top: 100px;
-}*/
-.subsecao {
-	padding-left: 10vh;
-	padding-right: 10vh;
+.secao {
 	padding-top: 50px;
+}
+.subsecao {
+	margin-left: 3vh;
+	margin-right: 3vh;
 	padding-bottom: 50px;
 	text-align: left;
+	background-color: #bf9274;
+	border-radius: 20px;
+}
+hr {
+	border:	0.1px dashed black;
 }
