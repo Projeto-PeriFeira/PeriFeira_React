@@ -7,21 +7,23 @@ import Sobre from './paginas/sobre/Sobre';
 import Loja from './paginas/loja/Loja';
 import Login from './paginas/login/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 
 function App() {
-  return (
+	return (
 		<BrowserRouter>
 			<Navbar/>
 				<Routes>
-					<Route path='/' element={<Login/>}/>
+					<Route path='/' element={<Home/>}/>
 					<Route path='/login' element={<Login/>}/>
 					<Route path='/home' element={<Home/>}/>
 					<Route path='/sobre-nos' element={<Sobre/>}/>
 					<Route path='/loja' element={<Loja/>}/>
+					<Route path='/cadastro' element={<CadastroUsuario/>}/>
 				</Routes>
 			<Footer/>
 		</BrowserRouter>
-  );
+);
 }
 
 export default App;

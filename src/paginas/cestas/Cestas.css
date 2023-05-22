@@ -1,0 +1,18 @@
+.imgCirculo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 30px;
+}
+
+.containedButton {
+    border-color: #fafafa !important;
+    background-color: #ea6017 !important;
+    color: #ffffff !important;
+  }
+  
+  .containedButton:hover {
+    background-color: #fdfdfd !important;
+    color: #000000 !important
+  }
