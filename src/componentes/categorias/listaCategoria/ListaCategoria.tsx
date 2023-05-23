@@ -2,27 +2,27 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
-import Tema from '../../../models/Tema';
-import './ListaTema.css';
+import Categoria from '../../../models/Categoria';
+import './ListaCategoria.css';
 import useLocalStorage from 'react-use-localstorage';
 import {useNavigate} from 'react-router-dom';
 import { busca } from '../../../services/Service';
 
-function ListaTema() {
-  const [temas, setTemas] = useState<Tema[]>([])
+function ListaCategoria() {
+  const [categorias, setCategorias] = useState<Categoria[]>([])
   const [token, setToken] = useLocalStorage('token');
   let navigate = useNavigate();
 
-  // useEffect(()=>{
-  //   if(token == ''){
-  //     alert("Você precisa estar logado")
-  //     navigate("/login")
-  //   }
-  // }, [token])
+  useEffect(()=>{
+    if(token == ''){
+      alert("Você precisa estar logado")
+      navigate("/login")
+    }
+  }, [token])
 
 
-  async function getTema(){
-    await busca("/tema", setTemas, {
+  async function getCategoria(){
+    await busca("/categorias", setCategorias, {
       headers: {
         'Authorization': token
       }
@@ -31,34 +31,34 @@ function ListaTema() {
 
 
   useEffect(()=>{
-    getTema()
-  }, [temas.length])
+    getCategoria()
+  }, [categorias.length])
 
   return (
     <>
     {
-      temas.map(tema =>(
+      categorias.map(categoria =>(
       <Box m={2} >
         <Card variant="outlined">
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
-              Tema
+              Categoria
             </Typography>
             <Typography variant="h5" component="h2">
-             {tema.descricao}
+             {categoria.descricao}
             </Typography>
           </CardContent>
           <CardActions>
             <Box display="flex" justifyContent="center" mb={1.5} >
 
-              <Link to={`/formularioTema/${tema.id}`} className="text-decorator-none">
+              <Link to={`/categorias/${categoria.id}`} className="text-decorator-none">
                 <Box mx={1}>
                   <Button variant="contained" className="marginLeft" size='small' color="primary" >
                     atualizar
                   </Button>
                 </Box>
               </Link>
-              <Link to={`/deletarTema/${tema.id}`} className="text-decorator-none">
+              <Link to={`/categorias/${categoria.id}`} className="text-decorator-none">
                 <Box mx={1}>
                   <Button variant="contained" size='small' color="secondary">
                     deletar
@@ -76,4 +76,4 @@ function ListaTema() {
 }
 
 
-export default ListaTema;
+export default ListaCategoria;

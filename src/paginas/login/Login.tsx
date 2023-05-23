@@ -43,8 +43,11 @@ function Login() {
     }
 }
     useEffect(() => {
-        if (token !== '') {
+        if (token === '') {
         navigate('/login');
+				}
+				else {
+        navigate('/home');
         }
     }, [token]);
 

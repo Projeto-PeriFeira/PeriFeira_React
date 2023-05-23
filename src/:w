@@ -28,12 +28,12 @@ function Sobre() {
 			</Grid>
 			</div>
 			<div className="secao" backgroundColor="#ffefdd">
-			<Typography marginLeft='19.15%' marginRight='19.15%' className="titulo" justifyContent='center' textAlign='left'>“Consumidor da periferia reclama que empresas aprofundam segregação urbana”</Typography>
-			<Typography className="texto" marginLeft='19.15%' marginRight='19.15%' textAlign='left'>- Folha de São Paulo, setembro, 2021</Typography>
+			<Typography marginLeft='19.15%' marginRight='19.15%' textAlign='left' className="titulo">“Consumidor da periferia reclama que empresas aprofundam segregação urbana”</Typography>
+			<Typography className="texto" marginLeft='144px' marginRight='19.15%' textAlign='left'>- Folha de São Paulo, setembro, 2021</Typography>
 			</div>
 			<div className="secao2">
 			<Typography className="titulo">Nossa equipe</Typography>
-			<Typography className="texto"marginLeft='19.15%' marginRight='19.15%'  justifyContent='center'>Nossa equipe é composta por pessoas engajadas, comprometidas e recem formadas na Generation Brasil!, aonde trabalhamos incansavelmente para garantir que esses alimentos não convencionais possam chegar até você.
+			<Typography marginLeft='19.15%' marginRight='19.15%' ustifyContent='center'>Nossa equipe é composta por pessoas engajadas, comprometidas e recem formadas na Generation Brasil!, aonde trabalhamos incansavelmente para garantir que esses alimentos não convencionais possam chegar até você.
 			</Typography>
 			<Grid container
 	justifyContent="center"
