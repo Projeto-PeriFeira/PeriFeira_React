@@ -1,6 +1,6 @@
 import React from 'react'
 import './Sobre.css'
-import { Item, Grid, Avatar, Box, Typography, Container } from '@mui/material'
+import { Item, Step, Stepper, StepLabel, Grid, Box, Typography, Container } from '@mui/material'
 import {Helmet} from "react-helmet"
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
@@ -47,7 +47,7 @@ function Sobre() {
 			<Typography variant='h5'>Buscando</Typography>
 			<hr/>
 			<Typography>
-			Estabelecer uma rede colaborativa com os produtores e produtoras do campo.
+			Estabelecer uma rede colaborativa com os produtores colore produtoras do campo.
 			</Typography>
 			</Grid>
 			<Grid className="borda" xs={4}>
@@ -60,26 +60,23 @@ function Sobre() {
 			</Grid>
 		</div>
 		<div className="secao">
-			<Typography textAlign="center" variant="h4">Como?</Typography>
-		<Grid display='flex' className="barra" justifyContent='center' textAlign='center'>
-		<Grid xs={4}>
-		<Typography variant="h5" className="numeros">1</Typography>
-		<Typography variant="h6">Monte a cesta do seu jeito!</Typography>
-			</Grid>
-		<Grid xs={4}>
-		<Typography variant="h5" className="numeros">2</Typography>
-		<Typography variant="h6">Defina o dia ideal para buscar sua cesta</Typography>
-			</Grid>
-		<Grid xs={4}>
-		<Typography variant="h5" className="numeros">3</Typography>
-		<Typography variant="h6">Receba sua cesta em sua casa ou em uma de nossas estações!</Typography>
-			</Grid>
-			</Grid>
+			<Typography textAlign="center" variant="h4">Mas como?</Typography>
+			<Stepper alternativeLabel className="numeros barra">
+			<Step>
+			<StepLabel>Monte a cesta do seu jeito!</StepLabel>
+			</Step>
+			<Step>
+			<StepLabel>Defina o dia ideal para buscar sua cesta</StepLabel>
+			</Step>
+			<Step>
+			<StepLabel>Receba sua cesta em sua casa ou em uma de nossas estações!</StepLabel>
+			</Step>
+			</Stepper>
 		</div>
 			<Box className="barra secao cores">
 			<Typography variant="h4" textAlign='center'>Nossos Dev's</Typography>
 			<Typography justifyContent='center' className='block_text'>
-			Nossa equipe é composta por pessoas engajadas, comprometidas e recem formadas na Generation Brasil!, aonde trabalhamos incansavelmente para garantir que esses alimentos não convencionais cheguem até você.
+			Nossa equipe é composta por pessoas engajadas, comprometidas e recem formadas na Generation Brasil!, aonde trabalhamos incansavelmente para garantir que esses alimentos não convencionais possam chegar até você.
 			</Typography>
 			<Grid container
 			spacing={0}
