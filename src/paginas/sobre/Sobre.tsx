@@ -1,12 +1,16 @@
 import React from 'react'
 import './Sobre.css'
 import { Item, Grid, Avatar, Box, Typography, Container } from '@mui/material'
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import {Helmet} from "react-helmet"
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 function Sobre() {
 	return (
 			<>
+			<Helmet>
+			<title>Perifeira - Sobre</title>
+			</Helmet>
 			<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
 			<div className="fundo">
 			<div className='secao barra'>

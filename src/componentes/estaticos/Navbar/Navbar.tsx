@@ -33,11 +33,13 @@ function Navbar() {
                   loja
                 </Typography>
               </Box>
+	      <Link to='/sobre'>
               <Box mx={1} style={{ cursor: 'pointer' }}>
                 <Typography variant="h6" color="inherit">
-                  sobre nós 
+                  Sobre 
                 </Typography>
               </Box>
+	      </Link>
               <Link to='/login'>
                 <Box mx={1} style={{ cursor: 'pointer' }}>
                     <Typography variant="h6" color="inherit">
