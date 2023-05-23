@@ -11,18 +11,18 @@ function Sobre() {
 			<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
 
 			<div className="secao">
-			<Grid container spacing={2}>
-			<Grid xs={6}>
+			<Grid container spacing={2} xs={12}>
+			<Grid xs={12} md={6}>
 			<Typography textAlign='right' className="titulo">O que é PeriFeira?</Typography>
 			<Typography className="texto" textAlign='left'>PeriFeira é um projeto voltado a periferia, aonde adquirimos alimentos perfeitamente adequados para consumo, mas que são considerados "fora do padrão" e, por essa razão, muitas vezes não são aceitos pelas grandes redes de supermercados.</Typography>
-			<Typography textAlign='left' className="titulo">Você sabia?</Typography>
+			<Typography textAlign='left' variant="h3" className="titulo" marginTop="167px" >Você sabia?</Typography>
 			<Typography className="texto" textAlign='left'>Segundo as nações unidas,</Typography>
-			<Typography textAlign='left' className="titulo">17%</Typography>
+			<Typography textAlign='left' variant="h2" marginBotton="222px">17%</Typography>
 			<Typography className="texto" textAlign='left'>do que é produzido se perde entre a colheita e as prateleiras dos supermercados e armazéns.</Typography>
 			</Grid>
-			<Grid xs={6}>
-			<img src="../../assets/sobre/ilustracao-page-sobre.svg"/>
-			<Typography textAlign='left' className="titulo">821 Milhões</Typography>
+			<Grid xs={12} md={6}>
+			<img src="https://raw.githubusercontent.com/Projeto-PeriFeira/PeriFeira_React/main/src/assets/sobre/ilustracao-page-sobre.svg" alt="Foto ilustrativa de um agricultor"/>
+			<Typography textAlign='left' variant="h2" fontColor="#835A40">821 Milhões</Typography>
 			<Typography className="texto" textAlign='left'>de pessoas no mundo estão em estado de insegurança alimentar, um terço de toda a produção alimentar do mundo é desperdiçada diariamente.</Typography>
 			</Grid>
 			</Grid>
