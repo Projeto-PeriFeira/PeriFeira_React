@@ -1,60 +1,75 @@
 :root {
 	--fundo: #fff7ee;
-	--barra: #d9d9d9;
+	--cinza: #d9d9d9;
 }
 * {
 	font-family: Poppins !important;
 }
 .banner {
-	background-color: var(--barra);
+	background-color: var(--cinza);
 	width: 100%;
-	height: 300px;
+	height: 427px;
 }
-.categorias {
+.secao {
+	padding-top: 58px;
+	padding-bottom: 86px;
 	background-color: var(--fundo);
-	padding-top: 75px;
-	padding-bottom: 75px;
-	padding-left: 15vh;
-	justify-content: center;
 }
-.botoes {
-	text-transform: capitalize !important;
-	border-radius: 10px !important;
-	background-color: var(--barra) !important;
-	color: black !important;
-	box-shadow: none !important;
+.secao2 {
+	padding-top: 58px;
+	padding-bottom: 86px;
+	background-color: #fff7ee;
 }
-/*.botoes:hover {
-	width: 5vh;
-	height: 40vh;
-	transition: 0.5s;
-}*/
-.lista {
-	justify-content: center;
-	align-items: center;
-	background-color: var(--barra);
-	padding-top: 35px;
-	padding-bottom: 45px;
-	width: 100%;
-	padding-left: 25vh;
-	padding-right: 25vh;
-}
-.produtos {
-	transition: 0.5s;
-	border-radius: 10px;
-	padding-left: 49px !important;
-	padding-bottom: 49px !important;
-	justify-content: center;
-	align-items: center;
+.titulo {
+	color: #8D6145;
+	font-size: 42px !important;
+	font-weight: 600 !important;
+	margin-bottom: 26px !important;
 	text-align: center;
-	box-shadow: none !important;
 }
-.produtos:hover {
-	transform: scale(130%);
-	transition: 0.5s;
+.filtros {
+	margin-left: 126px;
+	margin-right: 126px;
+	text-align: center;
+	justify-content: center;
 }
-.respiro {
-	background-color: var(--fundo);
-	width: 100%;
-	height: 150px;
+.filtrosCategorias {
+	background-color: #FFEFDD !important;
+	border-radius: 20px !important;
+	border: 1px solid #996D51 !important;
+	box-sizing: border-box !important;
+	color: #996D51 !important;
+	margin-bottom: 10px !important;
+	margin-top: 10px !important;
+	text-transform: capitalize !important;
+}
+.listaProdutos {
+	background-color: #FFEFDD;
+	padding-left: 126px;
+	padding-right: 126px;
+}
+.categoriasProduto {
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	color: #835A40 !important;
+	margin-bottom: 7px !important;
+}
+.nomeProduto {
+	font-size: 18px !important;
+	font-weight: 600 !important;
+	color: #835A40 !important;
+	margin-bottom: 19px !important;
+}
+.precoProduto {
+	font-size: 18px !important;
+	font-weight: 700 !important;
+	margin-bottom: 16px !important;
+	color: #EA6017 !important;
+}
+.produto {
+	border-radius: 8px;
+	max-width: 303px;
+}
+.conteudoProduto {
+	border-radius: 26px 26px 8px 8px !important;
 }
