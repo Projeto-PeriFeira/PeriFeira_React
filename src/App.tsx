@@ -6,6 +6,9 @@ import Footer from './componentes/estaticos/footer/Footer';
 import Sobre from './paginas/sobre/Sobre';
 import Loja from './paginas/loja/Loja';
 import Login from './paginas/login/Login';
+import ListaTema from './componentes/temas/listaTema/ListaTema.tsx';
+import ListaPostagem from './componentes/postagens/listaPostagem/ListaPostagem.tsx';
+import TabPostagem from './componentes/postagens/tabPostagem/TabPostagem.tsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 
@@ -19,6 +22,9 @@ function App() {
 					<Route path='/home' element={<Home/>}/>
 					<Route path='/sobre' element={<Sobre/>}/>
 					<Route path='/loja' element={<Loja/>}/>
+					<Route path='/temas' element={<ListaTema/>}/>
+					<Route path='/posts' element={<ListaPostagem/>}/>
+					<Route path='/tabs' element={<TabPostagem/>}/>
 					<Route path='/cadastro' element={<CadastroUsuario/>}/>
 				</Routes>
 			<Footer/>

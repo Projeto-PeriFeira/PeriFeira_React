@@ -19,7 +19,7 @@ function Sobre() {
 			</div>
 			<div className='secao'>
 			<Typography textAlign="center" variant="h4">Você sabia?</Typography>
-			<Grid container paddingBottom={4} paddingTop={4} paddingRight={20} paddingLeft={20} className="barra2" className="secao barra2">
+			<Grid container paddingBottom={4} paddingTop={4} paddingRight={20} paddingLeft={20} className="secao barra2">
 			<Grid xs={4}>
 			<Typography textAlign="left">Segundo as nações unidas, </Typography>
 			<Typography textAlign="center" variant="h3">17%</Typography>
