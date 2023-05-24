@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { AppBar, Tab, Tabs, Typography} from '@material-ui/core';
 import {Box} from '@mui/material';
 import { TabContext, TabPanel } from '@material-ui/lab';
-import ListaProduto from '../listaProduto/ListaProduto';
+import ListaProduto from '../listarProduto/ListarProduto';
 import './TabProduto.css';
 
 

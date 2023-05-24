@@ -1,13 +1,13 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
-import './CadastroCategoria.css';
+import './CadastrarCategoria.css';
 import useLocalStorage from 'react-use-localstorage';
 import Categoria from '../../../model/Categoria';
-import { busca, postar, atualizar } from '../../../services/Service';
+import { buscaId, posta, atualiza } from '../../../services/Service';
 
 
-function CadastrarCategoria() {
+function CadastroCategoria() {
     let navigate = useNavigate();
     const { id } = useParams<{id: string}>();
     const [token, setToken] = useLocalStorage('token');
@@ -31,7 +31,7 @@ function CadastrarCategoria() {
     }, [id])
 
     async function findById(id: string) {
-        busca(`/categoria/${id}`, setCategoria, {
+        buscaId(`/categorias/${id}`, setCategoria, {
             headers: {
               'Authorization': token
             }
@@ -53,14 +53,14 @@ function CadastrarCategoria() {
     
             if (id !== undefined) {
                 console.log(categoria)
-                atualizar(`/categoria`, categoria, setCategoria, {
+                atualiza(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
                     }
                 })
                 alert('Categoria atualizado com sucesso');
             } else {
-                postar(`/categoria`, categoria, setCategoria, {
+                posta(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
                     }
@@ -88,4 +88,4 @@ function CadastrarCategoria() {
     )
 }
 
-export default CadastrarCategoria;
+export default CadastroCategoria;

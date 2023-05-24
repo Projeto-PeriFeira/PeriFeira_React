@@ -1,6 +1,10 @@
 import React from 'react'
 import './Loja.css'
-import { Grid, Box, Typography, Stack, Button, Card, CardOverflow, CardMedia, CardContent } from '@mui/material'
+import CadastrarProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import ListarProduto from '../../componentes/produtos/listarProduto/ListarProduto'
+import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
+import ListarCategoria from '../../componentes/categorias/listarCategoria/ListarCategoria'
+import { Grid, Box, Typography, Stack, Button, Card, CardMedia, CardContent } from '@mui/material'
 
 
 function Loja() {
@@ -22,6 +26,16 @@ function Loja() {
 			<Button className="filtrosCategorias">Hortaliças</Button>
 			</Stack>
 			</div>
+<h1>Lista !</h1>
+<ListarCategoria/>
+<h1>Lista .</h1>
+<CadastrarCategoria/>
+<h1>cadastroP !</h1>
+<CadastrarProduto/>
+<h1>cadastroP .</h1>
+<h1>lista !</h1>
+<ListarProduto/>
+<h1>lista .</h1>
 			
 			<div className="listaProdutos">
 			<Stack spacing={2}>

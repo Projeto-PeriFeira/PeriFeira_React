@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: ''
+    baseURL: 'https://db-perifeira.onrender.com'
 }) 
 
 export const login = async (url: string, dados: object, setDados: any) => {
@@ -15,6 +15,11 @@ export const cadastroUsuario = async (url: string, dados: object, setDados: any)
 }
 
 export const busca = async (url: string, setDados: any, header: object) => {
+    const resposta = await api.get(url, header)
+    setDados(resposta.data)
+}
+
+export const buscaId = async (url: string, setDados: any, header: object) => {
     const resposta = await api.get(url, header)
     setDados(resposta.data)
 }

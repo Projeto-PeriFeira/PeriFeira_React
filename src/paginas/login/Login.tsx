@@ -42,14 +42,15 @@ function Login() {
     alert('Usuário e/ou senha inválidos');
     }
 }
-    useEffect(() => {
-        if (token === '') {
-        navigate('/login');
-				}
-				else {
-        navigate('/home');
-        }
-    }, [token]);
+		// Arrumar
+    // useEffect(() => {
+    //     if (token == '') {
+    //     navigate('/login');
+				// }
+				// else {
+    //     navigate('/home');
+    //     }
+    // }, [token]);
 
 
     

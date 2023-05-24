@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Produto from '../../../models/Produto';
+import Produto from '../../../model/Produto';
 import { busca } from '../../../services/Service'
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
-import './ListaProduto.css';
+import './ListarProduto.css';
 import useLocalStorage from 'react-use-localstorage';
 import { useNavigate } from 'react-router-dom'
 
-function ListaProduto() {
-  const [posts, setPosts] = useState<Produto[]>([])
+function ListarProduto() {
+  const [produtos, setProdutos] = useState<Produto[]>([])
   const [token, setToken] = useLocalStorage('token');
   let navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function ListaProduto() {
   }, [token])
 
   async function getPost() {
-    await busca("/postagens", setPosts, {
+    await busca("/produtos", setProdutos, {
       headers: {
         'Authorization': token
       }
@@ -33,12 +33,13 @@ function ListaProduto() {
 
     getPost()
 
-  }, [posts.length])
+  }, [produtos.length])
 
   return (
     <>
+		<h1>ainda existo</h1>
       {
-        posts.map(post => (
+        produtos.map(produto => (
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
@@ -46,26 +47,26 @@ function ListaProduto() {
                   Postagens
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  {post.titulo}
+                  {produto.nome}
                 </Typography>
                 <Typography variant="body2" component="p">
-                  {post.texto}
+                  {produto.descricao}
                 </Typography>
                 <Typography variant="body2" component="p">
-                  {post.categoria?.descricao}
+                  {produto.categoria?.descricao}
                 </Typography>
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioProduto/${post.id}`} className="text-decorator-none" >
+                  <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
                     <Box mx={1}>
                       <Button variant="contained" className="marginLeft" size='small' color="primary" >
                         atualizar
                       </Button>
                     </Box>
                   </Link>
-                  <Link to={`/deletarProduto/${post.id}`} className="text-decorator-none">
+                  <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none">
                     <Box mx={1}>
                       <Button variant="contained" size='small' color="secondary">
                         deletar
@@ -82,4 +83,4 @@ function ListaProduto() {
   )
 }
 
-export default ListaProduto;
+export default ListarProduto;

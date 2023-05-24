@@ -8,9 +8,8 @@ interface Produto {
 	quantidade: number;
 	preco: number;
 	foto: string;
-	categoria?: Categoria|null;
-			// Arrumar
-	usuario: Usuario;
+	categorias?: Categoria|null;
+	usuario?: Usuario|null;
 }
 
 export default Produto
