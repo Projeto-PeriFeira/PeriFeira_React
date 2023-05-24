@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
 import Categoria from '../../../models/Categoria';
-import './ListaCategoria.css';
+import './ListarCategoria.css';
 import useLocalStorage from 'react-use-localstorage';
 import {useNavigate} from 'react-router-dom';
 import { busca } from '../../../services/Service';
 
-function ListaCategoria() {
+function ListarCategoria() {
   const [categorias, setCategorias] = useState<Categoria[]>([])
   const [token, setToken] = useLocalStorage('token');
   let navigate = useNavigate();
@@ -76,4 +76,4 @@ function ListaCategoria() {
 }
 
 
-export default ListaCategoria;
+export default ListarCategoria;

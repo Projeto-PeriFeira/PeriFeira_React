@@ -1,6 +1,7 @@
 import React from 'react'
 import './Loja.css'
-import { Grid, Box, Typography, Stack, Button, Card, CardMedia, CardContent } from '@mui/material'
+import { Grid, Box, Typography, Stack, Button, Card, CardOverflow, CardMedia, CardContent } from '@mui/material'
+
 
 function Loja() {
 	return (
@@ -26,7 +27,9 @@ function Loja() {
 			<Stack spacing={2}>
 			 <Card className="produto">
       <CardMedia
+				borderRadius="20px"
 				height="224"
+				position='absolute'
 				maxWidth="216"
         component="img"
         image="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"

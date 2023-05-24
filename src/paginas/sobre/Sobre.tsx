@@ -7,7 +7,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 function Sobre() {
 	return (
-	<>
+			<>
 			<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
 
 			<div className="secao">
@@ -36,45 +36,45 @@ function Sobre() {
 			<Typography className="texto"marginLeft='19.15%' marginRight='19.15%'  justifyContent='center'>Nossa equipe é composta por pessoas engajadas, comprometidas e recem formadas na Generation Brasil!, aonde trabalhamos incansavelmente para garantir que esses alimentos não convencionais possam chegar até você.
 			</Typography>
 			<Grid container
-	justifyContent="center"
-		alignItems="center"
-		textAlign="center"
-		className="secao2"
-		backgroundColor="#fff7ee"
-		>
+			justifyContent="center"
+			alignItems="center"
+			textAlign="center"
+			className="secao2"
+			backgroundColor="#fff7ee"
+			>
 			<Grid xs={4}>
-		<img className="perfil" alt="Renato Nunes" src="https://github.com/renatonunes74.png"/>
-		<Typography>Renato Nunes</Typography>
-		<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<img className="perfil" alt="Renato Nunes" src="https://github.com/renatonunes74.png"/>
+			<Typography>Renato Nunes</Typography>
+			<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			<Grid xs={4}>
-		<img className="perfil" alt="Renato Nunes" src="https://github.com/JesscMendesr.png" />
-		<Typography>Jéssica Mendes</Typography>
-		<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<img className="perfil" alt="Renato Nunes" src="https://github.com/JesscMendesr.png" />
+			<Typography>Jéssica Mendes</Typography>
+			<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			<Grid xs={4}>
-		<img className="perfil" alt="Igor Menezes" src="https://github.com/IgorWz.png"/>
-		<Typography>Igor</Typography>
-		<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
-		</Grid>
+			<img className="perfil" alt="Igor Menezes" src="https://github.com/IgorWz.png"/>
+			<Typography>Igor</Typography>
+			<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
+			</Grid>
 			<Grid xs={4}>
-		<img className="perfil" alt="Jonathas Nascimento" src="https://github.com/nascimentojon.png"/>
-		<Typography>Jonathas Nascimento</Typography>
-		<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
-		</Grid>
+			<img className="perfil" alt="Jonathas Nascimento" src="https://github.com/nascimentojon.png"/>
+			<Typography>Jonathas Nascimento</Typography>
+			<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
+			</Grid>
 			<Grid xs={4}>
-		<img className="perfil" alt="Larissa Pimenta" src="https://github.com/LarissaMarquesPimenta.png"/>
-		<Typography>Larissa Pimenta</Typography>
-		<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
-		</Grid>
+			<img className="perfil" alt="Larissa Pimenta" src="https://github.com/LarissaMarquesPimenta.png"/>
+			<Typography>Larissa Pimenta</Typography>
+			<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
+			</Grid>
 			<Grid xs={4}>
-		<img className="perfil" alt="Graziella" src="https://github.com/HeiGrazi.png"/>
-		<Typography>Graziella</Typography>
-		<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
-		</Grid>
+			<img className="perfil" alt="Graziella" src="https://github.com/HeiGrazi.png"/>
+			<Typography>Graziella</Typography>
+			<Typography><GitHubIcon/> | <LinkedInIcon/></Typography>
+			</Grid>
 			</Grid>
 			</div>
-	</>
-)
+			</>
+			)
 }
 export default Sobre

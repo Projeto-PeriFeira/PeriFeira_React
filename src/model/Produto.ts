@@ -1,4 +1,5 @@
 import Categoria from './Categoria.ts'
+import Usuario from './Usuario.ts'
 
 interface Produto {
 	id: number;
@@ -8,6 +9,7 @@ interface Produto {
 	preco: number;
 	foto: string;
 	categoria?: Categoria|null;
+			// Arrumar
 	usuario: Usuario;
 }
 
