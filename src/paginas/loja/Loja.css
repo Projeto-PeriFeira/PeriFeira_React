@@ -53,8 +53,11 @@
 	font-weight: 600 !important;
 	color: #835A40 !important;
 	margin-bottom: 7px !important;
+	padding-left: 23px !important;
+	padding-top: 20px !important;
 }
 .nomeProduto {
+	padding-left: 23px !important;
 	font-size: 18px !important;
 	font-weight: 600 !important;
 	color: #835A40 !important;
@@ -63,12 +66,21 @@
 .precoProduto {
 	font-size: 18px !important;
 	font-weight: 700 !important;
-	margin-bottom: 16px !important;
 	color: #EA6017 !important;
+	padding-left: 23px !important;
+	margin-top: -10px !important;
+}
+.editarProduto {
+	font-size: 24px !important;
+	font-weight: 700 !important;
+	color: #EA6017 !important;
+	text-align: right !important;
+	margin-top: -12px !important;
+	padding-right: 10px !important;
 }
 .produto {
 	border-radius: 8px;
-	max-width: 303px;
+	max-width: 224px;
 }
 .conteudoProduto {
 	border-radius: 26px 26px 8px 8px !important;

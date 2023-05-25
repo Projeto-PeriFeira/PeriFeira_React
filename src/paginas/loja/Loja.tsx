@@ -6,6 +6,9 @@ import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/
 import ListarCategoria from '../../componentes/categorias/listarCategoria/ListarCategoria'
 import { Grid, Box, Typography, Stack, Button, Card, CardMedia, CardContent } from '@mui/material'
 
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 function Loja() {
 	return (
@@ -39,27 +42,41 @@ function Loja() {
 			
 			<div className="listaProdutos">
 			<Stack spacing={2}>
-			 <Card className="produto">
+			<Card 
+				width="224"
+			className="produto">
       <CardMedia
-				borderRadius="20px"
-				height="224"
-				position='absolute'
-				maxWidth="216"
+				borderRadius="8px"
+				height="216"
+				width="224"
         component="img"
         image="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
       />
-      <CardContent className="conteudoProduto">
+				<Box
+				height="121px"
+				backgroundColor='white'
+				marginTop="-20px"
+				borderRadius="26px 26px 8px 8px"
+				position="relative"
+				>
         <Typography className="categoriasProduto">
         Frutas
         </Typography>
         <Typography className="nomeProduto"> 
           Manga unid.
         </Typography>
+				<Grid container>
+				<Grid xs={6}>
         <Typography className="precoProduto">
 				R$ 3,50
         </Typography>
-      </CardContent>
-    </Card>
+				</Grid>
+				<Grid xs={6} className="editarProduto">
+				<DeleteIcon scale="1.5"/><EditIcon scale="1.5"/>
+				</Grid>
+				</Grid>
+				</Box>
+			</Card>
 		<h1>verificar se tera aulas sobre paginas de produto</h1>
 			</Stack>
 			</div>
