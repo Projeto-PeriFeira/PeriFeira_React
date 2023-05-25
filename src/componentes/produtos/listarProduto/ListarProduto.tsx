@@ -2,27 +2,30 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Produto from '../../../model/Produto';
 import { busca } from '../../../services/Service'
-import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
-import {Box} from '@mui/material';
+import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import './ListarProduto.css';
-import useLocalStorage from 'react-use-localstorage';
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import {Box} from '@mui/material';
 
 function ListarProduto() {
-  const [produtos, setProdutos] = useState<Produto[]>([])
-  const [token, setToken] = useLocalStorage('token');
+  const [posts, setPosts] = useState<Produto[]>([])
   let navigate = useNavigate();
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
 
   useEffect(() => {
     if (token == "") {
       alert("Você precisa estar logado")
       navigate("/login")
-  
+
     }
   }, [token])
 
   async function getPost() {
-    await busca("/produtos", setProdutos, {
+    await busca("/postagens", setPosts, {
       headers: {
         'Authorization': token
       }
@@ -33,13 +36,12 @@ function ListarProduto() {
 
     getPost()
 
-  }, [produtos.length])
+  }, [posts.length])
 
   return (
     <>
-		<h1>ainda existo</h1>
       {
-        produtos.map(produto => (
+        posts.map(post => (
           <Box m={2} >
             <Card variant="outlined">
               <CardContent>
@@ -47,32 +49,32 @@ function ListarProduto() {
                   Postagens
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  {produto.nome}
+                  post.titulo
                 </Typography>
                 <Typography variant="body2" component="p">
-                  {produto.descricao}
+                  post.texto
                 </Typography>
                 <Typography variant="body2" component="p">
-                  {produto.categoria?.descricao}
+                  post.tema?.descricao
                 </Typography>
               </CardContent>
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
+                  <Link to={`/formularioProduto/${post.id}`} className="text-decorator-none" >
                     <Box mx={1}>
                       <Button variant="contained" className="marginLeft" size='small' color="primary" >
                         atualizar
                       </Button>
                     </Box>
                   </Link>
-                  <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none">
+                  {/*<Link to={`/deletarProduto/${post.id}`} className="text-decorator-none">*/}
                     <Box mx={1}>
                       <Button variant="contained" size='small' color="secondary">
                         deletar
                       </Button>
                     </Box>
-                  </Link>
+                  {/*}</Link>*/}
                 </Box>
               </CardActions>
             </Card>

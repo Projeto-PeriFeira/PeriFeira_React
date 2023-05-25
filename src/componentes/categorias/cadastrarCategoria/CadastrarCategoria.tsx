@@ -2,7 +2,7 @@ import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
 import './CadastrarCategoria.css';
-import useLocalStorage from 'react-use-localstorage';
+import { useDispatch } from 'react-redux'
 import Categoria from '../../../model/Categoria';
 import { buscaId, posta, atualiza } from '../../../services/Service';
 
@@ -10,7 +10,8 @@ import { buscaId, posta, atualiza } from '../../../services/Service';
 function CadastroCategoria() {
     let navigate = useNavigate();
     const { id } = useParams<{id: string}>();
-    const [token, setToken] = useLocalStorage('token');
+    const [token, setToken] = useState('')
+const dispatch = useDispatch
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
         descricao: ''

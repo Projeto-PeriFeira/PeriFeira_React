@@ -11,9 +11,12 @@ import ListarProduto from './componentes/produtos/listarProduto/ListarProduto.ts
 import TabProduto from './componentes/produtos/tabProduto/TabProduto.tsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
+import {Provider} from 'react-redux'
+import store from './store/store'
 
 function App() {
 	return (
+	<Provider store={store}>
 		<BrowserRouter>
 			<Navbar/>
 				<Routes>
@@ -30,6 +33,7 @@ function App() {
 				</Routes>
 			<Footer/>
 		</BrowserRouter>
+		</Provider>
 );
 }
 

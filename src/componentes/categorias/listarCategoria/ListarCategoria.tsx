@@ -4,13 +4,14 @@ import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/
 import {Box} from '@mui/material';
 import Categoria from '../../../model/Categoria';
 import './ListarCategoria.css';
-import useLocalStorage from 'react-use-localstorage';
+import { useDispatch } from 'react-redux'
 import {useNavigate} from 'react-router-dom';
 import { busca } from '../../../services/Service';
 
 function ListarCategoria() {
   const [categorias, setCategorias] = useState<Categoria[]>([])
-  const [token, setToken] = useLocalStorage('token');
+  const [token, setToken] = useState('')
+const dispatch = useDispatch
   let navigate = useNavigate();
 
   useEffect(()=>{

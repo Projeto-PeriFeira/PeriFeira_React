@@ -3,14 +3,15 @@ import {Typography, Button, Card, CardActions, CardContent } from "@material-ui/
 import {Box} from '@mui/material';
 import './DeletarProduto.css';
 import {useNavigate, useParams } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage';
+import { useDispatch } from 'react-redux'
 import Produto from '../../../model/Produto';
 import { busca, deleta } from '../../../services/Service';
 
 function DeletarProduto() {
     let navigate = useNavigate();
     const { id } = useParams<{id: string}>();
-    const [token, setToken] = useLocalStorage('token');
+    const [token, setToken] = useState('')
+const dispatch = useDispatch
     const [post, setPosts] = useState<Produto>()
 
     useEffect(() => {
