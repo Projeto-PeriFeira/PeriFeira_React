@@ -1,29 +1,34 @@
-* {
-	font-family: Poppins !important;
+:root {
+	--fundo1:#ffefdd;
 }
-.secao {
-	padding-left: 229px;
-	padding-right: 156px;
-	padding-top: 58px;
-	padding-bottom: 86px;
+.secao1 {
 	background-color: #ffefdd !important;
 }
 .secao2 {
-	padding-top: 87px;
-	padding-bottom: 86px;
-	padding-left: 10%;
-	padding-right: 10%;
+	background-color: #fff7ee !important;
 }
 .titulo {
 	color: #8D6145;
-	font-size: 42px !important;
+	font-weight: 700 !important;
+	margin-bottom: 12px !important;
+}
+.dados {
+	color: #8D6145;
+	font-weight: 500 !important;
+	margin-bottom: 7px !important;
+	text-align: left !important;
+}
+.frase {
+	color: #8D6145;
 	font-weight: 600 !important;
-	margin-bottom: 26px;
-	text-align: center;
-	justify-content: center;
+	margin-bottom: 7px !important;
+	text-align: left !important;
 }
 .texto {
-	color: #835A40;
+	color: #835A40 !important;
+}
+.nome {
+ margin-bottom: 22px !important;
 }
 .perfil {
 	width: 20vh;
