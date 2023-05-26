@@ -1,8 +1,15 @@
 import React from 'react'
 import { Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
+import { useSelector } from 'react-redux'
+import { TokenState } from '../../../store/tokens/tokensReducer'
 
 function Footer() {
+	const token = useSelector<TokenState, TokenState["tokens"]>(
+			(state) => state.tokens
+			);
+
+	if(token != ""){
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center">
@@ -29,6 +36,13 @@ function Footer() {
             </Grid>
         </>
     )
+	}
+	else {
+		return (
+		<>
+		</>
+		)
+		}
 }
 
 export default Footer
