@@ -1,21 +1,89 @@
-import { Box, Button, Grid, Typography } from '@mui/material';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
+import './DeletarCategoria.css';
+import { useNavigate, useParams } from 'react-router-dom';
+import { buscaId, deleta } from '../../../services/Service';
+import Categoria from '../../../model/Categoria';
+import { useSelector } from 'react-redux';
+import {Box} from '@mui/material';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+
 
 function DeletarCategoria() {
+    let navigate = useNavigate();
+    const { id } = useParams<{id: string}>();
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+      (state) => state.tokens
+    );
+    const [categoria, setCategoria] = useState<Categoria>()
+
+    useEffect(() => {
+        if (token == "") {
+            alert("Você precisa estar logado")
+            navigate("/login")
+    
+        }
+    }, [token])
+
+    useEffect(() =>{
+        if(id !== undefined){
+            findById(id)
+        }
+    }, [id])
+
+    async function findById(id: string) {
+        buscaId(`/categorias/${id}`, setCategoria, {
+            headers: {
+              'Authorization': token
+            }
+          })
+        }
+
+        function sim() {
+          navigate('/loja')
+            deleta(`/categorias/${id}`, {
+              headers: {
+                'Authorization': token
+              }
+            });
+            alert('Categoria deletado com sucesso');
+          }
+        
+          function nao() {
+            navigate('/categorias')
+          }
+          
   return (
     <>
-      <Grid container justifyContent={'center'}>
-        <Grid item xs={4}>
-          <Typography variant='h5'> Tem certeza dque deseja deletar o categoria: </Typography>
-
-          <Box display={'flex'} gap={4}>
-            <Button variant='contained' color='primary' fullWidth>Cancelar</Button>
-            <Button variant='contained' color='secondary' fullWidth>Apagar</Button>
-          </Box>
-        </Grid>
-      </Grid>
+      <Box m={2}>
+        <Card variant="outlined">
+          <CardContent>
+            <Box justifyContent="center">
+              <Typography color="textSecondary" gutterBottom>
+                Deseja deletar o Categoria:
+              </Typography>
+              <Typography color="textSecondary">
+                {categoria?.descricao}
+              </Typography>
+            </Box>
+          </CardContent>
+          <CardActions>
+            <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
+              <Box mx={2}>
+                <Button onClick={sim} variant="contained" className="marginLeft" size='large' color="primary">
+                  Sim
+                </Button>
+              </Box>
+              <Box mx={2}>
+                <Button  onClick={nao} variant="contained" size='large' color="secondary">
+                  Não
+                </Button>
+              </Box>
+            </Box>
+          </CardActions>
+        </Card>
+      </Box>
     </>
-  )
+  );
 }
-
-export default DeletarCategoria
+export default DeletarCategoria;

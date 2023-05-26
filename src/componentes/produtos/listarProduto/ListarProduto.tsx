@@ -49,7 +49,7 @@ function ListarProduto() {
                   Postagens22
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  Usuario: {produto.usuario?.nome}
+                  Usuario: {produto.usuario?.descricao}
                 </Typography>
                 <Typography variant="h5" component="h2">
                   Categoria: {produto.categorias?.descricao}
@@ -67,7 +67,7 @@ function ListarProduto() {
               <CardActions>
                 <Box display="flex" justifyContent="center" mb={1.5}>
 
-                  <Link to={`/formularioProduto/${produto.id}`} className="text-decorator-none" >
+                  <Link to={`/produtos/${produto.id}`} className="text-decorator-none" >
                     <Box mx={1}>
                       <Button variant="contained" className="marginLeft" size='small' color="primary" >
                         atualizar

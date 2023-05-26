@@ -6,9 +6,16 @@ import Footer from './componentes/estaticos/footer/Footer';
 import Sobre from './paginas/sobre/Sobre';
 import Loja from './paginas/loja/Loja';
 import Login from './paginas/login/Login';
-import ListarCategoria from './componentes/categorias/listarCategoria/ListarCategoria.tsx';
-import ListarProduto from './componentes/produtos/listarProduto/ListarProduto.tsx';
-import TabProduto from './componentes/produtos/tabProduto/TabProduto.tsx';
+//Categorias
+import CadastrarCategoria from './componentes/categorias/cadastrarCategoria/CadastrarCategoria';
+import ListarCategoria from './componentes/categorias/listarCategoria/ListarCategoria';
+import DeletarCategoria from './componentes/categorias/deletarCategoria/DeletarCategoria';
+//Produtos
+import CadastrarProduto from './componentes/produtos/cadastrarProduto/CadastrarProduto';
+import ListarProduto from './componentes/produtos/listarProduto/ListarProduto';
+import DeletarProduto from './componentes/produtos/deletarProduto/DeletarProduto';
+import TabProduto from './componentes/produtos/tabProduto/TabProduto';
+//Outros
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import {Provider} from 'react-redux'
@@ -21,15 +28,20 @@ function App() {
 			<Navbar/>
 				<Routes>
 					<Route path='/' element={<Home/>}/>
-					<Route path='/login' element={<Login/>}/>
+					{/*Base*/}
 					<Route path='/home' element={<Home/>}/>
 					<Route path='/sobre' element={<Sobre/>}/>
 					<Route path='/loja' element={<Loja/>}/>
-					<Route path='/categorias' element={<ListarCategoria/>}/>
-					<Route path='/produtos' element={<ListarProduto/>}/>
-					<Route path='/tabs' element={<TabProduto/>}/>
+					{/*Usuario*/}
+					<Route path='/login' element={<Login/>}/>
 					<Route path='/cadastro' element={<CadastroUsuario/>}/>
-					<Route path='/lista' element={<ListarProduto/>}/>
+					{/*Categorias*/}
+					<Route path='/categorias/:id' element={<CadastrarCategoria/>}/>
+					<Route path='/deletarCategoria/:id' element={<DeletarCategoria/>}/>
+					{/*Produtos*/}
+					<Route path='/produtos/:id' element={<CadastrarProduto/>}/>
+					<Route path='/deletarProduto/:id' element={<DeletarProduto/>}/>
+					<Route path='/tabs' element={<TabProduto/>}/>
 				</Routes>
 			<Footer/>
 		</BrowserRouter>

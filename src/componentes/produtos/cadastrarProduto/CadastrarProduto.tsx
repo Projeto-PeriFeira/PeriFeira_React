@@ -12,7 +12,7 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 function CadastrarProduto() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [categoria, setCategoria] = useState<Categoria[]>([])
+    const [categoriass, setCategorias] = useState<Categoria[]>([])
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
       );
@@ -25,7 +25,7 @@ function CadastrarProduto() {
         }
     }, [token])
 
-    const [categorias, setCategorias] = useState<Categoria>(
+    const [categorias, setCategoria] = useState<Categoria>(
         {
             id: 0,
             descricao: ''
@@ -38,7 +38,7 @@ function CadastrarProduto() {
 				preco: 0,
 				foto: '',
         categorias: null,
-				usuario: null,
+        usuario: null
     })
 
     useEffect(() => { 
@@ -49,14 +49,14 @@ function CadastrarProduto() {
     }, [categorias])
 
     useEffect(() => {
-        getCategoria()
+        getCategorias()
         if (id !== undefined) {
             findByIdProduto(id)
         }
     }, [id])
 
-    async function getCategoria() {
-        await busca("/categorias", setCategoria, {
+    async function getCategorias() {
+        await busca("/categorias", setCategorias, {
             headers: {
                 'Authorization': token
             }
@@ -116,23 +116,24 @@ function CadastrarProduto() {
                 <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth />
                 <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth />
                 <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="foto" name="foto" variant="outlined" margin="normal" fullWidth />
+
                 <FormControl >
                     <InputLabel id="demo-simple-select-helper-label">Categoria </InputLabel>
                     <Select
                         labelId="demo-simple-select-helper-label"
                         id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategorias, {
+                        onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategoria, {
                             headers: {
                                 'Authorization': token
                             }
                         })}>
                         {
-                            categoria.map(categorias => (
+                            categoriass.map(categorias => (
                                 <MenuItem value={categorias.id}>{categorias.descricao}</MenuItem>
                             ))
                         }
                     </Select>
-                    <FormHelperText>Escolha um categoria para a produto</FormHelperText>
+                    <FormHelperText>Escolha um categorias para a produto</FormHelperText>
                     <Button type="submit" variant="contained" color="primary">
                         Finalizar
                     </Button>
