@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 import { AppBar, Tab, Tabs, Typography} from '@material-ui/core';
 import {Box} from '@mui/material';
 import { TabContext, TabPanel } from '@material-ui/lab';
-import ListaProduto from '../listarProduto/ListarProduto';
-import './TabProduto.css';
+import ListarProduto from '../produtos/listarProduto/ListarProduto';
+
+import './FiltrarProduto.css';
 
 
-function TabProduto() {
+function FiltrarProduto() {
     const [value, setValue] = useState('1')
     function handleChange(event: React.ChangeEvent<{}>, newValue: string){
         setValue(newValue);
@@ -22,7 +23,7 @@ function TabProduto() {
         </AppBar>
         <TabPanel value="1" >
           <Box display="flex" flexWrap="wrap" justifyContent="center">
-            <ListaProduto />
+            <ListarProduto />
           </Box>
         </TabPanel>
         <TabPanel value="2">
@@ -33,4 +34,3 @@ function TabProduto() {
     </>
   );
 }
-export default TabProduto;

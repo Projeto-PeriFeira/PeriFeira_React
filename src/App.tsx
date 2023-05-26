@@ -14,7 +14,7 @@ import DeletarCategoria from './componentes/categorias/deletarCategoria/DeletarC
 import CadastrarProduto from './componentes/produtos/cadastrarProduto/CadastrarProduto';
 import ListarProduto from './componentes/produtos/listarProduto/ListarProduto';
 import DeletarProduto from './componentes/produtos/deletarProduto/DeletarProduto';
-import TabProduto from './componentes/produtos/tabProduto/TabProduto';
+import FiltrarProduto from './componentes/produtos/filtrarProduto/FiltrarProduto';
 //Outros
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
@@ -41,7 +41,7 @@ function App() {
 					{/*Produtos*/}
 					<Route path='/produtos/:id' element={<CadastrarProduto/>}/>
 					<Route path='/deletarProduto/:id' element={<DeletarProduto/>}/>
-					<Route path='/tabs' element={<TabProduto/>}/>
+					<Route path='/tabs' element={<FiltrarProduto/>}/>
 				</Routes>
 			<Footer/>
 		</BrowserRouter>

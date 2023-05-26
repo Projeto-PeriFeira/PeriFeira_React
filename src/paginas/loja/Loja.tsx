@@ -4,6 +4,7 @@ import CadastrarProduto from '../../componentes/produtos/cadastrarProduto/Cadast
 import ListarProduto from '../../componentes/produtos/listarProduto/ListarProduto'
 import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
 import ListarCategoria from '../../componentes/categorias/listarCategoria/ListarCategoria'
+import FiltrarProduto from '../../componentes/produtos/filtrarProduto/FiltrarProduto'
 import { Grid, Box, Typography, Stack, Button, Card, CardMedia, CardContent } from '@mui/material'
 
 import EditIcon from '@mui/icons-material/Edit';
@@ -13,6 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function Loja() {
 	return (
 			<>
+			<FiltrarProduto/>
 			<div className="banner">
 			<h1>inserir banner</h1>
 			</div>
