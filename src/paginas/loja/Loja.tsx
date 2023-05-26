@@ -13,8 +13,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function Loja() {
 	return (
 			<>
-			<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
-
 			<div className="banner">
 			<h1>inserir banner</h1>
 			</div>
@@ -38,7 +36,7 @@ function Loja() {
 <h1>cadastroP .</h1>
 <h1>lista !</h1>
 <ListarProduto/>
-<h1>lista .</h1>
+{/*}<h1>lista .</h1>*/}
 			
 			<div className="listaProdutos">
 			<Stack spacing={2}>

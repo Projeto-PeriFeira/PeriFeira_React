@@ -1,5 +1,5 @@
 import Categoria from './Categoria.ts'
-import Usuario from './Usuario.ts'
+import UsuarioLogin from './UsuarioLogin.ts'
 
 interface Produto {
 	id: number;
@@ -9,7 +9,7 @@ interface Produto {
 	preco: number;
 	foto: string;
 	categorias?: Categoria|null;
-	usuario?: Usuario|null;
+	usuario?: UsuarioLogin|null;
 }
 
 export default Produto

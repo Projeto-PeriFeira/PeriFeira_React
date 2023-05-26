@@ -2,29 +2,32 @@ import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
 import './CadastrarCategoria.css';
-import { useDispatch } from 'react-redux'
 import Categoria from '../../../model/Categoria';
 import { buscaId, posta, atualiza } from '../../../services/Service';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 
-function CadastroCategoria() {
+
+function CadastrarCategoria() {
     let navigate = useNavigate();
     const { id } = useParams<{id: string}>();
-    const [token, setToken] = useState('')
-const dispatch = useDispatch
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+      );
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
         descricao: ''
     })
 
-    useEffect(() => {
-        if (token == "") {
-            alert("Você precisa estar logado")
-            navigate("/login")
+     useEffect(() => {
+         if (token == "") {
+             alert("Você precisa estar logado")
+             navigate("/login")
+     
+         }
+     }, [token])
     
-        }
-    }, [token])
-
     useEffect(() =>{
         if(id !== undefined){
             findById(id)
@@ -50,7 +53,7 @@ const dispatch = useDispatch
         
         async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
             e.preventDefault()
-            console.log("categoria " + JSON.stringify(categoria))
+            console.log("categorias " + JSON.stringify(categoria))
     
             if (id !== undefined) {
                 console.log(categoria)
@@ -73,7 +76,7 @@ const dispatch = useDispatch
         }
     
         function back() {
-            navigate('/categorias')
+            navigate('/loja')
         }
   
     return (
@@ -89,4 +92,4 @@ const dispatch = useDispatch
     )
 }
 
-export default CadastroCategoria;
+export default CadastrarCategoria;
