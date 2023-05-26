@@ -49,7 +49,7 @@ function ListarProduto() {
                   Postagens22
                 </Typography>
                 <Typography variant="h5" component="h2">
-                  Usuario: {produto.usuario?.descricao}
+                  Usuario: {produto.usuario?.usuario}
                 </Typography>
                 <Typography variant="h5" component="h2">
                   Categoria: {produto.categorias?.descricao}

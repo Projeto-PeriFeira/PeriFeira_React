@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Grid, AppBar, Toolbar, Typography, Box } from "@material-ui/core";
+import { Grid, AppBar, Toolbar, Typography, Box, Button } from "@material-ui/core";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
@@ -25,65 +25,64 @@ function Navbar() {
 	if(token != ""){
 		return(
 				<>
-				<AppBar position="static" className="navbar" style={{ backgroundColor: '#F4A460' }}>
-				<Toolbar variant="dense">
-				<Grid container justifyContent={'space-between'}>
-				<Box style={{ cursor: 'pointer' }}>
-				<Typography variant="h5" color="inherit">
-				<img className='image' src="/src/assets/logo.jpg" alt="" style={{ width: '205px', height: '40px' }} />
-				</Typography>
-
-				</Box>
-				<Box display="flex" justifyContent="start">
-				<Link to='/home'>
-				<Box mx={1} style={{ cursor: 'pointer' }}>
-				<Typography variant="h6" color="inherit">
-				inicio 
-				</Typography>
-				</Box>
-				</Link>
-				<Box mx={1} style={{ cursor: 'pointer' }}>
-				<Typography variant="h6" color="inherit">
-				cestas
-				</Typography>
-				</Box>
-				<Link to='/loja'>
-				<Box mx={1} style={{ cursor: 'pointer' }}>
-				<Typography variant="h6" color="inherit">
-				loja
-				</Typography>
-				</Box>
-				</Link>
-				<Link to='/sobre'>
-				<Box mx={1} style={{ cursor: 'pointer' }}>
-				<Typography variant="h6" color="inherit">
-				Sobre 
-				</Typography>
-				</Box>
-				</Link>
-				<Link to='/login'>
-				<Box mx={1} style={{ cursor: 'pointer' }}>
-				<Typography variant="h6" color="inherit">
-				login
-				</Typography>
-				</Box>
-				</Link>
-				<Link to='/lista'>
-				<Box mx={1} style={{ cursor: 'pointer' }}>
-				<Typography variant="h6" color="inherit">
-				lista
-				</Typography>
-				</Box>
-				</Link>
-				<Box mx={1} className='cursor' onClick={goLogout}>
-				<Typography variant="h6" color="inherit">
-				logout
-				</Typography>
-				</Box>
-				</Box>
-				</Grid>
-				</Toolbar>
-				</AppBar>
+					<AppBar  position="static" className="navbar">
+						<Toolbar variant="dense">
+							<Grid container alignItems='center' justifyContent={'space-between'}>
+								<Box style={{ cursor: 'pointer' }}>
+									<Typography variant="h5" color="inherit">
+									<img className='image' src="/src/assets/logo.svg" alt="" style={{ width: '205px', height: '40px' }} />
+									</Typography>
+								</Box>
+								<Box display="flex" alignItems='center' gridGap={20} justifyContent="start">
+									<Link  className='reset-link' to='/home'>
+										<Box mx={1} style={{ cursor: 'pointer' }}>
+											<Typography className='item' variant="subtitle1" color="inherit">
+											inicio 
+											</Typography>
+								</Box>
+									</Link>
+									<Box mx={1} style={{ cursor: 'pointer' }}>
+										<Typography className='item' variant="subtitle1" color="inherit">
+										cestas
+										</Typography>
+									</Box>
+									<Link className='reset-link' to='/loja'>
+										<Box mx={1} style={{ cursor: 'pointer' }}>
+											<Typography className='item' variant="subtitle1" color="inherit">
+											loja
+											</Typography>
+										</Box>
+									</Link>
+									<Link className='reset-link' to='/sobre'>
+										<Box mx={1} style={{ cursor: 'pointer' }}>
+											<Typography className='item' variant="subtitle1" color="inherit">
+											Sobre 
+											</Typography>
+										</Box>
+									</Link>
+									<Box display='flex'>
+									<Link className='reset-link' to='/login'>
+										<Box mx={1} style={{ cursor: 'pointer' }}>
+										<Button id='btn-login' variant="outlined">entrar</Button>
+										</Box>
+									</Link>
+									{/* <Link to='/lista'>
+										<Box mx={1} style={{ cursor: 'pointer' }}>
+											<Typography variant="h6" color="inherit">
+											lista
+											</Typography>
+										</Box>
+									</Link> */}
+									<Link to=''>
+										<Box mx={1} className='cursor' >
+										<Button id='btn-nav' variant="outlined">criar conta</Button>
+										</Box>
+									</Link>
+									</Box>
+								</Box>
+							</Grid>
+						</Toolbar>
+					</AppBar>
 				</>
 				);
 	} else {

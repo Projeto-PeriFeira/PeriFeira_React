@@ -1,0 +1,33 @@
+.navbar {
+  background-color: #FFF7EE !important; 
+  border-bottom: 1px solid #DFB193 !important;
+  padding: 16px 40px !important;
+  color: #835A40 !important;
+}
+
+.image {
+  width: 100% !important;
+}
+
+.reset-link{
+color:#835A40 !important;
+text-decoration: none !important;
+
+}
+
+.MuiButton-outlined {
+background-color: #FFEFDD !important;
+border: 1px solid #FFEFDD !important;
+text-transform: lowercase !important;
+font-size: 1rem !important;
+border-radius: 10px !important;
+border: 1px solid #DFB193 !important;
+color: #835A40 !important;
+font-weight: 500 !important;
+
+}
+
+.MuiButton-outlined:hover{
+background-color: #FFF7EE !important;
+
+}
