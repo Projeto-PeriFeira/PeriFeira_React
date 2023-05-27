@@ -1,33 +1,19 @@
 :root {
-	--fundo1:#ffefdd;
-}
-.secao1 {
-	background-color: #ffefdd !important;
-}
-.secao2 {
-	background-color: #fff7ee !important;
-}
-.titulo {
-	color: #8D6145;
-	font-weight: 700 !important;
-	margin-bottom: 12px !important;
+	--fundo1: var(--rosa1);
 }
 .dados {
-	color: #8D6145;
+	color: var(--marrom1);
 	font-weight: 500 !important;
 	margin-bottom: 7px !important;
 	text-align: left !important;
 }
 .frase {
-	color: #8D6145;
+	color: var(--marrom1);
 	font-weight: 600 !important;
 	margin-bottom: 7px !important;
 	text-align: left !important;
 }
-.texto {
-	color: #835A40 !important;
-}
-.nome {
+.desenvolvedores {
  margin-bottom: 22px !important;
 }
 .perfil {

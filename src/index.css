@@ -1,3 +1,31 @@
+:root {
+--rosa1: #ffefdd;
+--rosa2: #fff7ee;
+--rosa3: #FFEFDD;
+--rosa4: #FFF7EE;
+--marrom1: #8D6145;
+--marrom2: #835A40;
+--marrom3: #996D51;
+--laranja: #EA6017;
+}
+
+* {
+	font-family: Poppins !important;
+}
+.secao1 {
+	background-color: var(--rosa1) !important;
+}
+.secao2 {
+	background-color: var(--rosa2) !important;
+}
+.titulo {
+	color: var(--marrom1);
+	font-weight: 700 !important;
+	padding-bottom: 12px !important;
+}
+.texto {
+	color: var(--marrom2) !important;
+}
 body {
 	margin: 0;
 }
