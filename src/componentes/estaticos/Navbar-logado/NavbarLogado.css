@@ -5,6 +5,14 @@
   color: #835A40 !important;
 }
 
+.item{
+  font-weight: 600 !important;
+}
+
+.item:hover{
+  color: #996D51   !important;
+}
+
 .image {
   width: 100% !important;
 }

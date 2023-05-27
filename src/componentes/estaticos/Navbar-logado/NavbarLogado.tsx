@@ -82,7 +82,7 @@ function NavbarLogado() {
 									<Box display='flex'>
 										<Box display='flex' flexDirection='row' justifyItems='center' alignItems='center' gridGap={4} style={{ cursor: 'pointer' }}>
 											<Box>
-												<Typography>Bem-vinde, fulane!</Typography>
+												<Typography className='item'>Bem-vinde, fulane!</Typography>
 											</Box>
 										<Tooltip title="Account settings">
 											<IconButton
