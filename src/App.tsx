@@ -20,6 +20,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import {Provider} from 'react-redux'
 import store from './store/store'
+import NavbarLogado from './componentes/estaticos/Navbar-logado/NavbarLogado';
 
 function App() {
 	return (
