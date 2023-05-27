@@ -26,7 +26,7 @@ function App() {
 	return (
 	<Provider store={store}>
 		<BrowserRouter>
-			<NavbarLogado/>
+			<Navbar/>
 				<Routes>
 					<Route path='/' element={<Home/>}/>
 					{/*Base*/}
