@@ -12,6 +12,8 @@ import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 
+import { toast } from 'react-toastify'
+
 
 function FiltrarProduto() {
 
@@ -35,7 +37,7 @@ Authorization: token
 }
 	function getCategorias() {
 		console.log(token);
-		busca('/produtos', setCategorias, {
+		busca('/categorias', setCategorias, {
 headers: {
 Authorization: token
 }
@@ -47,13 +49,6 @@ useEffect(() => {
 		}, [])
 useEffect(() => {
 		getCategorias()
-		}, [])
-
-useEffect(() => {
-		if(token === ''){ 
-		alert('Ta tirando né??? sem token não rola')
-		navigate('/login')
-		}
 		}, [])
 
 let [value, setValue] = useState('0')
@@ -85,7 +80,7 @@ return (
 					/>
 					<Box className="filtroProdutoPropriedade">
 					<Typography className="filtroProdutoCategoria">
-					{produto.categorias?.descricao}
+					{produto.descricao}
 					</Typography>
 					<Typography className="filtroProdutoNome"> 
 					{produto.nome}
@@ -94,7 +89,7 @@ return (
 					R$ {produto.preco}
 					</Typography>
 					<Typography className="filtroProdutoUsuario">
-					Cadastrado por: {produto.usuario?.usuario}
+					Cadastrado por: {produto.usuario?.nome}
 					</Typography>
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
 					{/*<Grid xs={6} className="filtroProdutoEditar">
@@ -132,7 +127,7 @@ return (
 				R$ {produto.preco}
 				</Typography>
 				<Typography className="filtroProdutoUsuario">
-				Cadastrado por: {produto.usuario?.usuario}
+				Cadastrado por: {produto.usuario?.nome}
 				</Typography>
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
 					{/*<Grid xs={6} className="filtroProdutoEditar">

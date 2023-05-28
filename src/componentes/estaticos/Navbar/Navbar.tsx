@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { TokenState } from '../../../store/tokens/tokensReducer'
 import { addToken } from '../../../store/tokens/actions'
-
+import { toast } from 'react-toastify'
 
 function Navbar() { 
 
@@ -18,7 +18,7 @@ function Navbar() {
 
 		function goLogout() {
 			dispatch(addToken(''))
-				alert("Usuario deslogado")
+				toast.error("Usuario deslogado")
 				navigate("/login")
 		}
 
@@ -37,19 +37,19 @@ function Navbar() {
 									<Link  className='reset-link' to='/home'>
 										<Box mx={1} style={{ cursor: 'pointer' }}>
 											<Typography className='item' variant="subtitle1" color="inherit">
-											inicio 
+											Inicio 
 											</Typography>
 								</Box>
 									</Link>
 									<Box mx={1} style={{ cursor: 'pointer' }}>
 										<Typography className='item' variant="subtitle1" color="inherit">
-										cestas
+										Cestas
 										</Typography>
 									</Box>
 									<Link className='reset-link' to='/loja'>
 										<Box mx={1} style={{ cursor: 'pointer' }}>
 											<Typography className='item' variant="subtitle1" color="inherit">
-											loja
+											Loja
 											</Typography>
 										</Box>
 									</Link>
@@ -63,7 +63,7 @@ function Navbar() {
 									<Box display='flex'>
 									<Link className='reset-link' to='/login'>
 										<Box mx={1} style={{ cursor: 'pointer' }}>
-										<Button id='btn-login' variant="outlined">entrar</Button>
+										<Button id='btn-login' variant="outlined">Entrar</Button>
 										</Box>
 									</Link>
 									{/* <Link to='/lista'>
@@ -75,7 +75,7 @@ function Navbar() {
 									</Link> */}
 									<Link to='/cadastro'>
 										<Box mx={1} className='cursor' >
-										<Button id='btn-nav' variant="outlined">criar conta</Button>
+										<Button id='btn-nav' variant="outlined">Criar conta</Button>
 										</Box>
 									</Link>
 									</Box>

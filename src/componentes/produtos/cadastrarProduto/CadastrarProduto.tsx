@@ -8,12 +8,13 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 import { busca, buscaId, posta, atualiza } from '../../../services/Service';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify'
 
 
 function CadastrarProduto() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
-    const [categoriass, setCategorias] = useState<Categoria[]>([])
+    const [categorias, setCategorias] = useState<Categoria[]>([])
 
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
@@ -22,19 +23,6 @@ function CadastrarProduto() {
         (state) => state.id
       );
 
-    // useEffect(() => {
-    //     if (token == "") {
-    //         alert("Você precisa estar logado")
-    //         navigate("/login")
-    //
-    //     }
-    // }, [token])
-
-    const [categorias, setCategoria] = useState<Categoria>(
-        {
-            id: 0,
-            descricao: ''
-        })
     const [produto, setProduto] = useState<Produto>({
         id: 0,
         nome: '',
@@ -104,14 +92,14 @@ function CadastrarProduto() {
                     'Authorization': token
                 }
             })
-            alert('Produto atualizada com sucesso');
+            toast.success('Produto atualizada com sucesso');
         } else {
             posta(`/produtos`, produto, setProduto, {
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Produto cadastrada com sucesso');
+            toast.success('Produto cadastrada com sucesso');
         }
         back()
 
@@ -136,14 +124,14 @@ function CadastrarProduto() {
                     <Select
                         labelId="demo-simple-select-helper-label"
                         id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategoria, {
+                        onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategorias, {
                             headers: {
                                 'Authorization': token
                             }
                         })}>
                         {
-                            categoriass.map(categorias => (
-                                <MenuItem value={categorias.id}>{categorias.descricao}</MenuItem>
+                            categorias.map(categoria => (
+                                <MenuItem value={categoria.id}>{categoria.descricao}</MenuItem>
                             ))
                         }
                     </Select>

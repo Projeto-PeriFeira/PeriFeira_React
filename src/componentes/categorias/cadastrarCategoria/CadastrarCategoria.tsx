@@ -2,11 +2,11 @@ import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
 import './CadastrarCategoria.css';
-import Categoria from '../../../model/Categoria';
+import { Categoria } from '../../../model/Categoria';
 import { buscaId, posta, atualiza } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-
+import { toast } from 'react-toastify'
 
 
 function CadastrarCategoria() {
@@ -22,9 +22,8 @@ function CadastrarCategoria() {
 
      useEffect(() => {
          if (token == "") {
-             alert("Você precisa estar logado")
+             toast.error("Você precisa estar logado")
              navigate("/login")
-     
          }
      }, [token])
     
@@ -62,14 +61,14 @@ function CadastrarCategoria() {
                         'Authorization': token
                     }
                 })
-                alert('Categoria atualizado com sucesso');
+                toast.success('Categoria atualizado com sucesso');
             } else {
                 posta(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Categoria cadastrado com sucesso');
+                toast.success('Categoria cadastrado com sucesso');
             }
             back()
     

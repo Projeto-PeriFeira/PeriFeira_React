@@ -81,8 +81,8 @@ return (
                     <Typography className='text' variant="h4" gutterBottom color="textPrimary" component='h4' align="center">Entrar</Typography>
                     <Box paddingX={10} paddingY={6} className="form">
                         <form onSubmit={enviar}>
-                            <TextField id='usuario' label='usuário' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
-                            <TextField id='senha' label='senha' variant="outlined" name="senha" margin="normal" type="password" fullWidth value ={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
+                            <TextField id='usuario' label='E-mail' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
+                            <TextField id='senha' label='Senha' variant="outlined" name="senha" margin="normal" type="password" fullWidth value ={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
                             <Box display="flex" justifyContent="center" marginTop={2}>
                                 <Box marginRight={1}>
                                     <Typography className='text'variant="subtitle1" gutterBottom align="center">Não tem uma conta ?</Typography>
