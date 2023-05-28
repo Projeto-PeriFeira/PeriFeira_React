@@ -73,7 +73,7 @@ function Navbar() {
 											</Typography>
 										</Box>
 									</Link> */}
-									<Link to=''>
+									<Link to='/cadastro'>
 										<Box mx={1} className='cursor' >
 										<Button id='btn-nav' variant="outlined">criar conta</Button>
 										</Box>

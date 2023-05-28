@@ -72,50 +72,35 @@ useEffect(() => {
 		}, [respUsuarioLogin.token])
 
 return (
-		<>
-		<Grid container alignItems={'center'}>
-		<Grid item xs={6}>
-		<Box display={'flex'} justifyContent={'center'}>
-		<Grid item xs={6} gap={2} display={'flex'} flexDirection={'column'}>
-		<form onSubmit={enviar}>
-		<Box display={'flex'} flexDirection={'column'} gap={2}>
-		<Typography align="center" variant="h3">
-		Login
-		</Typography>
-
-		<TextField
-		name="usuario"
-		label="E-mail"
-		value={usuarioLogin.usuario}
-		onChange={(event: ChangeEvent<HTMLInputElement>) =>
-		updateModel(event)
-		}
-		/>
-
-<TextField
-name="senha"
-label="Senha"
-type="password"
-value={usuarioLogin.senha}
-onChange={(event: ChangeEvent<HTMLInputElement>) =>
-	updateModel(event)
-}
-/>
-<Button fullWidth variant="contained" type="submit" disabled={carregando}>
-Logar
-</Button>
-</Box>
-</form>
-<hr />
-<Typography variant="body1" align="center">
-Ainda não tem uma conta? <Link to="/cadastro" style={{textDecoration: 'underline'}}>Cadastre-se</Link>
-</Typography>
-</Grid>
-</Box>
-</Grid>
-<Grid item xs={6} className="imagemLogin"></Grid>
-</Grid>
-</>
+		<Grid className="background"  container direction='row' justifyContent="center" alignItems="center">
+            <Grid xs={6} >
+                    <Box className="imagem"></Box>
+                </Grid>
+            <Grid alignItems="center" xs={4} >
+                <Box paddingX={8}>
+                    <Typography className='text' variant="h4" gutterBottom color="textPrimary" component='h4' align="center">Entrar</Typography>
+                    <Box paddingX={10} paddingY={6} className="form">
+                        <form onSubmit={enviar}>
+                            <TextField id='usuario' label='usuário' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
+                            <TextField id='senha' label='senha' variant="outlined" name="senha" margin="normal" type="password" fullWidth value ={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
+                            <Box display="flex" justifyContent="center" marginTop={2}>
+                                <Box marginRight={1}>
+                                    <Typography className='text'variant="subtitle1" gutterBottom align="center">Não tem uma conta ?</Typography>
+                                </Box>
+                                <Link className="reset-link" to = '/cadastro' >
+                                    <Typography className='text bold' variant="subtitle1" gutterBottom align="center" >Cadastre-se</Typography>
+                                </Link>
+                            </Box>
+                            <Box marginTop={2} textAlign="center">
+                                    <Button className='btn' type='submit' variant='contained' color='primary' disabled={carregando>
+                                    Logar
+                                    </Button>
+                            </Box>
+                        </form>
+                    </Box>
+                </Box>
+            </Grid>
+        </Grid>
 );
 }
 
