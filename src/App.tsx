@@ -6,6 +6,7 @@ import Footer from './componentes/estaticos/footer/Footer';
 import Sobre from './paginas/sobre/Sobre';
 import Loja from './paginas/loja/Loja';
 import Login from './paginas/login/Login';
+import ProdutoIndividual from './paginas/produto/ProdutoIndividual';
 //Categorias
 import CadastrarCategoria from './componentes/categorias/cadastrarCategoria/CadastrarCategoria';
 import ListarCategoria from './componentes/categorias/listarCategoria/ListarCategoria';
@@ -40,7 +41,8 @@ function App() {
 					<Route path='/categorias/:id' element={<CadastrarCategoria/>}/>
 					<Route path='/deletarCategoria/:id' element={<DeletarCategoria/>}/>
 					{/*Produtos*/}
-					<Route path='/produtos/:id' element={<CadastrarProduto/>}/>
+					<Route path='/produto/:id' element={<ProdutoIndividual/>}/>
+					<Route path='/cadastrarProdutos/:id' element={<CadastrarProduto/>}/>
 					<Route path='/deletarProduto/:id' element={<DeletarProduto/>}/>
 					<Route path='/tabs' element={<FiltrarProduto/>}/>
 				</Routes>

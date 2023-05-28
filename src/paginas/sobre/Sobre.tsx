@@ -52,32 +52,32 @@ function Sobre() {
 			<Grid xs={6} md={4}>
 			<img className="perfil" alt="Renato Nunes" src="https://github.com/renatonunes74.png"/>
 			<Typography className="texto">Renato Nunes</Typography>
-			<Typography className="texto nome"><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<Typography className="texto desenvolvedores"><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			<Grid xs={6} md={4}>
 			<img className="perfil" alt="Renato Nunes" src="https://github.com/JesscMendesr.png" />
 			<Typography className="texto">Jéssica Mendes</Typography>
-			<Typography className="texto nome"><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<Typography className="texto desenvolvedores"><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			<Grid xs={6} md={4}>
 			<img className="perfil" alt="Igor Menezes" src="https://github.com/IgorWz.png"/>
 			<Typography className="texto">Igor</Typography>
-			<Typography className="texto nome"><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<Typography className="texto desenvolvedores"><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			<Grid xs={6} md={4}>
 			<img className="perfil" alt="Jonathas Nascimento" src="https://github.com/nascimentojon.png"/>
 			<Typography className="texto">Jonathas Nascimento</Typography>
-			<Typography className="texto nome"><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<Typography className="texto desenvolvedores"><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			<Grid xs={6} md={4}>
 			<img className="perfil" alt="Larissa Pimenta" src="https://github.com/LarissaMarquesPimenta.png"/>
 			<Typography className="texto">Larissa Pimenta</Typography>
-			<Typography className="texto nome"><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<Typography className="texto desenvolvedores"><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			<Grid xs={6} md={4}>
 			<img className="perfil" alt="Graziella" src="https://github.com/HeiGrazi.png"/>
 			<Typography className="texto">Graziella</Typography>
-			<Typography className="texto nome"><GitHubIcon/> | <LinkedInIcon/></Typography>
+			<Typography className="texto desenvolvedores"><GitHubIcon/> | <LinkedInIcon/></Typography>
 			</Grid>
 			</Grid>
 			</Grid>
