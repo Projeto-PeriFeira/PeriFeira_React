@@ -67,14 +67,12 @@ useEffect(() => {
     }
 
     return (
-        <Grid container direction='row' justifyContent='center' alignItems='center'>
-            <Grid item xs = {6} className='imagem-cadastro' >
-            </Grid>
-            <Grid item xs = {6} alignItems='center' >
-            <Box paddingX={20} >
-                
+        <Grid className="background"  container direction='row' justifyContent='center' alignItems='center'>
+            <Grid item xs = {4} alignItems='center' >
+                <Box paddingX={8}>
+            <Typography className='text' variant="h4" gutterBottom color = 'textPrimary' component='h4' align = 'center' >Criar conta</Typography>
+            <Box paddingX={10} paddingY={6} className="form" >
             <form onSubmit={cadastrar}> 
-                    <Typography variant="h3" gutterBottom color = 'textPrimary' component='h3' align = 'center' >Cadastrar usuário</Typography>
                     <TextField id="nome" label='nome' variant="outlined" name="nome" margin="normal" fullWidth
                     value={usuario.nome}
                     onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)}/>
@@ -90,18 +88,23 @@ useEffect(() => {
                     <TextField id="foto" label='foto' variant="outlined" name="foto" margin="normal" fullWidth
                     value={usuario.foto}
                     onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)} />
-                    <Box textAlign='center' marginTop={2}>
-                        <Button type="submit" variant="contained" className="botao2" >
+                    <Box display='flex' justifyContent='center' gap={4} textAlign='center' marginTop={2}>
+                        <Button type="submit" variant="contained" className='btn' >
                                 Cadastrar
                             </Button>
-                            <Button type="submit" variant="contained" className="botao2" onClick={voltar}>
+                            <Button type="submit" variant="contained" className='btn-cancelar' onClick={voltar}>
                                 Cancelar
                             </Button>
                         
                     </Box>
                 </form>
                 </Box>
+                </Box>
                 </Grid>
+                <Grid item xs = {6}  >
+                    <Box className='imagem-cadastro'></Box>
+                </Grid>
+            
         </Grid>
     )
 }
