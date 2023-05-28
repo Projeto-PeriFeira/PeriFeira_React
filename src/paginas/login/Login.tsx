@@ -52,35 +52,39 @@ function Login() {
 
 
 return (
-		<Grid className="background" container direction='row' justifyContent="center" alignItems="center">
-            <Grid alignItems="center" xs={6} >
-                <Box paddingX={26}>
+		<Grid className="background"  container direction='row' justifyContent="center" alignItems="center">
+            <Grid xs={6} >
+                    <Box className="imagem"></Box>
+                </Grid>
+            <Grid alignItems="center" xs={4} >
+                <Box paddingX={8}>
+                <Typography className='text' variant="h4" gutterBottom color="textPrimary" component='h4' align="center">Entrar</Typography>
                     <Box paddingX={10} paddingY={6} className="form">
                     <form onSubmit={enviar}>
-                        <Typography variant="h3" gutterBottom color="textPrimary" component='h3' align="center">Entrar</Typography>
+                        
                         <TextField className="input" id='usuario' label='usuário' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
                         <TextField className="input" id='senha' label='senha' variant="outlined" name="senha" margin="normal" type="password" fullWidth value ={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
-                        <Box marginTop={2} textAlign="center">
-                            <Button type='submit' variant='contained' color='primary'>
-                            Logar
-                            </Button>
-                        </Box>
+
                     </form>
                     
                     <Box display="flex" justifyContent="center" marginTop={2}>
                         <Box marginRight={1}>
-                            <Typography variant="subtitle1" gutterBottom align="center">Não tem uma conta ?</Typography>
+                            <Typography className='text'variant="subtitle1" gutterBottom align="center">Não tem uma conta ?</Typography>
                         </Box>
-                        <Link to = '/cadastro' >
-                            <Typography variant="subtitle1" gutterBottom align="center" >Cadastre-se</Typography>
+                        <Link className="reset-link" to = '/cadastro' >
+                            <Typography className='text bold' variant="subtitle1" gutterBottom align="center" >Cadastre-se</Typography>
                         </Link>
                         </Box>
+                        <Box marginTop={2} textAlign="center">
+                            <Button className='btn' type='submit' variant='contained' color='primary'>
+                            Logar
+                            </Button>
+                        </Box>
                     </Box>
+
                 </Box>
             </Grid>
-            <Grid xs={6} className="imagem">
 
-            </Grid>
         </Grid>
 );
 }
