@@ -72,7 +72,7 @@ useEffect(() => {
 		}, [respUsuarioLogin.token])
 
 return (
-		<Grid className="background"  container direction='row' justifyContent="center" alignItems="center">
+	<Grid className="background"  container direction='row' justifyContent="center" alignItems="center">
             <Grid xs={6} >
                     <Box className="imagem"></Box>
                 </Grid>
@@ -92,7 +92,7 @@ return (
                                 </Link>
                             </Box>
                             <Box marginTop={2} textAlign="center">
-                                    <Button className='btn' type='submit' variant='contained' color='primary' disabled={carregando>
+                                    <Button className='btn' type='submit' variant='contained' color='primary' disabled={carregando}>
                                     Logar
                                     </Button>
                             </Box>
@@ -101,7 +101,7 @@ return (
                 </Box>
             </Grid>
         </Grid>
-);
+		)
 }
 
 export default Login;
