@@ -1,7 +1,6 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
 import './CadastroUsuario.css'
 import { Grid, Box, TextField, Typography, Button} from '@mui/material'
-import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import { cadastroUsuario } from '../../services/Service';
 import Usuario from '../../model/Usuario';
@@ -14,7 +13,7 @@ function cadastrarUsuario() {
     const [usuario, setUsuario] = useState<Usuario>({
         id: 0,
         nome: '',
-        usuario: '',
+        usuarios: '',
         foto: '',
         senha: '',
     });
@@ -22,7 +21,7 @@ function cadastrarUsuario() {
     const [usuarioResp, setUsuarioResp] = useState<Usuario>({
         id: 0,
         nome: '',
-        usuario: '',
+        usuarios: '',
         foto: '',
         senha: '',
     });

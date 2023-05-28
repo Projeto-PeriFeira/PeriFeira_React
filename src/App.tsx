@@ -6,6 +6,7 @@ import Footer from './componentes/estaticos/footer/Footer';
 import Sobre from './paginas/sobre/Sobre';
 import Loja from './paginas/loja/Loja';
 import Login from './paginas/login/Login';
+import ProdutoIndividual from './paginas/produto/ProdutoIndividual';
 //Categorias
 import CadastrarCategoria from './componentes/categorias/cadastrarCategoria/CadastrarCategoria';
 import ListarCategoria from './componentes/categorias/listarCategoria/ListarCategoria';
@@ -22,10 +23,20 @@ import {Provider} from 'react-redux'
 import store from './store/store'
 import NavbarLogado from './componentes/estaticos/Navbar-logado/NavbarLogado';
 
+import { ToastContainer } from 'react-toastify';
+
 function App() {
 	return (
 	<Provider store={store}>
 		<BrowserRouter>
+			        < ToastContainer
+							position="bottom-left"
+							hideProgressBar={false}
+							closeOnClick={true}							
+							pauseOnHover={true}
+							draggable={true}
+							autoClose={2500}
+							/>
 			<Navbar/>
 				<Routes>
 					<Route path='/' element={<Home/>}/>
@@ -40,7 +51,8 @@ function App() {
 					<Route path='/categorias/:id' element={<CadastrarCategoria/>}/>
 					<Route path='/deletarCategoria/:id' element={<DeletarCategoria/>}/>
 					{/*Produtos*/}
-					<Route path='/produtos/:id' element={<CadastrarProduto/>}/>
+					<Route path='/produto/:id' element={<ProdutoIndividual/>}/>
+					<Route path='/cadastrarProdutos/:id' element={<CadastrarProduto/>}/>
 					<Route path='/deletarProduto/:id' element={<DeletarProduto/>}/>
 					<Route path='/tabs' element={<FiltrarProduto/>}/>
 				</Routes>
