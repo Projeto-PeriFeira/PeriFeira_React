@@ -1,67 +1,66 @@
 import React, {useState, useEffect} from 'react'
-import { AppBar, Tab, Tabs, Grid, Box, Typography, Stack, Button, Card, CardMedia} from '@mui/material'
+import { AppBar, Tab, Tabs, Box, Typography, Stack, Button, Card, CardMedia} from '@mui/material'
 import { Link } from 'react-router-dom';
 import { TabContext, TabPanel } from '@material-ui/lab';
-import ListaProduto from '../listarProduto/ListarProduto';
 import './FiltrarProduto.css';
 
-import Categoria from '../../../model/Produto';
-import Produto from '../../../model/Produto';
+import { Categoria } from '../../../model/Categoria';
+import { Produto } from '../../../model/Produto';
 
 import {useNavigate} from 'react-router-dom';
 import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function FiltrarProduto() {
-	const [produtos, setProdutos] = useState<Produto[]>([])
 
-		let [value, setValue] = useState('0')
+		const navigate = useNavigate();
 
-		function handleChange(event: React.ChangeEvent<{}>, newValue: string){
-			setValue(newValue);
-		}
-
-	const [categorias, setCategorias] = useState<Categoria[]>([])
-		let navigate = useNavigate();
 	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
 			);
 
-	useEffect(()=>{
-			if(token == ''){
-			alert("Você precisa estar logado")
-			navigate("/login")
-			}
-			}, [token])
+	const [produtos, setProdutos] = useState<Produto[]>([])
+	const [categorias, setCategorias] = useState<Categoria[]>([])
 
 
-	async function getCategoria(){
-		await busca("/categorias", setCategorias, {
+	function getProdutos() {
+		console.log(token);
+		busca('/produtos', setProdutos, {
 headers: {
-'Authorization': token
+Authorization: token
 }
 })
 }
-
-async function getProduto() {
-	await busca("/produtos", setProdutos, {
+	function getCategorias() {
+		console.log(token);
+		busca('/produtos', setCategorias, {
 headers: {
-'Authorization': token
+Authorization: token
 }
 })
 }
-
-useEffect(()=>{
-		getCategoria()
-		}, [categorias.length])
 
 useEffect(() => {
-		getProduto()
-		}, [produtos.length])
+		getProdutos()
+		}, [])
+useEffect(() => {
+		getCategorias()
+		}, [])
+
+useEffect(() => {
+		if(token === ''){ 
+		alert('Ta tirando né??? sem token não rola')
+		navigate('/login')
+		}
+		}, [])
+
+let [value, setValue] = useState('0')
+
+function handleChange(event: React.ChangeEvent<{}>, newValue: string){
+	setValue(newValue);
+}
 
 return (
 		<>

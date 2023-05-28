@@ -1,87 +1,121 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
-import { Grid, Box, Typography, TextField} from '@material-ui/core';
-import './Login.css'
-import { Button } from "@mui/material";
-import {Link, useNavigate } from "react-router-dom";
-import UsuarioLogin from "../../model/UsuarioLogin";
-import { login } from "../../services/Service";
-import { useDispatch } from 'react-redux'
-import { addToken } from "../../store/tokens/actions"
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import './Login.css';
+import { Grid, Box, Typography, TextField, Button } from '@mui/material';
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+import { UsuarioLogin } from '../../model/UsuarioLogin';
+import { login } from '../../services/Service';
+import { useDispatch } from 'react-redux';
+import { addId, addToken } from '../../store/tokens/actions';
 
+  import 'react-toastify/dist/ReactToastify.css';
+	import CheckIcon from '@mui/icons-material/Check';
 
 function Login() {
+	// cria a variavel para navegação interna pela rota
+	const navigate = useNavigate();
+	const dispatch = useDispatch()
 
-    let navigate = useNavigate();
-    const dispatch = useDispatch();
-    const [token, setToken] = useState('');
-    const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
-        {
-            id: 0,
-            usuario: '',
-            senha: '',
-            foto: '',
-            token: ''
-        }
-        )
+		// cria um estado para armazenamento no localStorage do navegador
+		const [token, setToken] = useState('');
+	const [carregando, setCarregando] = useState(false)
 
-        function updateModel(e: ChangeEvent<HTMLInputElement>) {
+		// cria um estado de controle para o usuário preencher os dados de login
+		const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
+id: 0,
+nome: '',
+usuarios: '',
+senha: '',
+foto: '',
+token: '',
+});
+const [respUsuarioLogin, setRespUsuarioLogin] = useState<UsuarioLogin>({
+id: 0,
+nome: '',
+usuarios: '',
+senha: '',
+foto: '',
+token: '',
+});
 
-            setUsuarioLogin({
-                ...usuarioLogin,
-                [e.target.name]: e.target.value
-            })
-        }
+// atualiza os dados do estado acima, e ajuda a formar o JSON para a requisição
+function updateModel(event: ChangeEvent<HTMLInputElement>) {
+	setUsuarioLogin({
+			...usuarioLogin,
+			[event.target.name]: event.target.value,
+			});
+}
 
-            useEffect(()=>{
-                if(token != ''){
-                    dispatch(addToken(token));
-                    navigate('/home')
-                }
-            }, [token])
+// função que envia o formulário para o backend
+async function enviar(event: ChangeEvent<HTMLFormElement>) {
+	event.preventDefault();
+	setCarregando(true)
+	const toastId = toast.loading('Verificando dados...')
+		try {
+			await login('/usuarios/logar', usuarioLogin, setRespUsuarioLogin);
+			toast.dismiss(toastId)
+			toast.success("Bem vinde!");
+setCarregando(false)
+		} catch (error) {
+			toast.dismiss(toastId)
+			toast.error("Dados incorretos");
+setCarregando(false)
+	}
+}
 
-        async function enviar(e: ChangeEvent<HTMLFormElement>){
-            e.preventDefault();
-            try{
-                await login(`/usuarios/logar`, usuarioLogin, setToken)
-
-                alert('Usuário logado com sucesso!');
-            }catch(error){
-                alert('Dados do usuário inconsistentes. Erro ao logar!');
-            }
-        }
-
+useEffect(() => {
+		if(respUsuarioLogin.token !== ''){
+		dispatch(addToken(respUsuarioLogin.token))
+		navigate('/home');
+		dispatch(addId(respUsuarioLogin.id.toString()))
+		}
+		}, [respUsuarioLogin.token])
 
 return (
-		<Grid container direction='row' justifyContent="center" alignItems="center">
-		<Grid alignItems="center" xs={6} >
-		<Box paddingX={20}>
+		<>
+		<Grid container alignItems={'center'}>
+		<Grid item xs={6}>
+		<Box display={'flex'} justifyContent={'center'}>
+		<Grid item xs={6} gap={2} display={'flex'} flexDirection={'column'}>
 		<form onSubmit={enviar}>
-		<Typography variant="h3" gutterBottom color="textPrimary" component='h3' align="center">Entrar</Typography>
+		<Box display={'flex'} flexDirection={'column'} gap={2}>
+		<Typography align="center" variant="h3">
+		Login
+		</Typography>
 
-		<TextField id='usuario' label='usuário' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
-		<TextField id='senha' label='senha' variant="outlined" name="senha" margin="normal" type="password" fullWidth value ={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
-		<Box marginTop={2} textAlign="center">
-		<Button type='submit' variant='contained' color='primary'>
-		Logar
-		</Button>
-		</Box>
-		</form>
-		<Box display="flex" justifyContent="center" marginTop={2}>
-		<Box marginRight={1}>
-		<Typography variant="subtitle1" gutterBottom align="center">Não tem uma conta ?</Typography>
-		</Box>
-		<Link to = '/cadastro' >
-		<Typography variant="subtitle1" gutterBottom align="center" >Cadastre-se</Typography>
-</Link>
+		<TextField
+		name="usuario"
+		label="E-mail"
+		value={usuarioLogin.usuario}
+		onChange={(event: ChangeEvent<HTMLInputElement>) =>
+		updateModel(event)
+		}
+		/>
 
-
+<TextField
+name="senha"
+label="Senha"
+type="password"
+value={usuarioLogin.senha}
+onChange={(event: ChangeEvent<HTMLInputElement>) =>
+	updateModel(event)
+}
+/>
+<Button fullWidth variant="contained" type="submit" disabled={carregando}>
+Logar
+</Button>
 </Box>
+</form>
+<hr />
+<Typography variant="body1" align="center">
+Ainda não tem uma conta? <Link to="/cadastro" style={{textDecoration: 'underline'}}>Cadastre-se</Link>
+</Typography>
+</Grid>
 </Box>
 </Grid>
-<Grid xs={6} className="imagem">
-
+<Grid item xs={6} className="imagemLogin"></Grid>
 </Grid>
-</Grid>
+</>
 );
 }
 

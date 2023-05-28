@@ -1,20 +1,25 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
 import './CadastrarProduto.css';
-import { useNavigate, useParams } from 'react-router-dom';
 import Categoria from '../../../model/Categoria';
 import Produto from '../../../model/Produto';
-import { busca, buscaId, posta, atualiza } from '../../../services/Service';
-import { useSelector } from 'react-redux';
+import Usuario from '../../../model/Usuario';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { busca, buscaId, posta, atualiza } from '../../../services/Service';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 function CadastrarProduto() {
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>();
     const [categoriass, setCategorias] = useState<Categoria[]>([])
+
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
+      );
+    const userId = useSelector<TokenState, TokenState["id"]>(
+        (state) => state.id
       );
 
     // useEffect(() => {
@@ -38,13 +43,22 @@ function CadastrarProduto() {
 				preco: 0,
 				foto: '',
         categorias: null,
-        usuario: null
+        usuarios: null
     })
+    const [usuario, setUsuario] = useState<Usuario>({
+            id: +userId,
+						nome: '',
+						usuarios: '',
+						senha: '',
+						foto: '',
+						produto: null
+        })
 
     useEffect(() => { 
         setProduto({
             ...produto,
-            categorias: categorias
+            categorias: categorias,
+						usuarios: usuario
         })
     }, [categorias])
 

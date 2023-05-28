@@ -1,16 +1,40 @@
 :root {
---rosa1: #ffefdd;
---rosa2: #fff7ee;
---rosa3: #FFEFDD;
---rosa4: #FFF7EE;
---marrom1: #8D6145;
---marrom2: #835A40;
---marrom3: #996D51;
---laranja: #EA6017;
+	--toastify-color-error: #e74c3c;
+	--toastify-color-info: #3498db;
+	--toastify-color-light: var(--rosa4) !important;
+	--toastify-color-progress-error: var(--toastify-color-error);
+	--toastify-color-progress-info: var(--toastify-color-info);
+	--toastify-color-progress-success: var(--toastify-color-success);
+	--toastify-color-progress-warning: var(--toastify-color-warning);
+	--toastify-color-success: var(--laranja) !important;
+	--toastify-color-transparent: rgba(255, 255, 255, 0.7);
+	--toastify-color-warning: #f1c40f;
+	--toastify-icon-color-error: var(--toastify-color-error);
+	--toastify-icon-color-info: var(--toastify-color-info);
+	--toastify-icon-color-success: var(--toastify-color-success);
+	--toastify-icon-color-warning: var(--toastify-color-warning);
+	--toastify-spinner-color-empty-area: var(--rosa4) !important;
+	--toastify-spinner-color: var(--marrom1) !important;
+	--toastify-text-color-error: var(--marrom2) !important;
+	--toastify-text-color-info: var(--marrom2) !important;
+	--toastify-text-color-light: var(--marrom1) !important;
+	--toastify-text-color-success: var(--marrom2) !important;
+	--toastify-text-color-warning: var(--marrom2) !important;
+	--toastify-toast-width: 250px !important;
+	--laranja: #EA6017;
+	--marrom1: #8D6145;
+	--marrom2: #835A40;
+	--marrom3: #996D51;
+	--rosa1: #ffefdd;
+	--rosa2: #fff7ee;
+	--rosa3: #FFEFDD;
+	--rosa4: #FFF7EE;
 }
-
 * {
 	font-family: Poppins !important;
+}
+a {
+	color: var(--laranja) !important;
 }
 .secao1 {
 	background-color: var(--rosa1) !important;
@@ -28,4 +52,7 @@
 }
 body {
 	margin: 0;
+}
+.Toastify__toast {
+	border: 1px solid var(--marrom1);
 }

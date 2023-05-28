@@ -23,10 +23,20 @@ import {Provider} from 'react-redux'
 import store from './store/store'
 import NavbarLogado from './componentes/estaticos/Navbar-logado/NavbarLogado';
 
+import { ToastContainer } from 'react-toastify';
+
 function App() {
 	return (
 	<Provider store={store}>
 		<BrowserRouter>
+			        < ToastContainer
+							position="bottom-left"
+							hideProgressBar={false}
+							closeOnClick={true}							
+							pauseOnHover={true}
+							draggable={true}
+							autoClose={2500}
+							/>
 			<Navbar/>
 				<Routes>
 					<Route path='/' element={<Home/>}/>
