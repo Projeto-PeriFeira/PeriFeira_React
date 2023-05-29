@@ -51,6 +51,7 @@ function App() {
 					<Route path='/login' element={<Login/>}/>
 					<Route path='/cadastro' element={<CadastroUsuario/>}/>
 					{/*Categorias*/}
+					<Route path='/categorias' element={<CadastrarCategoria/>}/>
 					<Route path='/categorias/:id' element={<CadastrarCategoria/>}/>
 					<Route path='/deletarCategoria/:id' element={<DeletarCategoria/>}/>
 					{/*Produtos*/}
