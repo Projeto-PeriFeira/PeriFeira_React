@@ -1,9 +1,10 @@
-interface Usuario{ 
-    id: number;
-    nome: string;
-    usuario: string;
-    senha: string;
-    foto: string;
-}
+import { Produto } from "./Produto";
 
-export default Usuario; 
+export interface Usuario { 
+	id: number;
+	nome: string;
+	usuario: string;
+	foto: string;
+	senha: string;
+	produtos?: Produto[]|null
+}

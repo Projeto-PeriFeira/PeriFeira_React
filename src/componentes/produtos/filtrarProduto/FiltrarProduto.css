@@ -1,9 +1,6 @@
 * {
 	font-family: Poppins !important;
 }
-.MuiAppBar-root {
-	box-shadow: none !important;
-}
 .filtroCategoria {
 	color: var(--marrom2) !important;
 	background-color: var(--rosa3) !important;

@@ -1,145 +1,242 @@
-import React, { ChangeEvent, useEffect, useState } from 'react'
-import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
-import './CadastrarProduto.css';
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@mui/material';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Produto } from '../../../model/Produto';
 import { useNavigate, useParams } from 'react-router-dom';
-import Categoria from '../../../model/Categoria';
-import Produto from '../../../model/Produto';
-import { busca, buscaId, posta, atualiza } from '../../../services/Service';
-import { useSelector } from 'react-redux';
+import { Categoria } from '../../../model/Categoria';
+import { busca, buscaId, posta, atualiza } from '../../../services/Service.ts';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { addToken } from '../../../store/tokens/actions';
+import { Usuario } from '../../../model/Usuario';
+import { useDispatch, useSelector } from 'react-redux';
 
+function FormularioProduto() {
+  const navigate = useNavigate();
 
-function CadastrarProduto() {
-    let navigate = useNavigate();
-    const { id } = useParams<{ id: string }>();
-    const [categoriass, setCategorias] = useState<Categoria[]>([])
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-      );
+  const token = useSelector<TokenState, TokenState["tokens"]>(
+    (state) => state.tokens
+  );
+  const userId = useSelector<TokenState, TokenState["id"]>(
+    (state) => state.id
+  );
 
-    // useEffect(() => {
-    //     if (token == "") {
-    //         alert("Você precisa estar logado")
-    //         navigate("/login")
-    //
-    //     }
-    // }, [token])
+  const dispatch = useDispatch()
 
-    const [categorias, setCategoria] = useState<Categoria>(
-        {
-            id: 0,
-            descricao: ''
-        })
-    const [produto, setProduto] = useState<Produto>({
-        id: 0,
-        nome: '',
-        descricao: '',
-				quantidade: 0,
-				preco: 0,
-				foto: '',
-        categorias: null,
-        usuario: null
+  const { id } = useParams<{ id: string }>();
+
+  const [categorias, setCategorias] = useState<Categoria[]>([]);
+
+  const [categoria, setCategoria] = useState<Categoria>({
+    id: 0,
+    descricao: '',
+    produtos: null
+  });
+
+  const [produto, setProduto] = useState<Produto>({
+    id: 0,
+    nome: '',
+    descricao: '',
+		foto: '',
+		quantidade: 0,
+		preco: 0,
+    categorias: null,
+    usuario: null
+  });
+
+  const [usuario, setUsuario] = useState<Usuario>({
+    id: +userId,
+    foto: '',
+    nome: '',
+    usuario: '',
+    senha: '',
+    produtos: null
+  })
+
+  useEffect(() => {
+    if(token === ''){ 
+      alert('Ta tirando né??? sem token não rola')
+      navigate('/login')
+    }
+  }, [])
+
+  async function getCategorias() {
+    try {
+      await busca('/categorias', setCategorias, {
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (error: any) {
+      if (error.toString().contains('403')) {
+        alert('Token expirado, logue novamente');
+        dispatch(addToken(''))
+        navigate('/login');
+      }
+    }
+  }
+
+  async function getPostById(id: string) {
+    await busca(`/produtos/${id}`, setProduto, {
+      headers: {
+        Authorization: token
+      }
     })
+  }
 
-    useEffect(() => { 
-        setProduto({
-            ...produto,
-            categorias: categorias
-        })
-    }, [categorias])
+  useEffect(() => {
+    getCategorias();
+    if(id !== undefined) {
+      getPostById(id)
+    }
+  }, []);
 
-    useEffect(() => {
-        getCategorias()
-        if (id !== undefined) {
-            findByIdProduto(id)
-        }
-    }, [id])
+  function updateModel(event: ChangeEvent<HTMLInputElement>) {
+    setProduto({
+      ...produto,
+      [event.target.name]: event.target.value,
+      categorias: categoria,
+    });
+  }
 
-    async function getCategorias() {
-        await busca("/categorias", setCategorias, {
-            headers: {
-                'Authorization': token
+  useEffect(() => {
+    setProduto({
+      ...produto,
+      categorias: categoria,
+      usuario: usuario
+    });
+  }, [categoria]);
+
+  async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (id !== undefined) {
+      try {
+        await atualiza('/produtos', produto, setProduto, {
+          headers: {
+            Authorization: token,
+          },
+        });
+        alert('foi - atualização')
+        navigate('/produtos')
+      } catch (error) {
+        alert('deu erro');
+      }
+    } else {
+      try {
+        await posta('/produtos', produto, setProduto, {
+          headers: {
+            Authorization: token,
+          },
+        });
+        alert('foi - cadastro')
+        navigate('/produtos')
+      } catch (error) {
+        alert('deu erro');
+      }
+    }
+  }
+
+  return (
+    <Container maxWidth="sm">
+      <Box my={2}>
+        <form onSubmit={onSubmit}>
+          <Typography variant="h4" align="center">
+            Formulário de {id !== undefined ? ' atualização ' : ' cadastro '} de produto
+          </Typography>
+          <TextField
+            name="nome"
+            fullWidth
+            margin="normal"
+            label="Nome do produto"
+            helperText='Pelo menos 5 caracteres'
+            value={produto.nome}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              updateModel(event)
             }
-        })
-    }
-
-    async function findByIdProduto(id: string) {
-        await buscaId(`produtos/${id}`, setProduto, {
-            headers: {
-                'Authorization': token
+          />
+          <TextField
+            name="descricao"
+            fullWidth
+            margin="normal"
+            multiline
+            rows={4}
+            label="Descricao da produto"
+            value={produto.descricao}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              updateModel(event)
             }
-        })
-    }
+          />
+          <TextField
+            name="foto"
+            fullWidth
+            margin="normal"
+            multiline
+            label="Foto da produto"
+            value={produto.foto}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              updateModel(event)
+            }
+          />
+          <TextField
+            name="preco"
+            fullWidth
+            margin="normal"
+            multiline
+            label="Preco da produto"
+            value={produto.preco}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              updateModel(event)
+            }
+          />
+          <TextField
+            name="quantidade"
+            fullWidth
+            margin="normal"
+            multiline
+            label="Quantidade da produto"
+            value={produto.quantidade}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              updateModel(event)
+            }
+          />
+          <FormControl fullWidth margin="normal">
+            <InputLabel id="selectCategoria">Categoria</InputLabel>
+            <Select
+              labelId="selectCategoria"
+              onChange={(event) =>
+                buscaId(`/categorias/${event.target.value}`, setCategoria, {
+                  headers: {
+                    Authorization: token,
+                  },
+                })
+              }
+            >
+              {categorias.map((categoria) => (
+                <MenuItem key={categoria.id} value={categoria.id}>
+                  {categoria.descricao}
+                </MenuItem>
+              ))}
+            </Select>
+            <FormHelperText>Escolha um categoria para a sua produto</FormHelperText>
+          </FormControl>
 
-    function updatedProduto(e: ChangeEvent<HTMLInputElement>) {
-
-        setProduto({
-            ...produto,
-            [e.target.name]: e.target.value,
-            categorias: categorias
-        })
-
-    }
-
-    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
-
-        if (id !== undefined) {
-            atualiza(`/produtos`, produto, setProduto, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            alert('Produto atualizada com sucesso');
-        } else {
-            posta(`/produtos`, produto, setProduto, {
-                headers: {
-                    'Authorization': token
-                }
-            })
-            alert('Produto cadastrada com sucesso');
-        }
-        back()
-
-    }
-
-    function back() {
-        navigate('/loja')
-    }
-
-    return (
-        <Container maxWidth="sm" className="topo">
-            <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro produto</Typography>
-                <TextField value={produto.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="nome" label="nome" variant="outlined" name="nome" margin="normal" fullWidth />
-                <TextField value={produto.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="descricao" label="descricao" name="descricao" variant="outlined" margin="normal" fullWidth />
-                <TextField value={produto.quantidade} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="quantidade" label="quantidade" name="quantidade" variant="outlined" margin="normal" fullWidth />
-                <TextField value={produto.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="preco" label="preco" name="preco" variant="outlined" margin="normal" fullWidth />
-                <TextField value={produto.foto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedProduto(e)} id="foto" label="foto" name="foto" variant="outlined" margin="normal" fullWidth />
-
-                <FormControl >
-                    <InputLabel id="demo-simple-select-helper-label">Categoria </InputLabel>
-                    <Select
-                        labelId="demo-simple-select-helper-label"
-                        id="demo-simple-select-helper"
-                        onChange={(e) => buscaId(`/categorias/${e.target.value}`, setCategoria, {
-                            headers: {
-                                'Authorization': token
-                            }
-                        })}>
-                        {
-                            categoriass.map(categorias => (
-                                <MenuItem value={categorias.id}>{categorias.descricao}</MenuItem>
-                            ))
-                        }
-                    </Select>
-                    <FormHelperText>Escolha um categorias para a produto</FormHelperText>
-                    <Button type="submit" variant="contained" color="primary">
-                        Finalizar
-                    </Button>
-                </FormControl>
-            </form>
-        </Container>
-    )
+          <Button type="submit" variant="contained" color="primary" fullWidth disabled={categoria.id === 0}>
+            {id !== undefined ? 'Atualizar Produto' : 'Cadastrar Produto'}
+          </Button>
+        </form>
+      </Box>
+    </Container>
+  );
 }
-export default CadastrarProduto;
+
+export default FormularioProduto;

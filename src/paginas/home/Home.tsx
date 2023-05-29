@@ -5,7 +5,11 @@ import { Stack } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../store/tokens/tokensReducer'
 import { useNavigate } from 'react-router';
+<<<<<<< HEAD
 import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria';
+=======
+import { toast } from 'react-toastify'
+>>>>>>> c1887a5abb7e47bda3bb64ae4997e2ad0e3406c7
 
 function Home() {
 
@@ -16,7 +20,7 @@ function Home() {
     
     useEffect(() => {
       if (token == "") {
-          alert("Você precisa estar logado")
+          toast.error("Você precisa estar logado")
           navigate("/login")
   
       }
