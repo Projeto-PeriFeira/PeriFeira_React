@@ -5,6 +5,7 @@ import { Stack } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../store/tokens/tokensReducer'
 import { useNavigate } from 'react-router';
+import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria';
 
 function Home() {
 
@@ -36,7 +37,9 @@ function Home() {
 				<Grid item xs={4}>
 				<img className='image' src="/src/assets/Camada 5.png" alt="" />
 				</Grid>
+				
 				</Grid>
+				<CadastrarCategoria/>
 				</>
 				);
 };

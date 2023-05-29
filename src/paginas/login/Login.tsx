@@ -57,9 +57,9 @@ return (
                     <Box className="imagem"></Box>
                 </Grid>
             <Grid alignItems="center" xs={4} >
-                <Box paddingX={8}>
+                <Box paddingX={6}>
                     <Typography className='text' variant="h4" gutterBottom color="textPrimary" component='h4' align="center">Entrar</Typography>
-                    <Box paddingX={10} paddingY={6} className="form">
+                    <Box paddingX={7} paddingY={6} className="form">
                         <form onSubmit={enviar}>
                             <TextField id='usuario' label='usuário' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
                             <TextField id='senha' label='senha' variant="outlined" name="senha" margin="normal" type="password" fullWidth value ={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
