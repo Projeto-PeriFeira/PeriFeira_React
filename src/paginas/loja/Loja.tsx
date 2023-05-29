@@ -14,6 +14,7 @@ function Loja() {
 			<Grid container className="secao1" alignItems='center' justifyContent='center'>
 			<FiltrarProduto/>
 			</Grid>
+			<Box className="secao1" paddingBottom="80px"/>
 <CadastrarCategoria/>
 <CadastrarProduto/>
 			</>

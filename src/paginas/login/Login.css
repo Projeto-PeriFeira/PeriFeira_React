@@ -50,7 +50,7 @@ text-decoration: none !important;
 
 .btn {
     background-color: #EA6017 !important;
-    text-transform: lowercase !important;
+    text-transform: capitalize !important;
     font-size: 1rem !important;
     border-radius: 10px !important;
 
