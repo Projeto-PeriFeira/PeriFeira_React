@@ -133,7 +133,6 @@ function Perfil() {
                 <TextField
                   name="usuario"
                   label="Endereço de e-mail"
-                  disabled
                   value={usuario.usuario}
                   onChange={(event: ChangeEvent<HTMLInputElement>) =>
                     updateModel(event)

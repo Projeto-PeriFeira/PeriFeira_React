@@ -94,6 +94,7 @@ Sobre
 </Typography>
 </Box>
 </Link>
+{/*}
 <Box display='flex'>
 <Link className='reset-link' to='/login'>
 <Box mx={1} style={{ cursor: 'pointer' }}>
@@ -106,17 +107,19 @@ Sobre
 		lista
 		</Typography>
 		</Box>
-		</Link> */}
+		</Link> /}
 <Link to='/cadastro'>
 <Box mx={1} className='cursor' >
 <Button id='btn-nav' variant="outlined">Criar conta</Button>
 </Box>
 </Link>
+</Box>*/}
+<Box mx={1} style={{ cursor: 'pointer'}}>
+<Typography className='item' variant="subtitle1" color="inherit">Bem vinde, {usuario.nome}!</Typography>
 </Box>
-<Typography>Bem vinde, {usuario.nome}!</Typography>
-<Button onClick={handleMenuOpen}>
-<Avatar src={usuario.foto} alt="Imagem do usuário" />
-</Button>
+<Box mx={1} style={{ cursor: 'pointer'}} onClick={handleMenuOpen}>
+<Avatar src={usuario.foto} alt="Foto do usuário" />
+</Box>
 <Menu
 anchorEl={anchorEl}
 open={Boolean(anchorEl)}
