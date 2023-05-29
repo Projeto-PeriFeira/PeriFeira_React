@@ -50,7 +50,7 @@ function updateModel(event: ChangeEvent<HTMLInputElement>) {
 async function enviar(event: ChangeEvent<HTMLFormElement>) {
 	event.preventDefault();
 	setCarregando(true)
-	const toastId = toast.loading('Verificando dados...')
+	const toastId = toast.loading('Verificando os dados...')
 		try {
 			await login('/usuarios/logar', usuarioLogin, setRespUsuarioLogin);
 			toast.dismiss(toastId)

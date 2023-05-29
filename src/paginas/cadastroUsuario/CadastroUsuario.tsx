@@ -65,7 +65,7 @@ async function confirm(event: ChangeEvent<HTMLInputElement>) {
 
 async function cadastrar(event: ChangeEvent<HTMLFormElement>) {
 	event.preventDefault();
-	const toastId = toast.loading('Verificando dados')
+	const toastId = toast.loading('Verificando os dados...')
 		if (usuario.senha === confirmarSenha && emailError && senhaError) {
 			try {
 				await cadastroUsuario('/usuarios/cadastrar', usuario, setUsuarioResp);
