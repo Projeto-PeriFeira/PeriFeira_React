@@ -42,6 +42,9 @@ a {
 .secao2 {
 	background-color: var(--rosa2) !important;
 }
+.secao3 {
+	background-color: var(--rosa3) !important;
+}
 .titulo {
 	color: var(--marrom1);
 	font-weight: 700 !important;

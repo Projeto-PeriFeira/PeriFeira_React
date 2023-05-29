@@ -17,7 +17,8 @@ function CadastrarCategoria() {
       );
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
-        descricao: ''
+        descricao: '',
+				produtos: null
     })
 
      useEffect(() => {
@@ -52,10 +53,8 @@ function CadastrarCategoria() {
         
         async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
             e.preventDefault()
-            console.log("categorias " + JSON.stringify(categoria))
-    
+            // console.log("categorias " + JSON.stringify(categoria))
             if (id !== undefined) {
-                console.log(categoria)
                 atualiza(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
@@ -68,16 +67,11 @@ function CadastrarCategoria() {
                         'Authorization': token
                     }
                 })
-                toast.success('Categoria cadastrado com sucesso');
+                toast.success('Categoria cadastrada com sucesso');
             }
-            back()
-    
-        }
-    
-        function back() {
             navigate('/loja')
         }
-  
+    
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>

@@ -17,7 +17,7 @@ function cadastrarUsuario() {
 	const [usuario, setUsuario] = useState<Usuario>({
 id: 0,
 nome: '',
-usuarios: '',
+usuario: '',
 foto: '',
 senha: '',
 });
@@ -25,7 +25,7 @@ senha: '',
 const [usuarioResp, setUsuarioResp] = useState<Usuario>({
 id: 0,
 nome: '',
-usuarios: '',
+usuario: '',
 foto: '',
 senha: '',
 });

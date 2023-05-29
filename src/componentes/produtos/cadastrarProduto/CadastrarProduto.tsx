@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import { Container, Typography, TextField, Button, Select, InputLabel, MenuItem, FormControl, FormHelperText } from "@material-ui/core"
 import './CadastrarProduto.css';
-import Categoria from '../../../model/Categoria';
-import Produto from '../../../model/Produto';
-import Usuario from '../../../model/Usuario';
+import { Categoria } from '../../../model/Categoria';
+import { Produto } from '../../../model/Produto';
+import { Usuario } from '../../../model/Usuario';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { busca, buscaId, posta, atualiza } from '../../../services/Service';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -36,10 +36,9 @@ function CadastrarProduto() {
     const [usuario, setUsuario] = useState<Usuario>({
             id: +userId,
 						nome: '',
-						usuarios: '',
+						usuario: '',
 						senha: '',
 						foto: '',
-						produto: null
         })
 
     useEffect(() => { 
@@ -92,20 +91,15 @@ function CadastrarProduto() {
                     'Authorization': token
                 }
             })
-            toast.success('Produto atualizada com sucesso');
+            toast.success('Produto atualizado com sucesso');
         } else {
             posta(`/produtos`, produto, setProduto, {
                 headers: {
                     'Authorization': token
                 }
             })
-            toast.success('Produto cadastrada com sucesso');
+            toast.success('Produto cadastrado com sucesso');
         }
-        back()
-
-    }
-
-    function back() {
         navigate('/loja')
     }
 
@@ -135,7 +129,7 @@ function CadastrarProduto() {
                             ))
                         }
                     </Select>
-                    <FormHelperText>Escolha um categorias para a produto</FormHelperText>
+                    <FormHelperText>Escolha uma categoria para o produto</FormHelperText>
                     <Button type="submit" variant="contained" color="primary">
                         Finalizar
                     </Button>

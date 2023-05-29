@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import './Login.css';
-import { Grid, Box, Typography, TextField, Button } from '@mui/material';
+import { Grid, Box, Typography, TextField, Button, IconButton, InputAdornment } from '@mui/material';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { UsuarioLogin } from '../../model/UsuarioLogin';
@@ -9,7 +9,8 @@ import { useDispatch } from 'react-redux';
 import { addId, addToken } from '../../store/tokens/actions';
 
   import 'react-toastify/dist/ReactToastify.css';
-	import CheckIcon from '@mui/icons-material/Check';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 function Login() {
 	// cria a variavel para navegação interna pela rota
@@ -19,20 +20,23 @@ function Login() {
 		// cria um estado para armazenamento no localStorage do navegador
 		const [token, setToken] = useState('');
 	const [carregando, setCarregando] = useState(false)
+const [showPassword, setShowPassword] = useState(false);
+const handleClickShowPassword = () => setShowPassword(!showPassword);
 
 		// cria um estado de controle para o usuário preencher os dados de login
 		const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
 id: 0,
 nome: '',
-usuarios: '',
+usuario: '',
 senha: '',
 foto: '',
 token: '',
 });
+
 const [respUsuarioLogin, setRespUsuarioLogin] = useState<UsuarioLogin>({
 id: 0,
 nome: '',
-usuarios: '',
+usuario: '',
 senha: '',
 foto: '',
 token: '',
@@ -66,8 +70,8 @@ setCarregando(false)
 useEffect(() => {
 		if(respUsuarioLogin.token !== ''){
 		dispatch(addToken(respUsuarioLogin.token))
-		navigate('/home');
 		dispatch(addId(respUsuarioLogin.id.toString()))
+		navigate('/home');
 		}
 		}, [respUsuarioLogin.token])
 
@@ -82,7 +86,22 @@ return (
                     <Box paddingX={10} paddingY={6} className="form">
                         <form onSubmit={enviar}>
                             <TextField id='usuario' label='E-mail' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
-                            <TextField id='senha' label='Senha' variant="outlined" name="senha" margin="normal" type="password" fullWidth value ={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
+                            <TextField 
+														type={showPassword ? "text" : "password"}
+														id='senha' label='Senha' variant="outlined" name="senha" margin="normal" fullWidth value={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} 
+InputProps={{
+endAdornment: (
+							 <InputAdornment position="end">
+							 <IconButton
+							 aria-label="toggle password visibility"
+							 onClick={handleClickShowPassword}
+							 >
+							 {showPassword ? <VisibilityIcon/> : <VisibilityOff/>}
+							 </IconButton>
+							 </InputAdornment>
+							)
+}}
+														/>
                             <Box display="flex" justifyContent="center" marginTop={2}>
                                 <Box marginRight={1}>
                                     <Typography className='text'variant="subtitle1" gutterBottom align="center">Não tem uma conta ?</Typography>
