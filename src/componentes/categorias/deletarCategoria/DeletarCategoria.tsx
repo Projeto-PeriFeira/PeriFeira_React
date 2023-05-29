@@ -3,11 +3,11 @@ import { Card, CardActions, CardContent, Button, Typography} from '@material-ui/
 import './DeletarCategoria.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { buscaId, deleta } from '../../../services/Service';
-import Categoria from '../../../model/Categoria';
+import { Categoria } from '../../../model/Categoria';
 import { useSelector } from 'react-redux';
 import {Box} from '@mui/material';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-
+import { toast } from 'react-toastify'
 
 function DeletarCategoria() {
     let navigate = useNavigate();
@@ -19,7 +19,7 @@ function DeletarCategoria() {
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error("Você precisa estar logado")
             navigate("/login")
     
         }
@@ -46,7 +46,7 @@ function DeletarCategoria() {
                 'Authorization': token
               }
             });
-            alert('Categoria deletado com sucesso');
+            toast.success('Categoria deletado com sucesso');
           }
         
           function nao() {

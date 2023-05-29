@@ -2,11 +2,11 @@ import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
 import './CadastrarCategoria.css';
-import Categoria from '../../../model/Categoria';
+import { Categoria } from '../../../model/Categoria';
 import { buscaId, posta, atualiza } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-
+import { toast } from 'react-toastify'
 
 
 function CadastrarCategoria() {
@@ -17,14 +17,14 @@ function CadastrarCategoria() {
       );
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
-        descricao: ''
+        descricao: '',
+				produtos: null
     })
 
      useEffect(() => {
          if (token == "") {
-             alert("Você precisa estar logado")
+             toast.error("Você precisa estar logado")
              navigate("/login")
-     
          }
      }, [token])
     
@@ -54,31 +54,24 @@ function CadastrarCategoria() {
         async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
             e.preventDefault()
             console.log("categorias " + JSON.stringify(categoria))
-    
             if (id !== undefined) {
-                console.log(categoria)
                 atualiza(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Categoria atualizado com sucesso');
+                toast.success('Categoria atualizado com sucesso');
             } else {
                 posta(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Categoria cadastrado com sucesso');
+                toast.success('Categoria cadastrada com sucesso');
             }
-            back()
-    
-        }
-    
-        function back() {
             navigate('/loja')
         }
-  
+    
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>

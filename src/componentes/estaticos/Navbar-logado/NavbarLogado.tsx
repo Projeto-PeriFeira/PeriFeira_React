@@ -28,7 +28,7 @@ function NavbarLogado() {
 
 		function goLogout() {
 			dispatch(addToken(''))
-				alert("Usuario deslogado")
+				toast.error(Usuario deslogado")
 				navigate("/login")
 		}
 
