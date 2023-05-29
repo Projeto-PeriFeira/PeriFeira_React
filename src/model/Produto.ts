@@ -9,5 +9,5 @@ export interface Produto {
 	preco: number;
 	foto: string;
 	categorias?: Categoria|null;
-	usuarios?: Usuario|null;
+	usuario?: Usuario|null;
 }
