@@ -1,5 +1,5 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
-import { Container, Typography, TextField, Button } from "@material-ui/core"
+import { Container, Typography, TextField, Button, Box } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
 import './CadastrarCategoria.css';
 import { Categoria } from '../../../model/Categoria';
@@ -73,12 +73,12 @@ function CadastrarCategoria() {
         }
     
     return (
-        <Container maxWidth="sm" className="topo">
+        <Container maxWidth="sm" className="background-form">
             <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro categoria</Typography>
-                <TextField value={categoria.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="descricao" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
-                <Button type="submit" variant="contained" color="primary">
-                    Finalizar
+                <Typography className='text bold' variant="h5" color="textSecondary" component="h5" align="left" >{id !== undefined ? 'Atualizar categoria:' : 'Cadastrar nova categoria:'}</Typography>
+                <TextField value={categoria.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="descrição" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
+                <Button className='btn mg-top' type="submit" variant="contained" color="primary" disabled={categoria.descricao.length < 4}>
+                cadastrar
                 </Button>
             </form>
         </Container>
