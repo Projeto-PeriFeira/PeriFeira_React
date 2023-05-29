@@ -1,0 +1,28 @@
+.bold {
+  font-weight: 600 !important;
+}
+
+.foto-prod{
+  width: 100% !important;
+  border-radius: 16px !important;
+}
+
+.container{
+  padding-top:64px !important;
+}
+
+.placeholder{
+  position: absolute !important;
+  color: var(--marrom4);
+}
+.bg{
+  background-color: var(--rosa2) !important;
+  border-radius: 16px !important;
+  height: 24vh !important;
+  text-align: center !important;
+  place-items: center !important;
+  display: flex !important;
+  justify-content: center;
+  position: relative !important;
+  width: 100% !important;
+}

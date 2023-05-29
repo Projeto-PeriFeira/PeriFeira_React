@@ -25,6 +25,7 @@
 	--marrom1: #8D6145;
 	--marrom2: #835A40;
 	--marrom3: #996D51;
+	--marrom4: #DFB193;
 	--rosa1: #ffefdd;
 	--rosa2: #fff7ee;
 	--rosa3: #FFEFDD;
@@ -49,8 +50,17 @@
 }
 
 a, .MuiInputLabel-root  {
-	color: var(--laranja) !important;
+	color: var(--marrom3) !important;
 }
+
+.MuiInputBase-root{
+	background-color: var(--rosa4) !important;
+}
+
+.MuiOutlinedInput-notchedOutline{
+	border: 1px solid var(--marrom4) !important;
+}
+
 .secao1 {
 	background-color: var(--rosa1) !important;
 }

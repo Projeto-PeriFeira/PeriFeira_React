@@ -114,11 +114,13 @@ Sobre
 </Box>
 </Link>
 </Box>*/}
+<Box display='flex' alignItems='center'>
 <Box mx={1} style={{ cursor: 'pointer'}}>
-<Typography className='item' variant="subtitle1" color="inherit">Bem vinde, {usuario.nome}!</Typography>
+<Typography className='item' variant="subtitle1" color="inherit">Bem vinde, {usuario?.nome}!</Typography>
 </Box>
 <Box mx={1} style={{ cursor: 'pointer'}} onClick={handleMenuOpen}>
 <Avatar src={usuario.foto} alt="Foto do usuário" />
+</Box>
 </Box>
 <Menu
 anchorEl={anchorEl}

@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Container,
@@ -19,6 +20,8 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 import { addToken } from '../../../store/tokens/actions';
 import { Usuario } from '../../../model/Usuario';
 import { useDispatch, useSelector } from 'react-redux';
+import { Grid } from '@material-ui/core';
+import './CadastrarProduto.css'
 
 function FormularioProduto() {
   const navigate = useNavigate();
@@ -147,17 +150,32 @@ function FormularioProduto() {
   }
 
   return (
-    <Container maxWidth="sm">
+    <>
+    <Grid container justifyContent='center'>
+    <Grid className='background-form' container xs={8} justifyContent='space-around' alignItems='flex-start'>
+      <Grid className='container' item xs={4}>
+        {produto.foto == '' &&         
+        <Box className='bg'>
+          <span className='placeholder'>{produto.foto == "" && 'Foto do produto'}</span>
+        </Box>}
+        <Box>
+          <img className='foto-prod' src={produto.foto} alt='' />
+          </Box>
+      </Grid>
+    <Grid item xs={6} >
+    {/* <Container xs={4} className='background-form'maxWidth="sm"> */}
       <Box my={2}>
         <form onSubmit={onSubmit}>
-          <Typography variant="h4" align="center">
-            Formulário de {id !== undefined ? ' atualização ' : ' cadastro '} de produto
+        
+          <Typography className='text bold' variant="h5" align="left">
+            {id !== undefined ? ' Atualizar' : ' Cadastrar '} produto:
           </Typography>
           <TextField
             name="nome"
             fullWidth
             margin="normal"
             label="Nome do produto"
+            error={produto.nome.length < 5 && produto.nome.length > 0}
             helperText='Pelo menos 5 caracteres'
             value={produto.nome}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -170,7 +188,7 @@ function FormularioProduto() {
             margin="normal"
             multiline
             rows={4}
-            label="Descricao da produto"
+            label="Descrição do produto"
             value={produto.descricao}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               updateModel(event)
@@ -181,7 +199,7 @@ function FormularioProduto() {
             fullWidth
             margin="normal"
             multiline
-            label="Foto da produto"
+            label="Link da Foto do produto"
             value={produto.foto}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               updateModel(event)
@@ -192,7 +210,7 @@ function FormularioProduto() {
             fullWidth
             margin="normal"
             multiline
-            label="Preco da produto"
+            label="Preço"
             value={produto.preco}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               updateModel(event)
@@ -203,7 +221,7 @@ function FormularioProduto() {
             fullWidth
             margin="normal"
             multiline
-            label="Quantidade da produto"
+            label="Quantidade"
             value={produto.quantidade}
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               updateModel(event)
@@ -229,13 +247,17 @@ function FormularioProduto() {
             </Select>
             <FormHelperText>Escolha um categoria para a sua produto</FormHelperText>
           </FormControl>
-
-          <Button type="submit" variant="contained" color="primary" fullWidth disabled={categoria.id === 0}>
+          <Box>
+          <Button className='btn mg-top' type="submit" variant="contained" color="primary" disabled={categoria.id === 0}>
             {id !== undefined ? 'Atualizar Produto' : 'Cadastrar Produto'}
           </Button>
+          </Box>
         </form>
       </Box>
-    </Container>
+    </Grid>
+    </Grid>
+    </Grid>
+    </>
   );
 }
 
