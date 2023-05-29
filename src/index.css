@@ -33,7 +33,10 @@
 * {
 	font-family: Poppins !important;
 }
-a {
+.MuiAppBar-root {
+	box-shadow: none !important;
+}
+a, .MuiInputLabel-root  {
 	color: var(--laranja) !important;
 }
 .secao1 {
@@ -50,7 +53,7 @@ a {
 	font-weight: 700 !important;
 	padding-bottom: 12px !important;
 }
-.texto {
+.texto, .visibilidadeSenha {
 	color: var(--marrom2) !important;
 }
 body {

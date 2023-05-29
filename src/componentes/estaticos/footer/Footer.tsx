@@ -1,19 +1,19 @@
 import React from 'react'
 import { Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
-import { useSelector } from 'react-redux'
-import { TokenState } from '../../../store/tokens/tokensReducer'
+// import { useSelector } from 'react-redux'
+// import { TokenState } from '../../../store/tokens/tokensReducer'
 import './Footer.css'
 import GitHubIcon from '@mui/icons-material/GitHub';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Link } from 'react-router-dom';
 
 function Footer() {
-	const token = useSelector<TokenState, TokenState["tokens"]>(
-			(state) => state.tokens
-			);
+	// const token = useSelector<TokenState, TokenState["tokens"]>(
+	// 		(state) => state.tokens
+	// 		);
 
-	if(token != ""){
+	// if(token != ""){
     return (
         <>
         <Box display={'flex'} className='footer'>
@@ -64,13 +64,13 @@ function Footer() {
             </Box>
         </>
     )
-	}
-	else {
-		return (
-		<>
-		</>
-		)
-		}
+// 	}
+// 	else {
+// 		return (
+// 		<>
+// 		</>
+// 		)
+// 		}
 }
 
 export default Footer

@@ -84,9 +84,9 @@ linkedin: "",
 			<Grid item xs={8} md={4}>
 			<img className="perfil" alt={desenvolvedor.nome} src={desenvolvedor.github + ".png"}/>
 			<Typography className="texto">{desenvolvedor.nome}</Typography>
-			<Typography className="texto desenvolvedores">
-			<Link href={desenvolvedor.github} target="_blank"><GitHubIcon/></Link>
-			<Link href={desenvolvedor.linkedin} target="_blank"><LinkedInIcon/></Link>
+			<Typography className="desenvolvedores">
+			<Link className="texto" href={desenvolvedor.github} target="_blank"><GitHubIcon/></Link>
+			<Link className="texto" href={desenvolvedor.linkedin} target="_blank"><LinkedInIcon/></Link>
 			</Typography>
 			</Grid>
 			))}

@@ -88,7 +88,12 @@ return (
                             <TextField id='usuario' label='E-mail' variant="outlined" name="usuario" margin="normal" fullWidth value ={usuarioLogin.usuario} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} />
                             <TextField 
 														type={showPassword ? "text" : "password"}
-														id='senha' label='Senha' variant="outlined" name="senha" margin="normal" fullWidth value={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)} 
+														id='senha' label='Senha' variant="outlined" name="senha" margin="normal" fullWidth value={usuarioLogin.senha} onChange={(event:ChangeEvent<HTMLInputElement>) => updateModel(event)}
+														sx={{
+          input: {
+            color: "var(--laranja)",
+          }
+        }}
 InputProps={{
 endAdornment: (
 							 <InputAdornment position="end">
@@ -96,7 +101,7 @@ endAdornment: (
 							 aria-label="toggle password visibility"
 							 onClick={handleClickShowPassword}
 							 >
-							 {showPassword ? <VisibilityIcon/> : <VisibilityOff/>}
+							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
 							 </IconButton>
 							 </InputAdornment>
 							)
