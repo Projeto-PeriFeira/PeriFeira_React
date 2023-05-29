@@ -3,215 +3,267 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import { Usuario } from '../../model/Usuario';
 import { buscaId, atualiza } from '../../services/Service';
+import { Box, Typography, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
+import { toast } from 'react-toastify'
 import './Perfil.css';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+
 import {
-  Grid,
-  Typography,
-  Avatar,
-  Box,
-  Button,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  TextField,
+	Grid,
+		Avatar,
+		TextField,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function Perfil() {
-  const token = useSelector<TokenState, TokenState['tokens']>(
-    (state) => state.tokens
-  );
-  const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
+	const token = useSelector<TokenState, TokenState['tokens']>(
+			(state) => state.tokens
+			);
+	const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
 
-  const [usuario, setUsuario] = useState<Usuario>({
-    id: +userId,
-    foto: '',
-    nome: '',
-    usuario: '',
-    senha: '',
-    produtos: null,
-  });
+	const [usuario, setUsuario] = useState<Usuario>({
+id: +userId,
+foto: '',
+nome: '',
+usuario: '',
+senha: '',
+produtos: null,
+});
 
-  async function getUsuario() {
-    try {
-      await buscaId(`/usuarios/${usuario.id}`, setUsuario, {
-        headers: {
-          Authorization: token,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getUsuario();
-  }, []);
-
-  useEffect(() => {
-    setUsuario({
-      ...usuario,
-      senha: ''
-    })
-  }, [usuario.usuario])
-
-  const [confirmarSenha, setConfirmarSenha] = useState<string>('');
-
-  function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
-    setConfirmarSenha(event.target.value);
-  }
-
-  function updateModel(event: ChangeEvent<HTMLInputElement>) {
-    setUsuario({
-      ...usuario,
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  async function atualizar(event: ChangeEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (usuario.senha === confirmarSenha && usuario.senha.length >= 8) {
-      try {
-        await atualiza('/usuarios/atualizar', usuario, setUsuario, {
-          headers: {
-            Authorization: token,
-          },
-        });
-        alert('Usuário cadastrado com sucesso');
-        setUsuario({ ...usuario, senha: '' });
-        setConfirmarSenha('');
-      } catch (error) {
-        alert('Falha ao cadastrar o usuário, verifique os campos');
-      }
-    } else {
-      alert('Os campos de Senha e Confirmar Senha estão diferentes');
-      setUsuario({ ...usuario, senha: '' });
-      setConfirmarSenha('');
-    }
-  }
-
-  console.log(usuario);
-
-  return (
-    <div className="perfilContainer">
-      <div className="perfilBanner">
-        <div>
-          <h2>Perfil de: {usuario.nome}</h2>
-          <p>{usuario.usuario}</p>
-          <p>Total de postagens feitas: {usuario.produtos?.length}</p>
-        </div>
-        <img src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
-      </div>
-      <div className="perfilUpdate">
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography variant="h5" style={{ margin: '0 auto' }}>
-              Atualizar Perfil
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <form onSubmit={atualizar}>
-              <Box
-                display={'flex'}
-                width={'100%'}
-                flexDirection={'column'}
-                gap={2}
-              >
-                <TextField
-                  name="nome"
-                  label="Nome completo"
-                  value={usuario.nome}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    updateModel(event)
-                  }
-                />
-                <TextField
-                  name="usuario"
-                  label="Endereço de e-mail"
-                  value={usuario.usuario}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    updateModel(event)
-                  }
-                />
-                <TextField
-                  name="foto"
-                  label="URL da foto"
-                  value={usuario.foto}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    updateModel(event)
-                  }
-                />
-                <TextField
-                  name="senha"
-                  label="Senha"
-                  type="password"
-                  value={usuario.senha}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    updateModel(event)
-                  }
-                />
-                <TextField
-                  name="confirmarSenha"
-                  label="Confirmar senha"
-                  type="password"
-                  value={confirmarSenha}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    confirmSenha(event)
-                  }
-                />
-              <Button fullWidth variant={'contained'} type='submit'>Atualizar</Button>
-              </Box>
-            </form>
-          </AccordionDetails>
-        </Accordion>
-      </div>
-      <hr />
-      <h3 style={{ textAlign: 'center' }}>Suas postagens</h3>
-      <div className="perfilPosts">
-        {usuario.produtos?.map((produto) => (
-          <Grid
-            item
-            border={1}
-            borderRadius={2}
-            borderColor={'lightgray'}
-            p={2}
-          >
-            <Typography>Postagem:</Typography>
-            <Typography>{produto.nome}</Typography>
-            <Typography>{produto.descricao}</Typography>
-            <Avatar
-              src={usuario.foto}
-              style={{ border: '1px solid black' }}
-              alt=""
-            />
-            <Typography>
-              {/*new Intl.DateTimeFormat('pt-br', {
-                dateStyle: 'full',
-              }).format(new Date(produto.data))*/}
-            </Typography>
-            <Typography>Tema: {produto.categorias?.descricao}</Typography>
-            <Box display={'flex'} gap={4}>
-              <Link to={`/formularioPostagem/${produto.id}`}>
-                <Button fullWidth variant="contained" color="primary">
-                  editar
-                </Button>
-              </Link>
-              <Link to={`/apagarPostagem/${produto.id}`}>
-                <Button fullWidth variant="contained" color="secondary">
-                  apagar
-                </Button>
-              </Link>
-            </Box>
-          </Grid>
-        ))}
-      </div>
-    </div>
-  );
+async function getUsuario() {
+	try {
+		await buscaId(`/usuarios/${usuario.id}`, setUsuario, {
+headers: {
+Authorization: token,
+},
+});
+} catch (error) {
+	console.log(error);
 }
+}
+
+useEffect(() => {
+		getUsuario();
+		setVerificar(false)
+		}, []);
+
+useEffect(() => {
+		setUsuario({
+				...usuario,
+				senha: ''
+				})
+		}, [usuario.usuario])
+
+const [confirmarSenha, setConfirmarSenha] = useState<string>('');
+const [verificar, setVerificar] = useState<boolean>(false)
+const [nomeError, setNomeError] = useState<boolean>(false);
+const [emailError, setEmailError] = useState<boolean>(false);
+const [senhaError, setSenhaError] = useState<boolean>(false);
+const [showPassword, setShowPassword] = useState(false);
+const handleClickShowPassword = () => setShowPassword(!showPassword);
+
+async	function validateNome(event: ChangeEvent<HTMLInputElement>) {
+	setNomeError(usuario.nome.length < 1);
+}
+
+async	function validateEmail(event: ChangeEvent<HTMLInputElement>) {
+	setEmailError(usuario.usuario.includes('@'));
+}
+
+async function validateSenha(event: ChangeEvent<HTMLInputElement>) {
+	setSenhaError(usuario.senha.length < 8 )
+}
+
+function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
+	setConfirmarSenha(event.target.value);
+}
+
+async function confirm(event: ChangeEvent<HTMLInputElement>) {
+	setVerificar(usuario.nome !== '' && usuario.foto !== '' && senhaError && emailError && usuario.senha == confirmarSenha)
+}
+
+function updateModel(event: ChangeEvent<HTMLInputElement>) {
+	setUsuario({
+			...usuario,
+			[event.target.name]: event.target.value,
+			});
+			setVerificar(
+			usuario.nome.length >= 1 && 
+			usuario.senha.length >= 8 &&
+			usuario.foto.length >= 1
+			)}
+							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+
+async function atualizar(event: ChangeEvent<HTMLFormElement>) {
+	event.preventDefault();
+	if (usuario.senha === confirmarSenha && usuario.senha.length >= 8) {
+		try {
+			await atualiza('/usuarios/atualizar', usuario, setUsuario, {
+headers: {
+Authorization: token,
+},
+});
+toast.success('Usuário atualizado com sucesso');
+setUsuario({ ...usuario, senha: '' });
+setConfirmarSenha('');
+} catch (error) {
+	toast.error('Falha ao cadastrar o usuário, verifique os campos');
+}
+} else {
+	toast.error('Os campos de Senha e Confirmar Senha estão diferentes');
+	setUsuario({ ...usuario, senha: '' });
+	setConfirmarSenha('');
+}
+}
+
+console.log(usuario);
+
+return (
+		<>
+		<Box marginBottom="169px"/>
+		<Grid container alignItems='center' justifyContent='center'>
+		<Grid item container xs={8} textAlign="center" alignItems='center' justifyContent='center'>
+		<form onSubmit={atualizar} className="usuarioSecaoEditar secao1">
+		<Box
+		display={'flex'}
+		width={'420px'}
+		flexDirection={'column'}
+		gap={2}
+		>
+		<Typography className="titulo" variant="h3" textAlign="left" marginBottom="58">Editar Perfil</Typography>
+		<Avatar className="usuarioFoto" src={usuario.foto}/>
+		<TextField
+		name="nome"
+		label="Nome"
+		value={usuario.nome}
+		onChange={(event: ChangeEvent<HTMLInputElement>) =>
+			updateModel(event)
+		}
+/>
+<TextField
+name="usuario"
+label="E-mail"
+type="email"
+value={usuario.usuario}
+onChange={(event: ChangeEvent<HTMLInputElement>) => {
+  validateEmail(event)
+	updateModel(event)
+}}
+/>
+<TextField
+name="foto"
+label="Foto"
+value={usuario.foto}
+onChange={(event: ChangeEvent<HTMLInputElement>) =>
+	updateModel(event)
+}
+/>
+<TextField
+name="senha"
+label="Senha"
+type={showPassword ? "text" : "password"}
+helperText="Digite a senha para confirmar as alterações"
+onChange={(event: ChangeEvent<HTMLInputElement>) => {
+validateSenha(event)
+	updateModel(event)
+}}
+sx={{
+input: {
+color: "var(--laranja)",
+			 }
+}}
+InputProps={{
+endAdornment: (
+							 <InputAdornment position="end">
+							 <IconButton
+							 aria-label="toggle password visibility"
+							 onClick={handleClickShowPassword}
+							 >
+							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							 </IconButton>
+							 </InputAdornment>
+							)
+}}
+/>
+<TextField
+name="confirmarSenha"
+label="Confirmar senha"
+type={showPassword ? "text" : "password"}
+value={confirmarSenha}
+onChange={(event: ChangeEvent<HTMLInputElement>) => {
+	updateModel(event)
+	}
+}
+sx={{
+input: {
+color: "var(--laranja)",
+			 }
+}}
+InputProps={{
+endAdornment: (
+							 <InputAdornment position="end">
+							 <IconButton
+							 aria-label="toggle password visibility"
+							 onClick={handleClickShowPassword}
+							 >
+							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							 </IconButton>
+							 </InputAdornment>
+							)
+}}
+/>
+<Button variant={'contained'} className="btn" disabled={!verificar} type='submit'>Atualizar</Button>
+</Box>
+</form>
+</Grid>
+</Grid>
+<Grid container alignItems='center' justifyContent='center'>
+<Grid xs={9} className="usuarioSecaoProduto">
+<Typography className="titulo" variant="h4" marginBottom="58">Meus produtos</Typography>
+{usuario.produtos?.map((produto) => (
+			<>
+			<Box marginBottom="32px"/>
+			<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+			<Card	className="usuarioProduto">
+			<CardMedia
+			className="filtroProdutoImagem"
+			component="img"
+			image="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
+			/>
+			<Box className="filtroProdutoPropriedade">
+			<Typography className="filtroProdutoCategoria">
+			{produto.categorias?.descricao}
+			</Typography>
+			<Typography className="filtroProdutoNome">
+			{produto.nome} unid.
+			</Typography>
+			<Grid container className="produtoSecao">
+			<Grid item xs={6} textAlign="left">
+			<Typography className="filtroProdutoPreco">
+			R$ {produto.preco}
+			</Typography>
+				</Grid>
+				<Grid item xs={6} textAlign="right">
+				<Link to={`/produtos/${produto.id}`} className="text-decorator-none" >
+				<EditIcon className="produtoEditar"/>
+				</Link>
+				<Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none" >
+				<DeleteIcon className="produtoEditar"/>
+				</Link>
+				</Grid>
+				</Grid>
+				</Box>
+				</Card>
+				</Stack>
+				</>
+				))}
+				</Grid>
+				</Grid>
+				</>
+				);
+				}
 
 export default Perfil;

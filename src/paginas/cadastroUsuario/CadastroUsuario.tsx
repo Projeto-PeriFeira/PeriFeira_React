@@ -60,7 +60,7 @@ async function validateSenha(event: ChangeEvent<HTMLInputElement>) {
 }
 
 async function confirm(event: ChangeEvent<HTMLInputElement>) {
-	setConfirmar(usuario.nome !== '' && usuario.foto !== '' &&senhaError && emailError && usuario.senha === confirmarSenha)
+	setConfirmar(usuario.nome !== '' && usuario.foto !== '' && senhaError && emailError && usuario.senha === confirmarSenha)
 }
 
 async function cadastrar(event: ChangeEvent<HTMLFormElement>) {

@@ -59,14 +59,14 @@ function handleChange(event: React.ChangeEvent<{}>, newValue: string){
 
 return (
 		<>
-		<TabContext className="secao2" value={value}>
-		<AppBar className="listaCategoria">
+		<TabContext value={value}>
 		<Tabs centered onChange={handleChange}>
+		<Stack spacing={3} direction={{ xs: 'column', sm: 'row' }}>
 		{categorias.map(categoria =>(
 					<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id}/>
 					))}
+		</Stack>
 		</Tabs>
-		</AppBar>
 		<TabPanel value="0">
 		<Box marginBottom="68px" />
 		<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
