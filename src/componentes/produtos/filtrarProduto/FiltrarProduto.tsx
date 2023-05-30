@@ -17,15 +17,12 @@ import { toast } from 'react-toastify'
 
 function FiltrarProduto() {
 
-		const navigate = useNavigate();
-
 	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
 			);
 
 	const [produtos, setProdutos] = useState<Produto[]>([])
 	const [categorias, setCategorias] = useState<Categoria[]>([])
-
 
 	function getProdutos() {
 		console.log(token);
@@ -119,6 +116,7 @@ return (
 				<TabPanel value={produto.categorias?.id}>
 				<Box marginBottom="68px" />
 				<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+<<<<<<< HEAD
 				<Card	className="filtroProduto">
 				<CardMedia
 				className="filtroProdutoImagem"
@@ -138,17 +136,48 @@ return (
 				<Typography className="filtroProdutoUsuario">
 				Cadastrado por: {produto.usuario?.nome}
 				</Typography>
+=======
+					<Card	className="filtroProduto">
+					<CardMedia
+					className="filtroProdutoImagem"
+					component="img"
+					image={produto.foto}
+					/>
+					<Box className="filtroProdutoPropriedade">
+					<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
+					<Grid item xs={8}>
+					<Typography>
+					{produto.categorias?.descricao}
+					</Typography>
+					</Grid>
+					<Grid item xs={4} alignItems="right">
+					<Avatar src={produto.usuario?.foto}/>
+					</Grid>
+					</Grid>
+			<Typography className="filtroProdutoNome">
+			{produto.nome} unid.
+			</Typography>
+			<Grid container>
+			<Grid xs={6}>
+			<Typography className="filtroProdutoPreco">
+			R$ {produto.preco}
+			</Typography>
+			</Grid>
+			<Grid xs={6}>
+			</Grid>
+			</Grid>
+					<Typography className="filtroProdutoUsuario">
+					Cadastrado por: {produto.usuario?.nome}
+					</Typography>
+					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+					<Typography noWrap className="filtroProdutoUsuario">
+					{produto.descricao}
+					</Typography>
+					</Box>
+>>>>>>> 1e8c388d94276281d67ed21c9fda7198a8292f1d
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
-					{/*<Grid xs={6} className="filtroProdutoEditar">
-						 <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none" >
-						 <DeleteIcon scale="1.5"/>
-						 </Link>
-						 <Link to={`/produtos/${produto.id}`} className="text-decorator-none" >
-						 <EditIcon scale="1.5"/>
-						 </Link>
-						 </Grid>*/}
-				</Box>
-					</Card>
+		</Box>
+			</Card>
 					</Stack>
 					</TabPanel>
 					))}

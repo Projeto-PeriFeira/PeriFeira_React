@@ -11,36 +11,48 @@ import Sobre from '../sobre/Sobre';
 
 function Home() {
 
-    let navigate = useNavigate();
-    const token = useSelector<TokenState, TokenState["tokens"]>(
-        (state) => state.tokens
-      );
-    
-    useEffect(() => {
-      if (token == "") {
-          toast.error("Você precisa estar logado")
-          navigate("/login")
-  
-      }
-  }, [token])
-		return (
-				<>
-				<Grid container className='caixa' alignItems='center' justifyContent='center'>
-				<Grid item xs={4}>
-				<Stack flexDirection='column' gap={2}>
-				<Box>
-				<Typography className='texto1' variant='h2'>Alimentos saudáveis, sustentáveis e acessíveis.</Typography>
-				</Box>
-				<Box>
-				<Button className='botao' variant="contained">Começar</Button>
-				</Box>
-				</Stack>
-				</Grid>
-				<Grid item xs={4}>
-				<img className='image' src="/src/assets/Camada 5.png" alt="" />
-				</Grid>
-				</Grid>
-				</>
-				);
+	let navigate = useNavigate();
+	const token = useSelector<TokenState, TokenState["tokens"]>(
+			(state) => state.tokens
+			);
+
+	useEffect(() => {
+			if (token == "") {
+			toast.error("Você precisa estar logado")
+			navigate("/login")
+
+			}
+			}, [token])
+	return (
+			<>
+			{token == "" ? 
+			<Grid container justifyContent="center">
+			<div className="dot-wave">
+			<div className="dot-wave__dot"></div>
+			<div className="dot-wave__dot"></div>
+			<div className="dot-wave__dot"></div>
+			<div className="dot-wave__dot"></div>
+			</div>
+			</Grid>
+			:
+			<Grid container className='caixa' alignItems='center' justifyContent='center'>
+			<Grid item xs={4}>
+			<Stack flexDirection='column' gap={2}>
+			<Box>
+			<Typography className='texto1' variant='h2'>Alimentos saudáveis, sustentáveis e acessíveis.</Typography>
+			</Box>
+			<Box>
+			<Button className='botao' variant="contained">Começar</Button>
+			</Box>
+			</Stack>
+			</Grid>
+			<Grid item xs={4}>
+			<img className='image' src="/src/assets/Camada 5.png" alt="" />
+			</Grid>
+			</Grid>
+
+			}
+	</>
+		);
 };
 export default Home;

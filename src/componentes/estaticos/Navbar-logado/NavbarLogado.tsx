@@ -91,19 +91,21 @@ useEffect(() => {
 									<Link  className='reset-link' to='/home'>
 										<Box mx={1} style={{ cursor: 'pointer' }}>
 											<Typography className='item' variant="subtitle1" color="inherit">
-											inicio 
+											Inicio 
 											</Typography>
 								</Box>
 									</Link>
+									<Link className='reset-link' to='/cestas'>
 									<Box mx={1} style={{ cursor: 'pointer' }}>
 										<Typography className='item' variant="subtitle1" color="inherit">
-										cestas
+										Cestas
 										</Typography>
 									</Box>
+									</Link>
 									<Link className='reset-link' to='/loja'>
 										<Box mx={1} style={{ cursor: 'pointer' }}>
 											<Typography className='item' variant="subtitle1" color="inherit">
-											loja
+											Loja
 											</Typography>
 										</Box>
 									</Link>

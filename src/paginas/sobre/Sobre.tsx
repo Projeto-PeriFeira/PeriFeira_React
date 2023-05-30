@@ -23,7 +23,7 @@ github: "https://github.com/IgorWz",
 linkedin: "",
 },
 {
-nome: "Jonathas Nascimento",
+nome: "Jonatas Nascimento",
 github: "https://github.com/nascimentojon",
 linkedin: "",
 },
