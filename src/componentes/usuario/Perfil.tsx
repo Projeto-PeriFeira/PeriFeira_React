@@ -191,10 +191,10 @@ endAdornment: (
 <TextField
 name="confirmarSenha"
 label="Confirmar senha"
-type={showPassword ? "text" : "password"}
 value={confirmarSenha}
+type={showPassword ? "text" : "password"}
 onChange={(event: ChangeEvent<HTMLInputElement>) => {
-	updateModel(event)
+	confirmSenha(event)
 	}
 }
 sx={{

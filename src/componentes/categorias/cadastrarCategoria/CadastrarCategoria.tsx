@@ -73,6 +73,8 @@ function CadastrarCategoria() {
         }
     
     return (
+	<>
+	<Box marginBottom="30vh"/>
         <Container maxWidth="sm" className="background-form">
             <form onSubmit={onSubmit}>
                 <Typography className='text bold' variant="h5" color="textSecondary" component="h5" align="left" >{id !== undefined ? 'Atualizar categoria:' : 'Cadastrar nova categoria:'}</Typography>
@@ -82,6 +84,7 @@ function CadastrarCategoria() {
                 </Button>
             </form>
         </Container>
+				</>
     )
 }
 
