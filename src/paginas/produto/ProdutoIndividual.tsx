@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './ProdutoIndividual.css'
 import FiltrarProduto from '../../componentes/produtos/filtrarProduto/FiltrarProduto'
 import { Grid, Box, Typography } from '@mui/material'
-import Produto from '../../model/Produto'
 import { busca } from '../../services/Service'
+import { Produto } from '../../model/Produto'
 function ProdutoIndividual() {
 	
   const [produto, setProduto] = useState<Produto[]>([]);
@@ -40,7 +40,6 @@ function ProdutoIndividual() {
             ))}
           </Grid>
       </Box>
-
       <Box className="secao2" paddingBottom="50px" />
       <Typography className="titulo secao2" variant="h3" textAlign="center">Outros produtos</Typography>
       <Grid container className="secao1" alignItems='center' justifyContent='center'>

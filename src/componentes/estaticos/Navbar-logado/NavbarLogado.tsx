@@ -84,7 +84,7 @@ useEffect(() => {
 							<Grid container alignItems='center' justifyContent={'space-between'}>
 								<Box style={{ cursor: 'pointer' }}>
 									<Typography variant="h5" color="inherit">
-									<img className='image' src={"../../../assets/logo.svg"} alt="" style={{ width: '205px', height: '40px' }} />
+									<img className='image' src={"/src/assets/logo.svg"} alt="" style={{ width: '205px', height: '40px' }} />
 									</Typography>
 								</Box>
 								<Box display="flex" alignItems='center' gridGap={20} justifyContent="start">
