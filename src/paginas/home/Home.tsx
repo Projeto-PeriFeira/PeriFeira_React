@@ -7,6 +7,8 @@ import { TokenState } from '../../store/tokens/tokensReducer'
 import { useNavigate } from 'react-router';
 import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria';
 import { toast } from 'react-toastify'
+import FiltrarProduto from '../../componentes/produtos/filtrarProduto/FiltrarProduto';
+import Sobre from '../sobre/Sobre';
 
 function Home() {
 
@@ -38,9 +40,8 @@ function Home() {
 				<Grid item xs={4}>
 				<img className='image' src="/src/assets/Camada 5.png" alt="" />
 				</Grid>
-				
 				</Grid>
-				<CadastrarCategoria/>
+				<Sobre />
 				</>
 				);
 };
