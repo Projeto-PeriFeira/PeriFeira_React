@@ -58,6 +58,7 @@ useEffect(() => {
 		}, [])
 useEffect(() => {
 		getProdutos()
+		getProduto()
 		}, [])
 
 
