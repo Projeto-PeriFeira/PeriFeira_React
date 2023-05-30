@@ -24,7 +24,6 @@ function FiltrarProduto() {
 	const [produtos, setProdutos] = useState<Produto[]>([])
 	const [categorias, setCategorias] = useState<Categoria[]>([])
 
-
 	function getProdutos() {
 		console.log(token);
 		busca('/produtos', setProdutos, {
