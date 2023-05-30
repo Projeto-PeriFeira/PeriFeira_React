@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
-import { Grid, AppBar, Toolbar, Typography, Box, Button } from "@material-ui/core";
+import React, { useState, useEffect } from 'react'
+import { Grid, Container, AppBar, Toolbar, Modal, Typography, Box, Button } from "@material-ui/core";
 import "./NavbarLogado.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
+import { buscaId } from '../../../services/Service'
 import { TokenState } from '../../../store/tokens/tokensReducer'
 import { addToken } from '../../../store/tokens/actions'
 import Avatar from '@mui/material/Avatar';
@@ -12,9 +13,14 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
+import SellOutlinedIcon from '@mui/icons-material/SellOutlined';
+import ManageAccountsSharpIcon from '@mui/icons-material/ManageAccountsSharp';
 import Logout from '@mui/icons-material/Logout';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import { Usuario } from '../../../model/Usuario'
+import {toast} from 'react-toastify'
+import FormularioProduto from '../../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import CadastrarCategoria from '../../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
 
 
 function NavbarLogado() { 
@@ -28,11 +34,20 @@ function NavbarLogado() {
 
 		function goLogout() {
 			dispatch(addToken(''))
-				toast.error(Usuario deslogado")
+				toast.error("Usuario deslogado")
 				navigate("/login")
 		}
 
-		const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [modalCadastroProdutoOpen, setModalCadastroProdutoOpen] = useState(false);
+  const [modalCadastroCategoriaOpen, setModalCadastroCategoriaOpen] = useState(false);
+  const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
+
+  const handleModalClose = () => {
+		setModalLogoutOpen(false);
+    setModalCadastroProdutoOpen(false);
+    setModalCadastroCategoriaOpen(false);
+  };
 		const open = Boolean(anchorEl);
 		const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 			setAnchorEl(event.currentTarget);
@@ -40,8 +55,28 @@ function NavbarLogado() {
 		const handleClose = () => {
 			setAnchorEl(null);
 		};
+const userId = useSelector<TokenState, TokenState['id']>(
+(state) => state.id
+)
 
-	if(token != ""){
+const [usuario, setUsuario] = useState<Usuario>({
+id: +userId,
+nome: '',
+usuario: '',
+foto: '',
+senha: '',
+})
+
+async function getUserById(id: number) {
+	await buscaId(`/usuarios/${id}`, setUsuario, {
+headers: {Authorization: token}
+})
+}
+
+useEffect(() => {
+		getUserById(+userId)
+		}, [])
+
 		return(
 				<>
 					<AppBar  position="static" className="navbar">
@@ -49,7 +84,7 @@ function NavbarLogado() {
 							<Grid container alignItems='center' justifyContent={'space-between'}>
 								<Box style={{ cursor: 'pointer' }}>
 									<Typography variant="h5" color="inherit">
-									<img className='image' src="/src/assets/logo.svg" alt="" style={{ width: '205px', height: '40px' }} />
+									<img className='image' src={"../../../assets/logo.svg"} alt="" style={{ width: '205px', height: '40px' }} />
 									</Typography>
 								</Box>
 								<Box display="flex" alignItems='center' gridGap={20} justifyContent="start">
@@ -82,7 +117,7 @@ function NavbarLogado() {
 									<Box display='flex'>
 										<Box display='flex' flexDirection='row' justifyItems='center' alignItems='center' gridGap={4} style={{ cursor: 'pointer' }}>
 											<Box>
-												<Typography className='item'>Bem-vinde, fulane!</Typography>
+												<Typography className='item'>Bem-vinde, {usuario.nome}!</Typography>
 											</Box>
 										<Tooltip title="Account settings">
 											<IconButton
@@ -93,7 +128,7 @@ function NavbarLogado() {
 												aria-haspopup="true"
 												aria-expanded={open ? 'true' : undefined}
 											>
-												<Avatar alt="Remy Sharp" src="" />
+												<Avatar alt="Foto do usuário" src={usuario.foto} />
 											</IconButton>
 										</Tooltip>
 											<Menu
@@ -132,54 +167,63 @@ function NavbarLogado() {
 												anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 											>
 												<MenuItem onClick={handleClose}>
-													<Avatar /> My account
+													<Avatar src={usuario.foto} />{usuario.nome}
 												</MenuItem>
 												<Divider />
-												<MenuItem onClick={handleClose}>
-													<ListItemIcon>
-														<PersonAdd fontSize="small" />
+												<Link className="reset-link" to='/perfil'>
+												<MenuItem>
+													<ListItemIcon className="text">
+														<ManageAccountsSharpIcon fontSize="small" />
+													</ListItemIcon>
+													Configurar perfil
+												</MenuItem>
+												</Link>
+												<MenuItem onClick={() => {{setModalCadastroProdutoOpen(true)}; handleClose}}>
+													<ListItemIcon className="text">
+														<AddBoxOutlinedIcon fontSize="small" />
 													</ListItemIcon>
 													Cadastrar produto
 												</MenuItem>
-												<MenuItem onClick={handleClose}>
-													<ListItemIcon>
-														<Settings fontSize="small" />
+												<MenuItem onClick={() => {{setModalCadastroCategoriaOpen(true)}; handleClose}}>
+													<ListItemIcon className="text">
+														<SellOutlinedIcon fontSize="small" />
 													</ListItemIcon>
 													Cadastrar categoria
 												</MenuItem>
-													<Link className='reset-link'to='/login' onClick={goLogout}>
-													<MenuItem onClick={handleClose}>
-													<ListItemIcon>
+													<MenuItem onClick={() => {{setModalLogoutOpen(true)}; handleClose}}>
+													<ListItemIcon className="text">
 														<Logout fontSize="small" />
 													</ListItemIcon>
 													Logout
 												</MenuItem>
-													</Link>
 												</Menu>
-										</Box>
-									{/* <Link to='/lista'>
-										<Box mx={1} style={{ cursor: 'pointer' }}>
-											<Typography variant="h6" color="inherit">
-											lista
-											</Typography>
-										</Box>
-									</Link> */}
-									
-									</Box>
-								</Box>
-							</Grid>
-						</Toolbar>
-					</AppBar>
-				</>
-				);
-	} else {
-		return (
-				<>
-				</>
-				)
-	}
-}
-
-
+      <Modal open={modalCadastroProdutoOpen} onClose={handleModalClose}>
+        <div>
+				<FormularioProduto/>
+        </div>
+      </Modal>
+      <Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
+			<div>
+			<CadastrarCategoria/>
+			</div>
+			</Modal>
+			<Modal open={modalLogoutOpen} onClose={handleModalClose}>
+			<div>
+			<Box marginBottom="30vh"/>
+			<Container maxWidth="sm" className="background-form">
+			<Typography className="titulo" variant="h4" textAlign="center">Voce deseja realmente sair?</Typography>
+			<Button onClick={goLogout} fullWidth className='btn mg-top' type="submit" variant="contained" color="primary">Sair</Button>
+			</Container>
+			</div>
+			</Modal>
+			</Box>
+			</Box>
+			</Box>
+			</Grid>
+			</Toolbar>
+			</AppBar>
+			</>
+			);
+			}
 
 export default NavbarLogado
