@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './ProdutoIndividual.css'
 import FiltrarProduto from '../../componentes/produtos/filtrarProduto/FiltrarProduto'
-<<<<<<< HEAD
-import { Grid, Box, Typography } from '@mui/material'
-import { busca } from '../../services/Service'
-import { Produto } from '../../model/Produto'
-=======
 import { Grid, Box, Typography, Stack, Button, Card, CardMedia, Avatar} from '@mui/material'
 import { Link } from 'react-router-dom';
 import { busca } from '../../services/Service';
@@ -14,8 +9,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify'
 import { Produto } from '../../model/Produto'
-
->>>>>>> 1e8c388d94276281d67ed21c9fda7198a8292f1d
 function ProdutoIndividual() {
 
 	const [produto, setProduto] = useState<Produto[]>([]);
@@ -75,33 +68,6 @@ return (
 		<Typography padding={'4vh'} variant='h4'>{produto.nome}</Typography>
 		<Typography variant="body1">{produto.descricao}</Typography>
 		<Typography variant="h6">R${produto.preco}</Typography>
-
-<<<<<<< HEAD
-    <Box>
-      <Box className="secao1" height="400px" textAlign="center"   >
-        <Grid container display={'flex'} alignItems={'center'} >
-        {produto.map((produto) => (
-          <><Grid xs={4}>
-            <img src={produto.foto} alt="foto do produto" />
-          </Grid><Grid xs={6}>
-              <Box display={'flex'} alignItems={'center'} flexDirection={'column'}>
-                <Typography padding={'4vh'} variant='h4'>{produto.nome}</Typography>
-                <Typography variant="body1">{produto.descricao}</Typography>
-                <Typography variant="h6">R$preco</Typography>
-
-              </Box>
-            </Grid></>
-            ))}
-          </Grid>
-      </Box>
-      <Box className="secao2" paddingBottom="50px" />
-      <Typography className="titulo secao2" variant="h3" textAlign="center">Outros produtos</Typography>
-      <Grid container className="secao1" alignItems='center' justifyContent='center'>
-        <FiltrarProduto />
-      </Grid>
-    </Box>
-  )
-=======
 		<Box className="secao2" paddingBottom="50px" />
 		<Typography className="titulo secao2" variant="h3" textAlign="center">Outros produtos</Typography>
 		<Grid container className="secao1" alignItems='center' justifyContent='center'>
@@ -153,7 +119,6 @@ return (
 </Box>
 </>
 )
->>>>>>> 1e8c388d94276281d67ed21c9fda7198a8292f1d
 }
 
 export default ProdutoIndividual
