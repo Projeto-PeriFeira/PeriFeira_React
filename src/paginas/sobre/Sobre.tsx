@@ -25,17 +25,17 @@ linkedin: "",
 {
 nome: "Jonatas Nascimento",
 github: "https://github.com/nascimentojon",
-linkedin: "",
+linkedin: "https://www.linkedin.com/in/jonatas-nascimento-3277a818a/",
 },
 {
 nome: "Larissa Pimenta",
 github: "https://github.com/LarissaMarquesPimenta",
-linkedin: "",
+linkedin: "https://www.linkedin.com/in/larissamarquespimenta/",
 },
 {
 nome: "Graziella",
 github: "https://github.com/HeiGrazi",
-linkedin: "",
+linkedin: "https://www.linkedin.com/in/graziella-santos-9b31aa199/",
 },
 ]
 	return (

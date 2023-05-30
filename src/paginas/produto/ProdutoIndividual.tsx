@@ -23,7 +23,7 @@ function ProdutoIndividual() {
 
 	function getProduto() {
 		console.log(token);
-		busca('/produtos', setProduto, {
+		busca(`/produtos/${id}`, setProduto, {
 headers: {
 Authorization: token
 }
@@ -40,8 +40,7 @@ Authorization: token
 }
 
 	async function getProdutoById(id: string) {
-		await busca(`/produtos/${id}`, setProduto , {
-headers: {Authorization: token,
+		await busca(`/produtos/${id}`, setProduto , {headers: {Authorization: token,
 }
 })
 }
