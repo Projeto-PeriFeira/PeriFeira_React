@@ -27,9 +27,6 @@ function FiltrarProduto() {
 				);
 
 	const dispatch = useDispatch()
-	const carrinho = useSelector<TokenState, TokenState['produtos']>(
-	(state) => state.produtos
-	)
 
 	async function addCarrinho() {
 	dispatch(addToCart(produto))
