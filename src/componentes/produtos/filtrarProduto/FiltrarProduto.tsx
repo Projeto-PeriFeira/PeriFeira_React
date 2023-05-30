@@ -17,8 +17,6 @@ import { toast } from 'react-toastify'
 
 function FiltrarProduto() {
 
-		const navigate = useNavigate();
-
 	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
 			);
@@ -119,36 +117,46 @@ return (
 				<TabPanel value={produto.categorias?.id}>
 				<Box marginBottom="68px" />
 				<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
-				<Card	className="filtroProduto">
-				<CardMedia
-				className="filtroProdutoImagem"
-				component="img"
-				image="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80"
-				/>
-				<Box className="filtroProdutoPropriedade">
-				<Typography className="filtroProdutoCategoria">
-				{produto.categorias?.descricao}
-				</Typography>
-				<Typography className="filtroProdutoNome"> 
-				{produto.nome}
-				</Typography>
-				<Typography className="filtroProdutoPreco">
-				R$ {produto.preco}
-				</Typography>
-				<Typography className="filtroProdutoUsuario">
-				Cadastrado por: {produto.usuario?.nome}
-				</Typography>
+					<Card	className="filtroProduto">
+					<CardMedia
+					className="filtroProdutoImagem"
+					component="img"
+					image={produto.foto}
+					/>
+					<Box className="filtroProdutoPropriedade">
+					<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
+					<Grid item xs={8}>
+					<Typography>
+					{produto.categorias?.descricao}
+					</Typography>
+					</Grid>
+					<Grid item xs={4} alignItems="right">
+					<Avatar src={produto.usuario?.foto}/>
+					</Grid>
+					</Grid>
+			<Typography className="filtroProdutoNome">
+			{produto.nome} unid.
+			</Typography>
+			<Grid container>
+			<Grid xs={6}>
+			<Typography className="filtroProdutoPreco">
+			R$ {produto.preco}
+			</Typography>
+			</Grid>
+			<Grid xs={6}>
+			</Grid>
+			</Grid>
+					<Typography className="filtroProdutoUsuario">
+					Cadastrado por: {produto.usuario?.nome}
+					</Typography>
+					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+					<Typography noWrap className="filtroProdutoUsuario">
+					{produto.descricao}
+					</Typography>
+					</Box>
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
-					{/*<Grid xs={6} className="filtroProdutoEditar">
-						 <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none" >
-						 <DeleteIcon scale="1.5"/>
-						 </Link>
-						 <Link to={`/produtos/${produto.id}`} className="text-decorator-none" >
-						 <EditIcon scale="1.5"/>
-						 </Link>
-						 </Grid>*/}
-				</Box>
-					</Card>
+		</Box>
+			</Card>
 					</Stack>
 					</TabPanel>
 					))}

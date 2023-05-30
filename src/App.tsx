@@ -6,15 +6,13 @@ import Footer from './componentes/estaticos/footer/Footer';
 import Sobre from './paginas/sobre/Sobre';
 import Loja from './paginas/loja/Loja';
 import ProdutoIndividual from './paginas/produto/ProdutoIndividual';
+import Cestas from './paginas/cestas/Cestas';
 //Categorias
 import CadastrarCategoria from './componentes/categorias/cadastrarCategoria/CadastrarCategoria';
-import ListarCategoria from './componentes/categorias/listarCategoria/ListarCategoria';
 import DeletarCategoria from './componentes/categorias/deletarCategoria/DeletarCategoria';
 //Produtos
 import CadastrarProduto from './componentes/produtos/cadastrarProduto/CadastrarProduto';
-import ListarProduto from './componentes/produtos/listarProduto/ListarProduto';
 import DeletarProduto from './componentes/produtos/deletarProduto/DeletarProduto';
-import FiltrarProduto from './componentes/produtos/filtrarProduto/FiltrarProduto';
 //Usuario
 import Perfil from './componentes/usuario/Perfil'
 import Login from './paginas/login/Login';
@@ -23,7 +21,6 @@ import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {Provider} from 'react-redux'
 import store from './store/store'
-import NavbarLogado from './componentes/estaticos/Navbar-logado/NavbarLogado';
 
 import { ToastContainer } from 'react-toastify';
 
@@ -46,6 +43,7 @@ function App() {
 					<Route path='/home' element={<Home/>}/>
 					<Route path='/sobre' element={<Sobre/>}/>
 					<Route path='/loja' element={<Loja/>}/>
+					<Route path='/cestas' element={<Cestas/>}/>
 					{/*Usuario*/}
 					<Route path='/perfil' element={<Perfil/>}/>
 					<Route path='/login' element={<Login/>}/>
@@ -58,7 +56,6 @@ function App() {
 					<Route path='/produto/:id' element={<ProdutoIndividual/>}/>
 					<Route path='/cadastrarProdutos/:id' element={<CadastrarProduto/>}/>
 					<Route path='/deletarProduto/:id' element={<DeletarProduto/>}/>
-					<Route path='/tabs' element={<FiltrarProduto/>}/>
 				</Routes>
 			<Footer/>
 		</BrowserRouter>
