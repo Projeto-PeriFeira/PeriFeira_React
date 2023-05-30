@@ -20,6 +20,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { Usuario } from '../../../model/Usuario'
 import {toast} from 'react-toastify'
 import FormularioProduto from '../../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import { addToCart } from '../../../store/tokens/actions';
 import CadastrarCategoria from '../../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
 
 
@@ -42,6 +43,9 @@ function NavbarLogado() {
   const [modalCadastroProdutoOpen, setModalCadastroProdutoOpen] = useState(false);
   const [modalCadastroCategoriaOpen, setModalCadastroCategoriaOpen] = useState(false);
   const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
+	const carrinho = useSelector<TokenState, TokenState['produtos']>(
+	(state) => state.produtos
+	)
 
   const handleModalClose = () => {
 		setModalLogoutOpen(false);
@@ -72,6 +76,7 @@ async function getUserById(id: number) {
 headers: {Authorization: token}
 })
 }
+let valorTotal = 0
 
 useEffect(() => {
 		getUserById(+userId)
@@ -79,6 +84,9 @@ useEffect(() => {
 
 		return(
 				<>
+				carrinho: {carrinho.map((price) => {
+				{valorTotal += price.preco}
+				})} {valorTotal}
 					<AppBar  position="static" className="navbar">
 						<Toolbar variant="dense">
 							<Grid container alignItems='center' justifyContent={'space-between'}>

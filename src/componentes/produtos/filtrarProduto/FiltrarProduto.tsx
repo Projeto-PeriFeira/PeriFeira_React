@@ -10,6 +10,7 @@ import { Produto } from '../../../model/Produto';
 import {useNavigate, useParams} from 'react-router-dom';
 import { busca, buscaId } from '../../../services/Service';
 import { addToCart } from '../../../store/tokens/actions';
+import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
 import { useSelector, useDispatch } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 
@@ -18,32 +19,35 @@ import { toast } from 'react-toastify'
 
 function FiltrarProduto() {
 
-// const { id } = useParams<{id: string}>()
+	const { id } = useParams<{id: string}>()
 
 
-	const token = useSelector<TokenState, TokenState["tokens"]>(
-			(state) => state.tokens
-			);
+		const token = useSelector<TokenState, TokenState["tokens"]>(
+				(state) => state.tokens
+				);
 
-			// const dispatch = useDispatch()
+	const dispatch = useDispatch()
+	const carrinho = useSelector<TokenState, TokenState['produtos']>(
+	(state) => state.produtos
+	)
 
-			// async function addCarrinho() {
-			// dispatch(addToCart(produtos))
-			// }
+	async function addCarrinho() {
+	dispatch(addToCart(produto))
+	}
 
 	const [produtos, setProdutos] = useState<Produto[]>([])
-	// const [produto, setProduto] = useState<Produto>({
- //    id: 0,
- //    nome: '',
- //    descricao: '',
-	// 	foto: '',
-	// 	quantidade: 0,
-	// 	preco: 0,
- //    categorias: null,
- //    usuario: null
-	// })
+		const [produto, setProduto] = useState<Produto>({
+id: 0,
+nome: '',
+descricao: '',
+foto: '',
+quantidade: 0,
+preco: 0,
+categorias: null,
+usuario: null
+})
 
-	const [categorias, setCategorias] = useState<Categoria[]>([])
+const [categorias, setCategorias] = useState<Categoria[]>([])
 
 	function getProdutos() {
 		console.log(token);
@@ -53,29 +57,31 @@ Authorization: token
 }
 })
 }
-	function getCategorias() {
-		console.log(token);
-		busca('/categorias', setCategorias, {
+function getCategorias() {
+	console.log(token);
+	busca('/categorias', setCategorias, {
 headers: {
 Authorization: token
 }
 })
 }
-// async function getProdutos(id: string) {
-// try {
-// await buscaId(`/produtos/{id}`, setProdutos)
-// console.log(produtos)
-// } catch(error) {
-// console.log(error);
-// }
-// }
+ async function getProdutoId(id: string) {
+ try {
+ await buscaId(`/produtos/{id}`, setProdutos)
+ console.log(produtos)
+ } catch(error) {
+ console.log(error);
+ }
+ }
 
 useEffect(() => {
 		getProdutos()
-		}, [])
-useEffect(() => {
 		getCategorias()
 		}, [])
+
+useEffect(() => {
+getProdutoId(id)
+		}, [id])
 
 let [value, setValue] = useState('0')
 
@@ -115,83 +121,83 @@ return (
 					<Avatar src={produto.usuario?.foto}/>
 					</Grid>
 					</Grid>
-			<Typography className="filtroProdutoNome">
-			{produto.nome} unid.
-			</Typography>
-			<Grid container>
-			<Grid xs={6}>
-			<Typography className="filtroProdutoPreco">
-			R$ {produto.preco}
-			</Typography>
-			</Grid>
-			<Grid xs={6}>
-			</Grid>
-			</Grid>
-					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-					<Typography noWrap className="filtroProdutoUsuario">
-					Cadastrado por: {produto.usuario?.nome}
+					<Typography className="filtroProdutoNome">
+					{produto.nome} unid.
 					</Typography>
-					</Box>
-					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-					<Typography noWrap className="filtroProdutoUsuario">
-					{produto.descricao}
+						<Grid container>
+						<Grid xs={6}>
+						<Typography className="filtroProdutoPreco">
+						R$ {produto.preco}
 					</Typography>
-					</Box>
-					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
-		</Box>
-			</Card>
-			))}
-			</Stack>
-			</TabPanel>
+						</Grid>
+						<Grid xs={6}>
+						</Grid>
+						</Grid>
+						<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+						<Typography noWrap className="filtroProdutoUsuario">
+						Cadastrado por: {produto.usuario?.nome}
+					</Typography>
+						</Box>
+						<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+						<Typography noWrap className="filtroProdutoUsuario">
+						{produto.descricao}
+					</Typography>
+						</Box>
+						<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
+						</Box>
+						</Card>
+						))}
+						</Stack>
+						</TabPanel>
 {
 	produtos.map(produto =>(
 				<TabPanel value={produto.categorias?.id}>
 				<Box marginBottom="68px" />
 				<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
-					<Card	className="filtroProduto">
-					<CardMedia
-					className="filtroProdutoImagem"
-					component="img"
-					image={produto.foto}
-					alt="Foto do produto"
-					/>
-					<Box className="filtroProdutoPropriedade">
-					<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
-					<Grid item xs={8}>
-					<Typography>
-					{produto.categorias?.descricao}
-					</Typography>
+				<Card	className="filtroProduto">
+				<CardMedia
+				className="filtroProdutoImagem"
+				component="img"
+				image={produto.foto}
+				alt="Foto do produto"
+				/>
+				<Box className="filtroProdutoPropriedade">
+				<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
+				<Grid item xs={8}>
+				<Typography>
+				{produto.categorias?.descricao}
+				</Typography>
+				</Grid>
+				<Grid item xs={4} alignItems="right">
+				<Avatar src={produto.usuario?.foto}/>
+				</Grid>
+				</Grid>
+				<Typography className="filtroProdutoNome">
+				{produto.nome} unid.
+				</Typography>
+					<Grid container>
+					<Grid xs={6}>
+					<Typography className="filtroProdutoPreco">
+					R$ {produto.preco}
+				</Typography>
 					</Grid>
-					<Grid item xs={4} alignItems="right">
-					<Avatar src={produto.usuario?.foto}/>
+					<Grid xs={6}>
 					</Grid>
 					</Grid>
-			<Typography className="filtroProdutoNome">
-			{produto.nome} unid.
-			</Typography>
-			<Grid container>
-			<Grid xs={6}>
-			<Typography className="filtroProdutoPreco">
-			R$ {produto.preco}
-			</Typography>
-			</Grid>
-			<Grid xs={6}>
-			</Grid>
-			</Grid>
 					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 					<Typography noWrap className="filtroProdutoUsuario">
 					Cadastrado por: {produto.usuario?.nome}
-					</Typography>
+				</Typography>
 					</Box>
 					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 					<Typography noWrap className="filtroProdutoUsuario">
 					{produto.descricao}
-					</Typography>
+				</Typography>
 					</Box>
-					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
-					<Button className="filtroProdutoComprar">ADD</Button>
-		</Box>
-			</Card>
+					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
+					<Button onClick={() => {dispatch(addToCart(produto))}} className="filtroProdutoComprar"><AddShoppingCartSharpIcon/></Button>
+					</Box>
+					</Card>
 					</Stack>
 					</TabPanel>
 					))}
