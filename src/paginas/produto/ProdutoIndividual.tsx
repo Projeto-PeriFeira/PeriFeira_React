@@ -105,9 +105,11 @@ return (
 			<Grid xs={6}>
 			</Grid>
 			</Grid>
-					<Typography className="filtroProdutoUsuario">
+					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+					<Typography noWrap className="filtroProdutoUsuario">
 					Cadastrado por: {produto.usuario?.nome}
 					</Typography>
+					</Box>
 					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 					<Typography noWrap className="filtroProdutoUsuario">
 					{produto.descricao}
