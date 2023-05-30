@@ -7,9 +7,10 @@ import './FiltrarProduto.css';
 import { Categoria } from '../../../model/Categoria';
 import { Produto } from '../../../model/Produto';
 
-import {useNavigate} from 'react-router-dom';
-import { busca } from '../../../services/Service';
-import { useSelector } from 'react-redux';
+import {useNavigate, useParams} from 'react-router-dom';
+import { busca, buscaId } from '../../../services/Service';
+import { addToCart } from '../../../store/tokens/actions';
+import { useSelector, useDispatch } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 
 import { toast } from 'react-toastify'
@@ -17,11 +18,31 @@ import { toast } from 'react-toastify'
 
 function FiltrarProduto() {
 
+// const { id } = useParams<{id: string}>()
+
+
 	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
 			);
 
+			// const dispatch = useDispatch()
+
+			// async function addCarrinho() {
+			// dispatch(addToCart(produtos))
+			// }
+
 	const [produtos, setProdutos] = useState<Produto[]>([])
+	// const [produto, setProduto] = useState<Produto>({
+ //    id: 0,
+ //    nome: '',
+ //    descricao: '',
+	// 	foto: '',
+	// 	quantidade: 0,
+	// 	preco: 0,
+ //    categorias: null,
+ //    usuario: null
+	// })
+
 	const [categorias, setCategorias] = useState<Categoria[]>([])
 
 	function getProdutos() {
@@ -40,6 +61,14 @@ Authorization: token
 }
 })
 }
+// async function getProdutos(id: string) {
+// try {
+// await buscaId(`/produtos/{id}`, setProdutos)
+// console.log(produtos)
+// } catch(error) {
+// console.log(error);
+// }
+// }
 
 useEffect(() => {
 		getProdutos()
@@ -154,6 +183,7 @@ return (
 					</Typography>
 					</Box>
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
+					<Button className="filtroProdutoComprar">ADD</Button>
 		</Box>
 			</Card>
 					</Stack>
