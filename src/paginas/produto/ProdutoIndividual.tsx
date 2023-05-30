@@ -53,8 +53,11 @@ useEffect(()=>{
 		}, [token])
 
 useEffect(() => {
+	if( id != undefined){
 		getProdutoById(id)
-		}, [])
+	}
+		}, [id])
+		
 useEffect(() => {
 		getProdutos()
 		getProduto()
