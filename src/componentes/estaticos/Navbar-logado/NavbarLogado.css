@@ -38,3 +38,8 @@ font-weight: 500 !important;
 .MuiButton-outlined:hover{
 background-color: #FFF7EE !important;
 }
+
+.MuiBadge-badge {
+	background-color: var(--laranja) !important;
+	color: var(--rosa1)
+}

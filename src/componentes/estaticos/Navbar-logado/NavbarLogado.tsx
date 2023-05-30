@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Container, AppBar, Toolbar, Modal, Typography, Box, Button } from "@material-ui/core";
+import { Grid, Badge, Container, AppBar, Toolbar, Modal, Typography, Box, Button } from "@material-ui/core";
 import "./NavbarLogado.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
@@ -20,7 +20,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { Usuario } from '../../../model/Usuario'
 import {toast} from 'react-toastify'
 import FormularioProduto from '../../../componentes/produtos/cadastrarProduto/CadastrarProduto'
-import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { addToCart } from '../../../store/tokens/actions';
 import CadastrarCategoria from '../../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
 
@@ -47,6 +47,7 @@ function NavbarLogado() {
 	const carrinho = useSelector<TokenState, TokenState['produtos']>(
 	(state) => state.produtos
 	)
+	let quant = 0
 
   const handleModalClose = () => {
 		setModalLogoutOpen(false);
@@ -83,11 +84,13 @@ useEffect(() => {
 		getUserById(+userId)
 		}, [])
 
+				carrinho.map((valor) => {
+				{valorTotal += valor.preco}
+				{quant += 1}
+				})
+
 		return(
 				<>
-				carrinho: {carrinho.map((price) => {
-				{valorTotal += price.preco}
-				})} {valorTotal}
 					<AppBar  position="static" className="navbar">
 						<Toolbar variant="dense">
 							<Grid container alignItems='center' justifyContent={'space-between'}>
@@ -138,7 +141,15 @@ useEffect(() => {
 												aria-haspopup="true"
 												aria-expanded={open ? 'true' : undefined}
 											>
+<Badge badgeContent={quant}
+className="badge"
+anchorOrigin={{
+    vertical: 'bottom',
+    horizontal: 'left',
+  }}
+>
 												<Avatar alt="Foto do usuário" src={usuario.foto} />
+												</Badge>
 											</IconButton>
 											<Menu
 											anchorEl={anchorEl}
@@ -165,7 +176,21 @@ useEffect(() => {
 													<Avatar src={usuario.foto} />{usuario.nome}
 												</MenuItem>
 												<Divider />
-												<Link className="reset-link" to='/perfil'>
+												<Link className="reset-link" to='/carrinho'>
+												<MenuItem>
+													<ListItemIcon className="text">
+<Badge badgeContent={quant}
+className="badge"
+anchorOrigin={{
+    vertical: 'bottom',
+    horizontal: 'right',
+  }}
+>
+														<ShoppingCartIcon fontSize="small" />
+														</Badge>
+													</ListItemIcon>
+													Carrinho
+												</MenuItem>
 												<MenuItem>
 													<ListItemIcon className="text">
 														<ManageAccountsSharpIcon fontSize="small" />
@@ -214,7 +239,6 @@ useEffect(() => {
 			<Link className='reset-link' to='/sobre'>
 			<Box mx={1} style={{ cursor: 'pointer' }}>
 			<Typography className='item' variant="subtitle1" color="inherit">
-			<AddShoppingCartSharpIcon/>
 			</Typography>
 			</Box>
 			</Link>
