@@ -1,7 +1,7 @@
 import Categoria from './Categoria.ts'
 import UsuarioLogin from './UsuarioLogin.ts'
 
-interface Produto {
+export interface Produto {
 	id: number;
 	nome: string;
 	descricao: string;
