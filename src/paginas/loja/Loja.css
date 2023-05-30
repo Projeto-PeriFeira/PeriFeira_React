@@ -1,0 +1,7 @@
+.carousel:hover {
+	scale: 1.05 !important;
+	transition: 0.5s;
+}
+.carousel {
+	transition: 0.5s;
+}

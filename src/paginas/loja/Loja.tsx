@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux'
 import { TokenState } from '../../store/tokens/tokensReducer'
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Carousel } from 'react-responsive-carousel'
 
 function Loja() {
 
@@ -33,7 +35,17 @@ function Loja() {
 
 	return (
 			<>
-<Box className="secao1" height="427px" textAlign="center">Banner</Box>
+			<Carousel showIndicators={false} showArrows={false} showThumbs={false} showStatus={false} autoPlay infiniteLoop interval={3000}>
+			<div>
+			<img src="https://cdn.discordapp.com/attachments/1093179215907655800/1113157259825004614/banner-1.png" />
+			</div>
+			<div>
+			<img src="https://cdn.discordapp.com/attachments/1093179215907655800/1113157260168925224/banner2.png" />
+			</div>
+			<div>
+			<img src="https://cdn.discordapp.com/attachments/1093179215907655800/1113157260651282544/banner-3.png" />
+			</div>
+			</Carousel>
 			<Box className="secao2" paddingBottom="96px"/>
 			<Typography className="titulo secao2" variant="h3" textAlign="center" marginBottom="58" >Loja</Typography>
 			<Grid container className="secao1" alignItems='center' justifyContent='center'>
