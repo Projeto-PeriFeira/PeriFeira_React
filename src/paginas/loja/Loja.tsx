@@ -15,8 +15,6 @@ function Loja() {
 			<FiltrarProduto/>
 			</Grid>
 			<Box className="secao1" paddingBottom="80px"/>
-<CadastrarCategoria/>
-<CadastrarProduto/>
 			</>
 			)
 }

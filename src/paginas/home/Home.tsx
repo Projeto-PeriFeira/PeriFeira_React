@@ -5,7 +5,6 @@ import { Stack } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../store/tokens/tokensReducer'
 import { useNavigate } from 'react-router';
-import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria';
 import { toast } from 'react-toastify'
 import FiltrarProduto from '../../componentes/produtos/filtrarProduto/FiltrarProduto';
 import Sobre from '../sobre/Sobre';
@@ -41,7 +40,6 @@ function Home() {
 				<img className='image' src="/src/assets/Camada 5.png" alt="" />
 				</Grid>
 				</Grid>
-				<Sobre />
 				</>
 				);
 };

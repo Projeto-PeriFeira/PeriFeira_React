@@ -74,7 +74,7 @@ async	function validateEmail(event: ChangeEvent<HTMLInputElement>) {
 }
 
 async function validateSenha(event: ChangeEvent<HTMLInputElement>) {
-	setSenhaError(usuario.senha.length < 8 )
+	setSenhaError(usuario.senha.length < 7 )
 }
 
 function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
@@ -191,10 +191,10 @@ endAdornment: (
 <TextField
 name="confirmarSenha"
 label="Confirmar senha"
-type={showPassword ? "text" : "password"}
 value={confirmarSenha}
+type={showPassword ? "text" : "password"}
 onChange={(event: ChangeEvent<HTMLInputElement>) => {
-	updateModel(event)
+	confirmSenha(event)
 	}
 }
 sx={{
