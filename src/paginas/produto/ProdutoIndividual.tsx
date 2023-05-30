@@ -65,16 +65,27 @@ useEffect(() => {
 
 return (
 <>
-		<img src={produto?.foto} alt="foto do produto" />
-		<Box display={'flex'} alignItems={'center'} flexDirection={'column'}>
-		<Typography padding={'4vh'} variant='h4'>{produto?.nome}</Typography>
-		<Typography variant="body1">{produto?.descricao}</Typography>
-		<Typography variant="h6">R${produto?.preco}</Typography>
-
-		<Box className="secao2" paddingBottom="50px" />
-		<Typography className="titulo secao2" variant="h3" textAlign="center">Outros produtos</Typography>
-		<Grid container className="secao1" alignItems='center' justifyContent='center'>
+<Box>
+<Grid className='background-prod' padding={10} container justifyContent='center' gap={8}>
+	<Grid item xs={3}  justifyContent='center' >
+		<img className='image-prod'src={produto?.foto} alt="foto do produto" />
+	</Grid>
+	<Grid item xs={3} >
+	<Box gap={2} display={'flex'} alignItems='flex-start' flexDirection={'column'}>
+		<Typography className='text-prod bold' padding={'4vh'} variant='h3'>{produto?.nome}</Typography>
+		<Typography className='tag-categoria' variant="body1">{produto?.categorias?.descricao}</Typography>
+		<Typography className='pd-top-20' variant="body1">{produto?.descricao}</Typography>
+		<Typography className='preco bold'variant="h5">R${produto?.preco}</Typography>
+		<Button className='btn' type='submit' variant='contained' color='primary' >comprar</Button>
+	</Box>
+	</Grid>
+</Grid>
+<Box>
+	<Typography className="titulo secao2" variant="h3" textAlign="center">Outros produtos</Typography>
+	</Box>
+	<Grid container gap={4} className="secao1" alignItems='center' padding={10} justifyContent='center'>
 	{produtos.map(produto =>(
+		<Grid item  >
 				<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
 					<Card	className="filtroProduto">
 					<CardMedia
@@ -117,6 +128,7 @@ return (
 		</Box>
 			</Card>
 					</Stack>
+					</Grid>
 					))}
 </Grid>
 </Box>
