@@ -20,6 +20,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { Usuario } from '../../../model/Usuario'
 import {toast} from 'react-toastify'
 import FormularioProduto from '../../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
 import { addToCart } from '../../../store/tokens/actions';
 import CadastrarCategoria from '../../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
 
@@ -129,7 +130,6 @@ useEffect(() => {
 											<Box>
 												<Typography className='item'>Bem-vinde, {usuario.nome}!</Typography>
 											</Box>
-										<Tooltip title="Account settings">
 											<IconButton
 												onClick={handleClick}
 												size="small"
@@ -140,7 +140,6 @@ useEffect(() => {
 											>
 												<Avatar alt="Foto do usuário" src={usuario.foto} />
 											</IconButton>
-										</Tooltip>
 											<Menu
 											anchorEl={anchorEl}
 											id="account-menu"
@@ -150,26 +149,12 @@ useEffect(() => {
 											PaperProps={{
 												elevation: 0,
 												sx: {
-													overflow: 'visible',
-													filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
 													mt: 1.5,
 													'& .MuiAvatar-root': {
 														width: 32,
 														height: 32,
 														ml: -0.5,
 														mr: 1,
-													},
-													'&:before': {
-														content: '""',
-														display: 'block',
-														position: 'absolute',
-														top: 0,
-														right: 14,
-														width: 10,
-														height: 10,
-														bgcolor: 'background.paper',
-														transform: 'translateY(-50%) rotate(45deg)',
-														zIndex: 0,
 													},
 												},
 											}}
@@ -226,6 +211,13 @@ useEffect(() => {
 			</Container>
 			</div>
 			</Modal>
+			<Link className='reset-link' to='/sobre'>
+			<Box mx={1} style={{ cursor: 'pointer' }}>
+			<Typography className='item' variant="subtitle1" color="inherit">
+			<AddShoppingCartSharpIcon/>
+			</Typography>
+			</Box>
+			</Link>
 			</Box>
 			</Box>
 			</Box>
