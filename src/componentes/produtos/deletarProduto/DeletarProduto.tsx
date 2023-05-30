@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import {Typography, Button, Card, CardActions, CardContent } from "@material-ui/core"
 import './DeletarProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import Produto from '../../../model/Produto';
+import { Produto } from '../../../model/Produto';
 import { buscaId, deleta } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import {Box} from '@mui/material';
+import { toast } from 'react-toastify'
 
 function DeletarProduto() {
     let navigate = useNavigate();
@@ -18,7 +19,7 @@ function DeletarProduto() {
 
     useEffect(() => {
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error("Você precisa estar logado")
             navigate("/login")
     
         }
@@ -45,7 +46,7 @@ function DeletarProduto() {
                 'Authorization': token
               }
             });
-            alert('Produto deletada com sucesso');
+            toast.success('Produto deletada com sucesso');
           }
         
           function nao() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Produto from '../../../model/Produto';
+import { Produto }from '../../../model/Produto';
 import { busca } from '../../../services/Service'
 import { Grid, Box, Typography, Stack, Button, Card, CardMedia, CardContent, CardActions } from '@mui/material'
 import './ListarProduto.css';
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { toast } from 'react-toastify'
 
 function ListarProduto() {
   const [produtos, setProdutos] = useState<Produto[]>([])
@@ -19,7 +20,7 @@ function ListarProduto() {
 
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado")
+      toast.error("Você precisa estar logado")
       navigate("/login")
   
     }

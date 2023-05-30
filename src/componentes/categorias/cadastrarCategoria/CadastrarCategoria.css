@@ -1,0 +1,14 @@
+.background-form{
+  background-color: var(--rosa1) !important;
+  padding: 40px 60px !important;
+  border-radius: 16px !important;
+  border: 1px solid var(--marrom4) !important;
+
+}
+.text {
+  color: var(--marrom3) !important;
+}
+
+.mg-top{
+  margin-top: 16px !important;
+}

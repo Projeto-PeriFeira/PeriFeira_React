@@ -1,12 +1,12 @@
 import React, {useState, useEffect, ChangeEvent} from 'react'
-import { Container, Typography, TextField, Button } from "@material-ui/core"
+import { Container, Typography, TextField, Button, Box } from "@material-ui/core"
 import {useNavigate, useParams } from 'react-router-dom'
 import './CadastrarCategoria.css';
-import Categoria from '../../../model/Categoria';
+import { Categoria } from '../../../model/Categoria';
 import { buscaId, posta, atualiza } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-
+import { toast } from 'react-toastify'
 
 
 function CadastrarCategoria() {
@@ -17,14 +17,14 @@ function CadastrarCategoria() {
       );
     const [categoria, setCategoria] = useState<Categoria>({
         id: 0,
-        descricao: ''
+        descricao: '',
+				produtos: null
     })
 
      useEffect(() => {
          if (token == "") {
-             alert("Você precisa estar logado")
+             toast.error("Você precisa estar logado")
              navigate("/login")
-     
          }
      }, [token])
     
@@ -54,41 +54,37 @@ function CadastrarCategoria() {
         async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
             e.preventDefault()
             console.log("categorias " + JSON.stringify(categoria))
-    
             if (id !== undefined) {
-                console.log(categoria)
                 atualiza(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Categoria atualizado com sucesso');
+                toast.success('Categoria atualizado com sucesso');
             } else {
                 posta(`/categorias`, categoria, setCategoria, {
                     headers: {
                         'Authorization': token
                     }
                 })
-                alert('Categoria cadastrado com sucesso');
+                toast.success('Categoria cadastrada com sucesso');
             }
-            back()
-    
-        }
-    
-        function back() {
             navigate('/loja')
         }
-  
+    
     return (
-        <Container maxWidth="sm" className="topo">
+	<>
+	<Box marginBottom="30vh"/>
+        <Container maxWidth="sm" className="background-form">
             <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro categoria</Typography>
-                <TextField value={categoria.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="descricao" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
-                <Button type="submit" variant="contained" color="primary">
-                    Finalizar
+                <Typography className='text bold' variant="h5" color="textSecondary" component="h5" align="left" >{id !== undefined ? 'Atualizar categoria:' : 'Cadastrar nova categoria:'}</Typography>
+                <TextField value={categoria.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="descrição" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
+                <Button className='btn mg-top' type="submit" variant="contained" color="primary" disabled={categoria.descricao.length < 4}>
+                cadastrar
                 </Button>
             </form>
         </Container>
+				</>
     )
 }
 

@@ -1,5 +1,5 @@
-import Categoria from './Categoria.ts'
-import UsuarioLogin from './UsuarioLogin.ts'
+import { Categoria } from './Categoria.ts'
+import { Usuario } from './Usuario.ts'
 
 export interface Produto {
 	id: number;
@@ -9,7 +9,5 @@ export interface Produto {
 	preco: number;
 	foto: string;
 	categorias?: Categoria|null;
-	usuario?: UsuarioLogin|null;
+	usuario?: Usuario|null;
 }
-
-export default Produto

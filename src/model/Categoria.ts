@@ -1,6 +1,7 @@
-interface Categoria {
+import { Produto } from './Produto.ts'
+
+export interface Categoria {
 	id: number;
 	descricao: string;
+	produtos?: Produto[]|null;
 }
-
-export default Categoria

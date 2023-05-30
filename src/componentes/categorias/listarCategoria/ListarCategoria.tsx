@@ -18,7 +18,7 @@ function ListarCategoria() {
 
   useEffect(()=>{
     if(token == ''){
-      alert("Você precisa estar logado")
+      toast.error(Você precisa estar logado")
       navigate("/login")
     }
   }, [token])

@@ -5,6 +5,7 @@ import { Stack } from '@mui/material';
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../store/tokens/tokensReducer'
 import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify'
 
 function Home() {
 
@@ -15,7 +16,7 @@ function Home() {
     
     useEffect(() => {
       if (token == "") {
-          alert("Você precisa estar logado")
+          toast.error("Você precisa estar logado")
           navigate("/login")
   
       }

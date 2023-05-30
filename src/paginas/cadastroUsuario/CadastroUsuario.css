@@ -1,0 +1,20 @@
+.imagem-cadastro{
+  background-image: url('/src/assets/cadastro/cyrus-crossan-BAQPTB2D5NM-unsplash.jpg');
+  background-repeat: no-repeat;
+  width: 80% !important;
+  min-height: 88vh;
+  margin: auto;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover !important;
+  border-radius: 24px !important;
+}
+
+
+.btn-cancelar {
+  background-color: #996D51 !important;
+  text-transform: lowercase !important;
+  font-size: 1rem !important;
+  border-radius: 10px !important;
+
+}

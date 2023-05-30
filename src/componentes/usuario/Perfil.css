@@ -1,0 +1,55 @@
+body {
+ background-color: var(--rosa2)
+}
+.usuarioFoto {
+	border-radius: 100%;
+	border: 1px solid #DFB193;
+	height: 236px !important;
+	margin-top: 105px !important;
+	position: absolute !important;
+	width: 236px !important;
+  margin-left: -290px !important;
+	transition: 0.5s;
+}
+.usuarioFoto:hover {
+	transition: 0.5s;
+	scale: 1.2;
+}
+.produtoSecao {
+	padding-top: 25px;
+	padding-left: 23px;
+	padding-right: 16px;
+}
+.produtoEditar {
+	font-size: 30px !important;
+}
+.usuarioProdutoPropriedade {
+	border-radius: 26px 26px 8px 8px;
+	height: 213px;
+	margin-top: -54px;
+	background-color: var(--rosa4) !important;
+	position: relative;
+}
+.usuarioSecaoProduto {
+	padding: 59px 69px;
+	background-color: var(--rosa3);
+	border-radius: 20px;
+	margin-bottom: 144px;
+}
+.usuarioProduto {
+	width: 224px;
+	height: 300px;
+}
+.usuarioSecaoEditar {
+	padding-left: 198px;
+	padding-right: 62px;
+	padding-top: 39px;
+	padding-bottom: 63px;
+	border-radius: 20px;
+	margin-bottom: 144px;
+}
+.usuarioAtualizar {
+	color: var(--rosa3) !important;
+	background-color: var(--laranja) !important;
+	border-radius: 10px !important;
+}
