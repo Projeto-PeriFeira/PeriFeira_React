@@ -102,6 +102,7 @@ return (
 					className="filtroProdutoImagem"
 					component="img"
 					image={produto.foto}
+					alt="Foto do produto"
 					/>
 					<Box className="filtroProdutoPropriedade">
 					<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
@@ -152,6 +153,7 @@ return (
 					className="filtroProdutoImagem"
 					component="img"
 					image={produto.foto}
+					alt="Foto do produto"
 					/>
 					<Box className="filtroProdutoPropriedade">
 					<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
