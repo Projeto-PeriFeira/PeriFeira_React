@@ -12,7 +12,7 @@ import { Produto } from '../../model/Produto'
 
 function ProdutoIndividual() {
 
-	const [produto, setProduto] = useState<Produto[]>([]);
+	const [produto, setProduto] = useState<Produto>();
 	const [produtos, setProdutos] = useState<Produto[]>([]);
 	const { id } = useParams<{ id: string }>();
 
@@ -64,11 +64,11 @@ useEffect(() => {
 
 return (
 <>
-		<img src={produto.foto} alt="foto do produto" />
+		<img src={produto?.foto} alt="foto do produto" />
 		<Box display={'flex'} alignItems={'center'} flexDirection={'column'}>
-		<Typography padding={'4vh'} variant='h4'>{produto.nome}</Typography>
-		<Typography variant="body1">{produto.descricao}</Typography>
-		<Typography variant="h6">R${produto.preco}</Typography>
+		<Typography padding={'4vh'} variant='h4'>{produto?.nome}</Typography>
+		<Typography variant="body1">{produto?.descricao}</Typography>
+		<Typography variant="h6">R${produto?.preco}</Typography>
 
 		<Box className="secao2" paddingBottom="50px" />
 		<Typography className="titulo secao2" variant="h3" textAlign="center">Outros produtos</Typography>
