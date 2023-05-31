@@ -62,7 +62,7 @@ const userId = useSelector<TokenState, TokenState['id']>(
 						onClick={() => {
 						dispatch(removeItem([]))
 						toast.success("Compra realizada")
-						navigate("/home")
+						navigate("/loja")
 						}}
 						>Finalizar compra</Button>
             </Box>

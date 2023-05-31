@@ -50,7 +50,7 @@ function DeletarCategoria() {
           }
         
           function nao() {
-            navigate('/perfil')
+            navigate('/loja')
           }
           
   return (

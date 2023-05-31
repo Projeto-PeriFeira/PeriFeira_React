@@ -131,7 +131,7 @@ function CadastrarProduto() {
           },
         });
         toast.success("Produto atualizado com sucesso");
-        navigate('/perfil')
+        navigate('/loja')
       } catch (error) {
         toast.error('Falha ao atualizar produto - verifique os campos preenchidos');
       }
