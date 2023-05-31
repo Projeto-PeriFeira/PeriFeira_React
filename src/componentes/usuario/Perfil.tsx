@@ -246,9 +246,9 @@ endAdornment: (
 {usuario?.produtos?.map((produto) => (
 			<Typography className="usuarioCategoriaNome">
 			{produto.categorias?.descricao}
-			<Button className="usuarioCategoriaEditar" onClick={() => {{setModalCadastrarProdutoOpen(true)}}}>
-			<EditIcon/>
-			</Button>
+				<Link to={`/categorias/${produto.id}`} className="text-decorator-none">
+				<EditIcon className="usuarioCategoriaEditar"/>
+				</Link>
 			<Button className="usuarioCategoriaExcluir" onClick={() => {
     setModalCadastroCategoriaOpen(true);
     {/*}setPegarId(produto.categorias?.id);*/}
@@ -258,11 +258,6 @@ endAdornment: (
 			</Typography>
 			))}
 			</Stack>
-      <Modal open={modalCadastrarProdutoOpen} onClose={handleModalClose}>
-        <div>
-				{/*<ModalCadastrarCategoria/>*/}
-        </div>
-      </Modal>
       <Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
         <div>
 			<Box marginBottom="30vh"/>
