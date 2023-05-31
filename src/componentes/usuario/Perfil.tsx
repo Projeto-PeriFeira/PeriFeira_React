@@ -247,7 +247,7 @@ endAdornment: (
 			</Typography>
 				</Grid>
 				<Grid item xs={6} textAlign="right">
-				<Link to={`/produtos/${produto.id}`} className="text-decorator-none" >
+				<Link to={`/cadastrarProdutos/${produto.id}`} className="text-decorator-none" >
 				<EditIcon className="produtoEditar"/>
 				</Link>
 				<Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none" >

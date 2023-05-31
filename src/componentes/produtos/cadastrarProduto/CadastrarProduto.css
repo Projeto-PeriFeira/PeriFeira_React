@@ -26,3 +26,7 @@
   position: relative !important;
   width: 100% !important;
 }
+
+.marginX-60 {
+  margin: 60px 0px !important;
+}
