@@ -145,7 +145,7 @@ return (
 						{produto.descricao}
 					</Typography>
 						</Box>
-						<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Comprar</Button>
+						<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar" width="22px">Comprar</Button>
 						</Box>
 						</Card>
 						))}

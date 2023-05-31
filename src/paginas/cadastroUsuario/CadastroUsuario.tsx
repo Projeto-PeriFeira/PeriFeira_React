@@ -158,7 +158,7 @@ endAdornment: (
 value={usuario.foto}
 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)} />
 <Box display='flex' justifyContent='center' gap={4} textAlign='center' marginTop={2}>
-<Button type="submit" variant="contained" className='btn' disabled={!confirmar}>
+<Button type="submit" variant="contained" className='btn'>
 Cadastrar
 </Button>
 <Button type="submit" variant="contained" className='btn-cancelar' onClick={voltar}>
