@@ -1,0 +1,13 @@
+.carrinhoMenu {
+	padding: 49px 91px 91px 87px !important;
+	border-radius: 40px;
+}
+.carrinhoProdutoImagem {
+	border-radius: 16px !important;
+}
+.carrinhoProdutoPropriedades {
+	padding-left: 31px !important;
+}
+.carrinhoProdutoPreco {
+	text-align: right !important;
+}

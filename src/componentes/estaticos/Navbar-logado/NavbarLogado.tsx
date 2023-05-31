@@ -191,6 +191,8 @@ anchorOrigin={{
 													</ListItemIcon>
 													Carrinho
 												</MenuItem>
+												</Link>
+												<Link className="reset-link" to='/perfil'>
 												<MenuItem>
 													<ListItemIcon className="text">
 														<ManageAccountsSharpIcon fontSize="small" />
