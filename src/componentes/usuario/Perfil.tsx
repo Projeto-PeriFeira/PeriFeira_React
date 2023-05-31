@@ -6,6 +6,7 @@ import { buscaId, atualiza } from '../../services/Service';
 import { Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
 import { toast } from 'react-toastify'
 import FormularioProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
 import DeletarProduto from '../../componentes/produtos/deletarProduto/DeletarProduto'
 import './Perfil.css';
 import EditIcon from '@mui/icons-material/Edit';
@@ -66,6 +67,7 @@ useEffect(() => {
 				})
 		}, [usuario.usuario])
 
+const [pegarId, setPegarId] = useState<string>('');
 const [confirmarSenha, setConfirmarSenha] = useState<string>('');
 const [verificar, setVerificar] = useState<boolean>(false)
 const [nomeError, setNomeError] = useState<boolean>(false);
@@ -239,9 +241,10 @@ endAdornment: (
 			<Button className="usuarioCategoriaEditar" onClick={() => {{setModalCadastroProdutoOpen(true)}}}>
 			<EditIcon/>
 			</Button>
-			<Button className="usuarioCategoriaExcluir" onClick={() => {{
-			setModalCadastroCategoriaOpen(true)
-			}}}>
+			<Button className="usuarioCategoriaExcluir" onClick={() => {
+    setModalCadastroCategoriaOpen(true);
+    setPegarId(produto.categorias?.id);
+}}>
 			<DeleteIcon/>
 			</Button>
 			</Typography>
@@ -249,7 +252,7 @@ endAdornment: (
 			</Stack>
       <Modal open={modalCadastroProdutoOpen} onClose={handleModalClose}>
         <div>
-				<FormularioProduto/>
+				<CadastrarCategoria/>
         </div>
       </Modal>
       <Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
@@ -257,7 +260,7 @@ endAdornment: (
 			<Box marginBottom="30vh"/>
 			<Container maxWidth="sm" className="background-form">
 			<Typography className="titulo" variant="h4" textAlign="center">Voce deseja realmente excluir a categoria?</Typography>
-			<Link to={`/deletarCategoria/`}>
+			<Link to={`/deletarCategoria/${pegarId}`}>
 			<Button fullWidth className='btn mg-top' variant="contained" color="primary">Deletar</Button>
 			</Link>
 			</Container>
