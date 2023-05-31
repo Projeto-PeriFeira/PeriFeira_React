@@ -95,9 +95,10 @@ return (
 					<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id}/>
 					))}
 		</Tabs>
-		<TabPanel value="0" className="secao1">
 		<Box marginBottom="68px" />
-		<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+		<TabPanel value="0" className="secao1">
+		<Stack justifyContent="center"
+		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 		{
 		produtos.map(produto =>(
 					<Card	className="filtroProduto">
@@ -110,16 +111,20 @@ return (
 					<Box className="filtroProdutoPropriedade">
 					<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
 					<Grid item xs={8}>
-					<Typography>
+					<Box width={155} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+					<Typography noWrap>
 					{produto.categorias?.descricao}
 					</Typography>
+					</Box>
 					</Grid>
 					<Grid item xs={4} alignItems="right">
 					<Avatar src={produto.usuario?.foto}/>
 					</Grid>
 					</Grid>
 					<Typography className="filtroProdutoNome">
+					<Box width={180} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 					{produto.nome} unid.
+					</Box>
 					</Typography>
 						<Grid container>
 						<Grid xs={6}>
@@ -150,7 +155,8 @@ return (
 	produtos.map(produto =>(
 				<TabPanel value={produto.categorias?.id}>
 				<Box marginBottom="68px" />
-				<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+		<Stack justifyContent="center"
+		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 				<Card	className="filtroProduto">
 				<CardMedia
 				className="filtroProdutoImagem"
@@ -161,16 +167,20 @@ return (
 				<Box className="filtroProdutoPropriedade">
 				<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
 				<Grid item xs={8}>
-				<Typography>
+					<Box width={155} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+				<Typography noWrap>
 				{produto.categorias?.descricao}
 				</Typography>
+				</Box>
 				</Grid>
 				<Grid item xs={4} alignItems="right">
 				<Avatar src={produto.usuario?.foto}/>
 				</Grid>
 				</Grid>
 				<Typography className="filtroProdutoNome">
+					<Box width={180} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 				{produto.nome} unid.
+				</Box>
 				</Typography>
 					<Grid container>
 					<Grid xs={6}>
