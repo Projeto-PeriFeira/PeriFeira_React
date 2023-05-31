@@ -297,7 +297,7 @@ endAdornment: (
 			{produto.categorias?.descricao}
 			</Typography>
 			<Typography className="filtroProdutoNome">
-			{produto.nome} unid.
+			{produto.nome}
 			</Typography>
 			<Grid container className="usuarioProdutoSecao">
 			<Grid item xs={6} textAlign="left">

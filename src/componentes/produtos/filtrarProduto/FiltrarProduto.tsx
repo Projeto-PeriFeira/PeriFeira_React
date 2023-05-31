@@ -62,14 +62,14 @@ Authorization: token
 }
 })
 }
- async function getProdutoId(id: string) {
- try {
- await buscaId(`/produtos/{id}`, setProdutos)
- console.log(produtos)
- } catch(error) {
- console.log(error);
- }
- }
+async function getProdutoId(id: string) {
+try {
+await buscaId(`/produtos/{id}`, setProdutos)
+console.log(produtos)
+} catch(error) {
+console.log(error);
+}
+}
 
 useEffect(() => {
 		getProdutos()
@@ -89,15 +89,17 @@ function handleChange(event: React.ChangeEvent<{}>, newValue: string){
 return (
 		<>
 		{/*<Stack spacing={3} direction={{ xs: 'column', sm: 'row' }}>		</Stack>*/}
+		<Grid justifyContent={'center'} container>
 		<TabContext value={value}>
-		<Tabs className="secao2 filtroCategoriaLista" centered onChange={handleChange}>
-		{categorias.map(categoria =>(
-					<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id}/>
-					))}
-		</Tabs>
-		<TabPanel value="0" className="secao1">
-		<Box marginBottom="68px" />
-		<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+			<Tabs  className="secao2 filtroCategoriaLista" centered onChange={handleChange}>
+			{categorias.map(categoria =>(
+						<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id}/>
+						))}
+			</Tabs>
+		<Grid  container xs={8}>
+		<TabPanel  value="0" className="secao1">
+		<Box  marginBottom="68px" />
+		<Stack gap={4} flexWrap={'wrap'} direction={{ xs: 'column', sm: 'row' }}>
 		{
 		produtos.map(produto =>(
 					<Card	className="filtroProduto">
@@ -146,10 +148,12 @@ return (
 						))}
 						</Stack>
 						</TabPanel>
+						</Grid>
 {
 	produtos.map(produto =>(
+				<Grid container xs={8}>
 				<TabPanel value={produto.categorias?.id}>
-				<Box marginBottom="68px" />
+				<Box  marginBottom="0px" />
 				<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
 				<Card	className="filtroProduto">
 				<CardMedia
@@ -197,8 +201,11 @@ return (
 					</Card>
 					</Stack>
 					</TabPanel>
+					</Grid>
 					))}
 					</TabContext>
+
+					</Grid>
 					</>
 					);
 					}

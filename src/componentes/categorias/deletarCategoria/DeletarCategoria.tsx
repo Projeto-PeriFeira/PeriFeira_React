@@ -46,11 +46,11 @@ function DeletarCategoria() {
                 'Authorization': token
               }
             });
-            toast.success('Categoria deletado com sucesso');
+            toast.success('Categoria deletada com sucesso');
           }
         
           function nao() {
-            navigate('/categorias')
+            navigate('/perfil')
           }
           
   return (

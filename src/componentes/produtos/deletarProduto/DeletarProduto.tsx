@@ -40,13 +40,13 @@ function DeletarProduto() {
         }
 
         function sim() {
-          navigate('/produtos')
+          navigate('/perfil')
             deleta(`/produtos/${id}`, {
               headers: {
                 'Authorization': token
               }
             });
-            toast.success('Produto deletada com sucesso');
+            toast.success('Produto deletado com sucesso');
           }
         
           function nao() {

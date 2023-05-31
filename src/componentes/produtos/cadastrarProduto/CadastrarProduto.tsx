@@ -22,6 +22,7 @@ import { Usuario } from '../../../model/Usuario';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import './CadastrarProduto.css'
+import { toast } from 'react-toastify';
 
 function FormularioProduto() {
   const navigate = useNavigate();
@@ -129,10 +130,10 @@ function FormularioProduto() {
             Authorization: token,
           },
         });
-        alert('foi - atualização')
-        navigate('/produtos')
+        toast.success("Produto atualizado com sucesso");
+        navigate('/perfil')
       } catch (error) {
-        alert('deu erro');
+        alert('Falha ao atualizar produto - verifique os campos preenchidos');
       }
     } else {
       try {
@@ -141,10 +142,10 @@ function FormularioProduto() {
             Authorization: token,
           },
         });
-        alert('foi - cadastro')
-        navigate('/produtos')
+        toast.success("Produto cadastrado com sucesso");
+        navigate('/loja')
       } catch (error) {
-        alert('deu erro');
+        alert('Falha ao cadastrar produto - verifique os campos preenchidos');
       }
     }
   }
