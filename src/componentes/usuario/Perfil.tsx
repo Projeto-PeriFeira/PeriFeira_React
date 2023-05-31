@@ -6,7 +6,7 @@ import { buscaId, atualiza } from '../../services/Service';
 import { Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
 import { toast } from 'react-toastify'
 import FormularioProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
-import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
+// import ModalCadastrarCategoria from '../../componentes/categorias/modalCadastrarCategoria/ModalCadastrarCategoria'
 import DeletarProduto from '../../componentes/produtos/deletarProduto/DeletarProduto'
 import './Perfil.css';
 import EditIcon from '@mui/icons-material/Edit';
@@ -252,7 +252,7 @@ endAdornment: (
 			</Stack>
       <Modal open={modalCadastroProdutoOpen} onClose={handleModalClose}>
         <div>
-				<CadastrarCategoria/>
+				{/*<ModalCadastrarCategoria/>*/}
         </div>
       </Modal>
       <Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
@@ -270,11 +270,11 @@ endAdornment: (
 </Grid>
 <Grid container alignItems='center' justifyContent='center'>
 <Grid xs={9} className="usuarioSecaoProduto">
-<Typography className="titulo" variant="h4" marginBottom="58">Meus produtos</Typography>
+<Typography className="titulo" variant="h4" marginBottom="58px">Meus produtos</Typography>
+			<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
 {usuario.produtos?.map((produto) => (
 			<>
 			<Box marginBottom="106px"/>
-			<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
 			<Card	className="usuarioProduto">
 			<CardMedia
 			className="filtroProdutoImagem"
@@ -288,26 +288,26 @@ endAdornment: (
 			<Typography className="filtroProdutoNome">
 			{produto.nome} unid.
 			</Typography>
-			<Grid container className="produtoSecao">
+			<Grid container className="usuarioProdutoSecao">
 			<Grid item xs={6} textAlign="left">
-			<Typography className="filtroProdutoPreco">
+			<Typography className="usuarioProdutoPreco">
 			R$ {produto.preco}
 			</Typography>
 				</Grid>
 				<Grid item xs={6} textAlign="right">
-				<Link to={`/produtos/${produto.id}`} className="text-decorator-none" >
-				<EditIcon className="produtoEditar"/>
+				<Link to={`/cadastrarProdutos/${produto.id}`} className="text-decorator-none" >
+				<EditIcon className="usuarioCategoriaEditar"/>
 				</Link>
 				<Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none" >
-				<DeleteIcon className="produtoEditar"/>
+				<DeleteIcon className="usuarioCategoriaExcluir"/>
 				</Link>
 				</Grid>
 				</Grid>
 				</Box>
 				</Card>
-				</Stack>
 				</>
 				))}
+				</Stack>
 				</Grid>
 				</Grid>
 				</>

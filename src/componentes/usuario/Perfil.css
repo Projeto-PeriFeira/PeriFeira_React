@@ -15,10 +15,10 @@ body {
 	transition: 0.5s;
 	scale: 1.2;
 }
-.produtoSecao {
+.usuarioProdutoSecao {
 	padding-top: 25px;
 	padding-left: 23px;
-	padding-right: 16px;
+	padding-right: 14px;
 }
 .produtoEditar {
 	font-size: 30px !important;
@@ -69,7 +69,14 @@ body {
 .usuarioCategoriaEditar {
 	color: var(--laranja) !important;
 	padding-left: 24.5px !important;
+	font-size: 30px !important;
 }
 .usuarioCategoriaExcluir {
 	color: var(--laranja) !important;
+	font-size: 30px !important;
+}
+.usuarioProdutoPreco {
+	color: var(--laranja) !important;
+	font-weight: 700 !important;
+	font-size: 20px !important;
 }
