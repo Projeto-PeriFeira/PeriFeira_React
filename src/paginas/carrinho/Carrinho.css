@@ -1,13 +1,40 @@
-.carrinhoMenu {
-	padding: 49px 91px 91px 87px !important;
-	border-radius: 40px;
+.bg-carrinho{
+  background-color: var(--rosa2) !important;
+  padding: 40px 100px;
+  border-radius: 30px;
 }
-.carrinhoProdutoImagem {
-	border-radius: 16px !important;
+
+.container{
+  background-color: var(--rosa1) !important;
+
 }
-.carrinhoProdutoPropriedades {
-	padding-left: 31px !important;
+
+.image{
+  width: 100%;
+  max-width: 350px;
+  border-radius: 20px;
 }
-.carrinhoProdutoPreco {
-	text-align: right !important;
+
+.cardProduto{
+  border-bottom: 1px solid var(--marrom1);
+  padding: 20px 0;
+  margin-bottom: 20px;
 }
+
+
+.mg-bt-60{
+  margin-bottom: 60px !important;
+}
+
+.mg-bt-20{
+  margin-bottom: 20px !important;
+}
+
+.text{
+  color: var(--marrom1);
+}
+
+.valor-total{
+  margin-top: 40px;
+}
+

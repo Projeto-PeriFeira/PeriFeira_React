@@ -106,7 +106,7 @@ function updateModel(event: ChangeEvent<HTMLInputElement>) {
 			usuario.senha.length >= 8 &&
 			usuario.foto.length >= 1
 			)}
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
 
 async function atualizar(event: ChangeEvent<HTMLFormElement>) {
 	event.preventDefault();
@@ -184,18 +184,18 @@ validateSenha(event)
 sx={{
 input: {
 color: "var(--laranja)",
-			 }
+			}
 }}
 InputProps={{
 endAdornment: (
-							 <InputAdornment position="end">
-							 <IconButton
-							 aria-label="toggle password visibility"
-							 onClick={handleClickShowPassword}
-							 >
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
-							 </IconButton>
-							 </InputAdornment>
+							<InputAdornment position="end">
+							<IconButton
+							aria-label="toggle password visibility"
+							onClick={handleClickShowPassword}
+							>
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							</IconButton>
+							</InputAdornment>
 							)
 }}
 />
@@ -211,18 +211,18 @@ onChange={(event: ChangeEvent<HTMLInputElement>) => {
 sx={{
 input: {
 color: "var(--laranja)",
-			 }
+			}
 }}
 InputProps={{
 endAdornment: (
-							 <InputAdornment position="end">
-							 <IconButton
-							 aria-label="toggle password visibility"
-							 onClick={handleClickShowPassword}
-							 >
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
-							 </IconButton>
-							 </InputAdornment>
+							<InputAdornment position="end">
+							<IconButton
+							aria-label="toggle password visibility"
+							onClick={handleClickShowPassword}
+							>
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							</IconButton>
+							</InputAdornment>
 							)
 }}
 />
@@ -296,7 +296,11 @@ endAdornment: (
 				</Grid>
 				<Grid item xs={6} textAlign="right">
 				<Link to={`/cadastrarProdutos/${produto.id}`} className="text-decorator-none" >
+<<<<<<< HEAD
 				<EditIcon className="usuarioCategoriaEditar"/>
+=======
+				<EditIcon className="produtoEditar"/>
+>>>>>>> 4ac608ccfc08a5f37129c755e1bc3ad8710a99c2
 				</Link>
 				<Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none" >
 				<DeleteIcon className="usuarioCategoriaExcluir"/>
