@@ -6,7 +6,7 @@ import { Usuario } from '../../model/Usuario';
 import { buscaId, atualiza } from '../../services/Service';
 import { Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
 import { toast } from 'react-toastify'
-import FormularioProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import CadastrarProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
 // import ModalCadastrarCategoria from '../../componentes/categorias/modalCadastrarCategoria/ModalCadastrarCategoria'
 import DeletarProduto from '../../componentes/produtos/deletarProduto/DeletarProduto'
 import './Perfil.css';
@@ -37,11 +37,11 @@ function Perfil() {
 			}, [token])
 
 	const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
-  const [modalCadastroProdutoOpen, setModalCadastroProdutoOpen] = useState(false);
+  const [modalCadastrarProdutoOpen, setModalCadastrarProdutoOpen] = useState(false);
   const [modalCadastroCategoriaOpen, setModalCadastroCategoriaOpen] = useState(false);
 
   const handleModalClose = () => {
-    setModalCadastroProdutoOpen(false);
+    setModalCadastrarProdutoOpen(false);
     setModalCadastroCategoriaOpen(false);
   };
 
@@ -68,7 +68,7 @@ Authorization: token,
 
 useEffect(() => {
 		getUsuario();
-		setVerificar(false)
+		// setVerificar(false)
 		}, []);
 
 useEffect(() => {
@@ -80,66 +80,61 @@ useEffect(() => {
 
 const [pegarId, setPegarId] = useState<string>('');
 const [confirmarSenha, setConfirmarSenha] = useState<string>('');
-const [verificar, setVerificar] = useState<boolean>(false)
-const [nomeError, setNomeError] = useState<boolean>(false);
-const [emailError, setEmailError] = useState<boolean>(false);
-const [senhaError, setSenhaError] = useState<boolean>(false);
+// const [nomeError, setNomeError] = useState<boolean>(false);
+// const [emailError, setEmailError] = useState<boolean>(false);
+// const [senhaError, setSenhaError] = useState<boolean>(false);
 const [showPassword, setShowPassword] = useState(false);
 const handleClickShowPassword = () => setShowPassword(!showPassword);
 
-async	function validateNome(event: ChangeEvent<HTMLInputElement>) {
-	setNomeError(usuario.nome.length < 1);
-}
-
-async	function validateEmail(event: ChangeEvent<HTMLInputElement>) {
-	setEmailError(usuario.usuario.includes('@'));
-}
-
-async function validateSenha(event: ChangeEvent<HTMLInputElement>) {
-	setSenhaError(usuario.senha.length < 7 )
-}
-
+// async	function validateNome(event: ChangeEvent<HTMLInputElement>) {
+// 	setNomeError(usuario.nome.length < 1);
+// }
+//
+// async	function validateEmail(event: ChangeEvent<HTMLInputElement>) {
+// 	setEmailError(usuario.usuario.includes('@'));
+// }
+//
+// async function validateSenha(event: ChangeEvent<HTMLInputElement>) {
+// 	setSenhaError(usuario.senha.length < 7 )
+// }
+//
 function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
 	setConfirmarSenha(event.target.value);
 }
 
-async function confirm(event: ChangeEvent<HTMLInputElement>) {
-	setVerificar(usuario.nome !== '' && usuario.foto !== '' && senhaError && emailError && usuario.senha == confirmarSenha)
-}
-
+// async function confirm(event: ChangeEvent<HTMLInputElement>) {
+// 	setVerificar(usuario.nome !== '' && usuario.foto !== '' && senhaError && emailError && usuario.senha == confirmarSenha)
+// }
+//
 function updateModel(event: ChangeEvent<HTMLInputElement>) {
 	setUsuario({
 			...usuario,
 			[event.target.name]: event.target.value,
-			});
-			setVerificar(
-			usuario.nome.length >= 1 && 
-			usuario.senha.length >= 8 &&
-			usuario.foto.length >= 1
-			)}
+			})}
 							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
 
 async function atualizar(event: ChangeEvent<HTMLFormElement>) {
-	event.preventDefault();
-	if (usuario.senha === confirmarSenha && usuario.senha.length >= 8) {
-		try {
-			await atualiza('/usuarios/atualizar', usuario, setUsuario, {
-headers: {
-Authorization: token,
-},
-});
-toast.success('Usuário atualizado com sucesso');
-setUsuario({ ...usuario, senha: '' });
-setConfirmarSenha('');
-} catch (error) {
-	toast.error('Falha ao cadastrar o usuário, verifique os campos');
-}
-} else {
-	toast.error('Os campos de Senha e Confirmar Senha estão diferentes');
-	setUsuario({ ...usuario, senha: '' });
-	setConfirmarSenha('');
-}
-}
+    event.preventDefault();
+    if (usuario.senha === confirmarSenha && usuario.senha.length >= 8) {
+      try {
+        await atualiza('/usuarios/atualizar', usuario, setUsuario, {
+          headers: {
+            Authorization: token,
+          },
+        });
+        alert('Usuário cadastrado com sucesso');
+        setUsuario({ ...usuario, senha: '' });
+        setConfirmarSenha('');
+      } catch (error) {
+        alert('Falha ao cadastrar o usuário, verifique os campos');
+				console.log(error)
+      }
+    } else {
+      alert('Os campos de Senha e Confirmar Senha estão diferentes');
+      setUsuario({ ...usuario, senha: '' });
+      setConfirmarSenha('');
+    }
+  }
 
 console.log(usuario);
 
@@ -171,7 +166,6 @@ label="E-mail"
 type="email"
 value={usuario.usuario}
 onChange={(event: ChangeEvent<HTMLInputElement>) => {
-  validateEmail(event)
 	updateModel(event)
 }}
 />
@@ -189,7 +183,6 @@ label="Senha"
 type={showPassword ? "text" : "password"}
 helperText="Digite a senha para confirmar as alterações"
 onChange={(event: ChangeEvent<HTMLInputElement>) => {
-validateSenha(event)
 	updateModel(event)
 }}
 sx={{
@@ -237,7 +230,7 @@ endAdornment: (
 							)
 }}
 />
-<Button variant={'contained'} className="btn" disabled={!verificar} type='submit'>Atualizar</Button>
+<Button variant={'contained'} className="btn" type='submit'>Atualizar</Button>
 </Box>
 </form>
 </Grid>
@@ -249,19 +242,19 @@ endAdornment: (
 {usuario?.produtos?.map((produto) => (
 			<Typography className="usuarioCategoriaNome">
 			{produto.categorias?.descricao}
-			<Button className="usuarioCategoriaEditar" onClick={() => {{setModalCadastroProdutoOpen(true)}}}>
+			<Button className="usuarioCategoriaEditar" onClick={() => {{setModalCadastrarProdutoOpen(true)}}}>
 			<EditIcon/>
 			</Button>
 			<Button className="usuarioCategoriaExcluir" onClick={() => {
     setModalCadastroCategoriaOpen(true);
-    setPegarId(produto.categorias?.id);
+    {/*}setPegarId(produto.categorias?.id);*/}
 }}>
 			<DeleteIcon/>
 			</Button>
 			</Typography>
 			))}
 			</Stack>
-      <Modal open={modalCadastroProdutoOpen} onClose={handleModalClose}>
+      <Modal open={modalCadastrarProdutoOpen} onClose={handleModalClose}>
         <div>
 				{/*<ModalCadastrarCategoria/>*/}
         </div>

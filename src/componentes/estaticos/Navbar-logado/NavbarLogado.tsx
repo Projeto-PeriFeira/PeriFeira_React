@@ -19,7 +19,7 @@ import Logout from '@mui/icons-material/Logout';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { Usuario } from '../../../model/Usuario'
 import {toast} from 'react-toastify'
-import FormularioProduto from '../../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import CadastrarProduto from '../../../componentes/produtos/cadastrarProduto/CadastrarProduto'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { addToCart } from '../../../store/tokens/actions';
 import CadastrarCategoria from '../../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
@@ -41,7 +41,7 @@ function NavbarLogado() {
 		}
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const [modalCadastroProdutoOpen, setModalCadastroProdutoOpen] = useState(false);
+  const [modalCadastrarProdutoOpen, setModalCadastrarProdutoOpen] = useState(false);
   const [modalCadastroCategoriaOpen, setModalCadastroCategoriaOpen] = useState(false);
   const [modalLogoutOpen, setModalLogoutOpen] = useState(false);
 	const carrinho = useSelector<TokenState, TokenState['produtos']>(
@@ -51,7 +51,7 @@ function NavbarLogado() {
 
   const handleModalClose = () => {
 		setModalLogoutOpen(false);
-    setModalCadastroProdutoOpen(false);
+    setModalCadastrarProdutoOpen(false);
     setModalCadastroCategoriaOpen(false);
   };
 		const open = Boolean(anchorEl);
@@ -200,7 +200,7 @@ useEffect(() => {
 													Configurar perfil
 												</MenuItem>
 												</Link>
-												<MenuItem onClick={() => {{setModalCadastroProdutoOpen(true)}; handleClose}}>
+												<MenuItem onClick={() => {{setModalCadastrarProdutoOpen(true)}; handleClose}}>
 													<ListItemIcon className="text">
 														<AddBoxOutlinedIcon fontSize="small" />
 													</ListItemIcon>
@@ -219,9 +219,9 @@ useEffect(() => {
 													Logout
 												</MenuItem>
 												</Menu>
-      <Modal open={modalCadastroProdutoOpen} onClose={handleModalClose}>
+      <Modal open={modalCadastrarProdutoOpen} onClose={handleModalClose}>
         <div>
-				<FormularioProduto/>
+				<CadastrarProduto/>
         </div>
       </Modal>
       <Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>

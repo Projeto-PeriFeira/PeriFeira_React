@@ -24,7 +24,7 @@ import { Grid } from '@material-ui/core';
 import './CadastrarProduto.css'
 import { toast } from 'react-toastify';
 
-function FormularioProduto() {
+function CadastrarProduto() {
   const navigate = useNavigate();
 
   const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -262,4 +262,4 @@ function FormularioProduto() {
   );
 }
 
-export default FormularioProduto;
+export default CadastrarProduto;
