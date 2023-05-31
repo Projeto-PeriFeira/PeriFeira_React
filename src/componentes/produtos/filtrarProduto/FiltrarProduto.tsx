@@ -101,53 +101,54 @@ return (
 		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 		{
 		produtos.map(produto =>(
-					<Card	className="filtroProduto">
-					<CardMedia
-					className="filtroProdutoImagem"
-					component="img"
-					image={produto.foto}
-					alt="Foto do produto"
-					/>
-					<Box className="filtroProdutoPropriedade">
-					<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
-					<Grid item xs={8}>
+				<Card	className="filtroProduto">
+				<CardMedia
+				className="filtroProdutoImagem"
+				component="img"
+				image={produto.foto}
+				alt="Foto do produto"
+				/>
+				<Box className="filtroProdutoPropriedade">
+				<Grid className="filtroProdutoSecao1" container justifyContent="center" alignItems="center">
+				<Grid item xs={8}>
 					<Box width={155} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-					<Typography noWrap>
-					{produto.categorias?.descricao}
-					</Typography>
-					</Box>
-					</Grid>
-					<Grid item xs={4} alignItems="right">
-					<Avatar src={produto.usuario?.foto}/>
-					</Grid>
-					</Grid>
-					<Typography className="filtroProdutoNome">
+				<Typography noWrap>
+				{produto.categorias?.descricao}
+				</Typography>
+				</Box>
+				</Grid>
+				<Grid item xs={4} alignItems="right">
+				<Avatar src={produto.usuario?.foto}/>
+				</Grid>
+				</Grid>
+				<Typography className="filtroProdutoNome">
 					<Box width={180} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-					{produto.nome} unid.
+				{produto.nome} unid.
+				</Box>
+				</Typography>
+					<Grid container>
+					<Grid xs={6}>
+					<Typography className="filtroProdutoPreco">
+					R$ {produto.preco}
+				</Typography>
+					</Grid>
+					<Grid xs={6}>
+					</Grid>
+					</Grid>
+					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+					<Typography noWrap className="filtroProdutoUsuario">
+					Cadastrado por: {produto.usuario?.nome}
+				</Typography>
 					</Box>
-					</Typography>
-						<Grid container>
-						<Grid xs={6}>
-						<Typography className="filtroProdutoPreco">
-						R$ {produto.preco}
-					</Typography>
-						</Grid>
-						<Grid xs={6}>
-						</Grid>
-						</Grid>
-						<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-						<Typography noWrap className="filtroProdutoUsuario">
-						Cadastrado por: {produto.usuario?.nome}
-					</Typography>
-						</Box>
-						<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-						<Typography noWrap className="filtroProdutoUsuario">
-						{produto.descricao}
-					</Typography>
-						</Box>
-						<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar" width="22px">Comprar</Button>
-						</Box>
-						</Card>
+					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+					<Typography noWrap className="filtroProdutoUsuario">
+					{produto.descricao}
+				</Typography>
+					</Box>
+					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
+					<Button onClick={() => {dispatch(addToCart(produto))}} className="filtroProdutoComprar"><AddShoppingCartSharpIcon/></Button>
+					</Box>
+					</Card>
 						))}
 						</Stack>
 						</TabPanel>
