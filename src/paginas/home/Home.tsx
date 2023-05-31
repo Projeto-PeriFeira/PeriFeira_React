@@ -16,25 +16,8 @@ function Home() {
 			(state) => state.tokens
 			);
 
-	useEffect(() => {
-			if (token == "") {
-			toast.error("Você precisa estar logado")
-			navigate("/login")
-
-			}
-			}, [token])
 	return (
 			<>
-			{token == "" ? 
-			<Grid container justifyContent="center">
-			<div className="dot-wave">
-			<div className="dot-wave__dot"></div>
-			<div className="dot-wave__dot"></div>
-			<div className="dot-wave__dot"></div>
-			<div className="dot-wave__dot"></div>
-			</div>
-			</Grid>
-			:
 			<Grid container className='caixa' alignItems='center' justifyContent='center'>
 				<Grid item xs={4}>
 					<Stack flexDirection='column' gap={2}>
@@ -50,10 +33,7 @@ function Home() {
 
 						<img className='image-home' src="/src/assets/Camada 5.png" alt="" />
 			</Grid>
-				
 			</Grid>
-
-			}
 			<Sobre/>	
 	</>
 		);

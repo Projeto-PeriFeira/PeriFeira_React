@@ -126,15 +126,15 @@ async function atualizar(event: ChangeEvent<HTMLFormElement>) {
             Authorization: token,
           },
         });
-        alert('Usuário cadastrado com sucesso');
+        toast.success('Usuário atualizado com sucesso');
         setUsuario({ ...usuario, senha: '' });
         setConfirmarSenha('');
       } catch (error) {
-        alert('Falha ao cadastrar o usuário, verifique os campos');
+        toast.error('Falha ao atualizar o usuário, verifique os campos');
 				console.log(error)
       }
     } else {
-      alert('Os campos de Senha e Confirmar Senha estão diferentes');
+      toast.error('Os campos de Senha e Confirmar Senha estão diferentes');
       setUsuario({ ...usuario, senha: '' });
       setConfirmarSenha('');
     }

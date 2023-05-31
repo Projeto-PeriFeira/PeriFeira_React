@@ -62,7 +62,7 @@ linkedin: "https://www.linkedin.com/in/graziella-santos-9b31aa199/",
 			<Grid className="secao1" container alignItems='center' justifyContent='center'>
 			<Grid item xs={8} md={4}>
 			<Typography className="frase" variant="h4">"Consumidor da periferia reclama que empresas aprofundam segregação urbana"</Typography> 
-			<Typography className="texto">- Folha de São Paulo, setembro, 2021</Typography>
+			<Typography className="texto">- Folha de São Paulo, setembro, 2021.</Typography>
 			<Box className="secao1" paddingBottom="67px"/>
 			</Grid>
 			</Grid>
@@ -73,7 +73,7 @@ linkedin: "https://www.linkedin.com/in/graziella-santos-9b31aa199/",
 			</Grid>
 			<Grid container alignItems='center' justifyContent='center'>
 			<Grid item xs={8} md={6}>
-			<Typography className="texto" marginBottom="42px" textAlign="center">Nossa equipe é composta por pessoas engajadas, comprometidas e recém formadas na Generation Brasil!, aonde trabalhamos incansavelmente para garantir que esses alimentos não convencionais possam chegar até você.</Typography>
+			<Typography className="texto" marginBottom="42px" textAlign="center">Nossa equipe é composta por desenvolvedores engajados, comprometidos e recém-formados na Generation Brasil! Juntos, transformamos códigos em soluções extraordinárias</Typography>
 			</Grid>
 			<Grid container
 			justifyContent="center"

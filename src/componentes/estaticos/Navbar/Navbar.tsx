@@ -61,6 +61,7 @@ return(
 			</Typography>
 			</Box>
 			</Link>
+			{/*
 			<Box mx={1} style={{ cursor: 'pointer' }}>
 			<Typography className='item' variant="subtitle1" color="inherit">
 			Cestas
@@ -73,6 +74,7 @@ return(
 			</Typography>
 			</Box>
 			</Link>
+			*/}
 			<Link className='reset-link' to='/sobre'>
 			<Box mx={1} style={{ cursor: 'pointer' }}>
 			<Typography className='item' variant="subtitle1" color="inherit">

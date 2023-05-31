@@ -68,7 +68,7 @@ function CadastrarProduto() {
 
   useEffect(() => {
     if(token === ''){ 
-      alert('Ta tirando né??? sem token não rola')
+      toast.error("Você precisa estar logado")
       navigate('/login')
     }
   }, [])
@@ -82,7 +82,7 @@ function CadastrarProduto() {
       });
     } catch (error: any) {
       if (error.toString().contains('403')) {
-        alert('Token expirado, logue novamente');
+        toast.error('Token expirado, logue novamente');
         dispatch(addToken(''))
         navigate('/login');
       }
@@ -133,7 +133,7 @@ function CadastrarProduto() {
         toast.success("Produto atualizado com sucesso");
         navigate('/perfil')
       } catch (error) {
-        alert('Falha ao atualizar produto - verifique os campos preenchidos');
+        toast.error('Falha ao atualizar produto - verifique os campos preenchidos');
       }
     } else {
       try {
@@ -145,7 +145,7 @@ function CadastrarProduto() {
         toast.success("Produto cadastrado com sucesso");
         navigate('/loja')
       } catch (error) {
-        alert('Falha ao cadastrar produto - verifique os campos preenchidos');
+        toast.error('Falha ao cadastrar produto - verifique os campos preenchidos');
       }
     }
   }
