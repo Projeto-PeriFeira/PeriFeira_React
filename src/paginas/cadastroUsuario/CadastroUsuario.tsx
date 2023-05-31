@@ -72,7 +72,11 @@ async function confirm(event: ChangeEvent<HTMLInputElement>) {
 
 async function cadastrar(event: ChangeEvent<HTMLFormElement>) {
 	event.preventDefault();
-		if (usuario.senha === confirmarSenha && emailError && senhaError) {
+		if (
+		usuario.senha === confirmarSenha
+		// && emailError
+		// && senhaError
+		) {
 			try {
 	const toastId = toast.loading('Verificando os dados...')
 				await cadastroUsuario('/usuarios/cadastrar', usuario, setUsuarioResp);
@@ -82,7 +86,7 @@ async function cadastrar(event: ChangeEvent<HTMLFormElement>) {
 				toast.error('Falha ao cadastrar o usuário, verifique as informações dos campos');
 			}
 		} else {
-				toast.error('Falha ao cadastrar o usuário, verifique as informações dos campos');
+				toast.error('Confirme seus dados');
 			setUsuario({ ...usuario, senha: '' });
 			setConfirmarSenha('')
 		}
