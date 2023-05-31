@@ -8,7 +8,7 @@ import { TokenState } from '../../store/tokens/tokensReducer'
 import {toast} from 'react-toastify'
 
 function Carrinho() {
-
+  
 	let navigate = useNavigate();
 	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
@@ -25,43 +25,42 @@ function Carrinho() {
 const userId = useSelector<TokenState, TokenState['id']>(
 (state) => state.id
 )
-	return (
-	<>
-			<Box className="secao1" paddingBottom="91px"/>
-			<Grid container className="secao1" alignItems='center' justifyContent='center'>
-							<Grid item xs={8} className="secao2 carrinhoMenu">
-			<Box paddingBottom="49px"/>
-							<Typography className="titulo" textAlign="center" marginTop="49" variant="h3">Carrinho de compras</Typography>
-			<Box className="secao2" paddingBottom="71px"/>
-			<Grid container alignItems='left' justifyContent='left'>
-							<Grid item xs={5}>
-                <CardMedia
-                    component="img"
-                    height="146"
-										width="214"
-                    image="https://images.unsplash.com/photo-1579113800032-c38bd7635818?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
-                    alt="Foto do produto"
-										className="carrinhoProdutoImagem"
-                />
-			<Grid container>
-							</Grid>
-							</Grid>
-							<Grid item xs={4}>
-			<Grid container>
-							<Grid className="carrinhoProdutoPropriedades" item xs={6}>
-							<Typography>Abacaxi</Typography>
-							<Typography>Abacaxi Fresquinho</Typography>
-							</Grid>
-							<Grid item xs={6}>
-							<Typography className="carrinhoProdutoPreco">R$ 10,0</Typography>
-							</Grid>
-							</Grid>
-							</Grid>
-							</Grid>
-							<hr/>
-							</Grid>
-							</Grid>
-							</>
-)
+  return (
+    <>
+      <Grid className='container' justifyContent='center' container>
+        <Grid justifyContent='center' className='bg-carrinho' direction='row' item xs={8}>
+          <Typography className='text mg-bt-60 bold' align='center' variant='h4'>Carrinho de compras</Typography>
+        <Box className='cardProduto' display='flex' justifyContent='space-between'>
+          <Grid xs={4}  item>
+            <Box>
+                <img className="image" src="https://boomi.b-cdn.net/wp-content/uploads/2022/06/11-beneficios-do-abacaxi-para-a-saude.png" alt="" />
+            </Box>
+          </Grid>
+          <Grid item xs={4}>
+          <Box>
+              <Typography>Abacaxi</Typography>
+              <Typography>Abacaxi fresquinho</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={1}>
+            <Box>
+              <Typography>R$ 5,00</Typography>
+            </Box>
+          </Grid>
+          </Box>
+          <Box className='valor-total' display='flex' justifyContent='space-between'>
+            <Box>
+              <Typography className='bold mg-bt-20' variant='h5'>Total:</Typography>
+            <Button className="btn">Finalizar compra</Button>
+            </Box>
+            <Box>
+              <Typography className='bold ' variant='h5'>R$ 5,00</Typography>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </>
+  )
 }
+
 export default Carrinho

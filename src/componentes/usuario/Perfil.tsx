@@ -106,7 +106,7 @@ function updateModel(event: ChangeEvent<HTMLInputElement>) {
 			usuario.senha.length >= 8 &&
 			usuario.foto.length >= 1
 			)}
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
 
 async function atualizar(event: ChangeEvent<HTMLFormElement>) {
 	event.preventDefault();
@@ -184,18 +184,18 @@ validateSenha(event)
 sx={{
 input: {
 color: "var(--laranja)",
-			 }
+			}
 }}
 InputProps={{
 endAdornment: (
-							 <InputAdornment position="end">
-							 <IconButton
-							 aria-label="toggle password visibility"
-							 onClick={handleClickShowPassword}
-							 >
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
-							 </IconButton>
-							 </InputAdornment>
+							<InputAdornment position="end">
+							<IconButton
+							aria-label="toggle password visibility"
+							onClick={handleClickShowPassword}
+							>
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							</IconButton>
+							</InputAdornment>
 							)
 }}
 />
@@ -211,18 +211,18 @@ onChange={(event: ChangeEvent<HTMLInputElement>) => {
 sx={{
 input: {
 color: "var(--laranja)",
-			 }
+			}
 }}
 InputProps={{
 endAdornment: (
-							 <InputAdornment position="end">
-							 <IconButton
-							 aria-label="toggle password visibility"
-							 onClick={handleClickShowPassword}
-							 >
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
-							 </IconButton>
-							 </InputAdornment>
+							<InputAdornment position="end">
+							<IconButton
+							aria-label="toggle password visibility"
+							onClick={handleClickShowPassword}
+							>
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							</IconButton>
+							</InputAdornment>
 							)
 }}
 />

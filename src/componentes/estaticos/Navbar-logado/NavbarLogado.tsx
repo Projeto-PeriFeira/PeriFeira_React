@@ -141,13 +141,13 @@ useEffect(() => {
 												aria-haspopup="true"
 												aria-expanded={open ? 'true' : undefined}
 											>
-<Badge badgeContent={quant}
-className="badge"
-anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'left',
-  }}
->
+											<Badge badgeContent={quant}
+											className="badge"
+											anchorOrigin={{
+													vertical: 'bottom',
+													horizontal: 'left',
+												}}
+											>
 												<Avatar alt="Foto do usuário" src={usuario.foto} />
 												</Badge>
 											</IconButton>
@@ -179,13 +179,13 @@ anchorOrigin={{
 												<Link className="reset-link" to='/carrinho'>
 												<MenuItem>
 													<ListItemIcon className="text">
-<Badge badgeContent={quant}
-className="badge"
-anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'right',
-  }}
->
+											<Badge badgeContent={quant}
+											className="badge"
+											anchorOrigin={{
+													vertical: 'bottom',
+													horizontal: 'right',
+												}}
+											>
 														<ShoppingCartIcon fontSize="small" />
 														</Badge>
 													</ListItemIcon>

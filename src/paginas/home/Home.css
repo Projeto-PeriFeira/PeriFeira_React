@@ -2,9 +2,10 @@
   padding: 60px 0;
   background-color: #FFF7EE;
 }
-.image {
+.image-home{
   width: 100%;
   object-fit: cover;
+  box-sizing: border-box !important;
 }
 .botao {
   border-radius: 0.5rem !important;

@@ -23,6 +23,7 @@ import {Provider} from 'react-redux'
 import store from './store/store'
 
 import { ToastContainer } from 'react-toastify';
+import Carrinho from './paginas/carrinho/Carrinho';
 
 function App() {
 	return (
@@ -48,7 +49,7 @@ function App() {
 					<Route path='/perfil' element={<Perfil/>}/>
 					<Route path='/login' element={<Login/>}/>
 					<Route path='/cadastro' element={<CadastroUsuario/>}/>
-					<Route path='/carrinho' element={<CadastroUsuario/>}/>
+					<Route path='/carrinho' element={<Carrinho/>}/>
 					{/*Categorias*/}
 					<Route path='/categorias' element={<CadastrarCategoria/>}/>
 					<Route path='/categorias/:id' element={<CadastrarCategoria/>}/>
@@ -57,6 +58,7 @@ function App() {
 					<Route path='/produto/:id' element={<ProdutoIndividual/>}/>
 					<Route path='/cadastrarProdutos/:id' element={<CadastrarProduto/>}/>
 					<Route path='/deletarProduto/:id' element={<DeletarProduto/>}/>
+
 				</Routes>
 			<Footer/>
 		</BrowserRouter>

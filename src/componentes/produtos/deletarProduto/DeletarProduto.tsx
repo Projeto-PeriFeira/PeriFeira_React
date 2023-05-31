@@ -50,7 +50,7 @@ function DeletarProduto() {
           }
         
           function nao() {
-            navigate('/produtos')
+            navigate('/perfil')
           }
   return (
     <>

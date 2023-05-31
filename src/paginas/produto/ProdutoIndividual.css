@@ -1,10 +1,30 @@
-.imagemProduto {
-    background-image: url(https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80);
-    background-repeat: no-repeat;
-    width: 80vh; 
-    min-height: 50vh; 
-    background-size: 60vh;
-    background-position:  center;
-    margin: 5vh;    
+.image-prod{
+    width: 100% !important;
+    object-fit: cover !important;
+    max-height: 50vh !important;
+    object-position: center !important;
+    border-radius: 36px !important;
+    margin: auto !important;
+}
 
+.text-prod{
+    padding: 0 !important;
+    color: var(--marrom2) !important;
+}
+
+.background-prod{
+    background-color: var(--rosa2) !important;
+}
+.tag-categoria{
+    border: 1px solid var(--marrom1) !important;
+    border-radius: 8px !important;
+    padding: 2px 10px !important;
+}
+
+.preco {
+    color: var(--laranja) !important;
+}
+
+.pd-top-20{
+    padding-top: 20px !important;
 }

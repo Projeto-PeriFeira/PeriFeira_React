@@ -151,8 +151,8 @@ function FormularioProduto() {
 
   return (
     <>
-    <Grid container justifyContent='center'>
-    <Grid className='background-form' container xs={8} justifyContent='space-around' alignItems='flex-start'>
+    <Grid container className='marginX-60'  justifyContent='center'>
+    <Grid  className='background-form' container xs={8} justifyContent='space-around' alignItems='flex-start'>
       <Grid className='container' item xs={4}>
         {produto.foto == '' &&         
         <Box className='bg'>
