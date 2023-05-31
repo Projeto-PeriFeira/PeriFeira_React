@@ -249,16 +249,18 @@ endAdornment: (
 				<Link to={`/categorias/${produto.id}`} className="text-decorator-none">
 				<EditIcon className="usuarioCategoriaEditar"/>
 				</Link>
-			<Button className="usuarioCategoriaExcluir" onClick={() => {
+			{/*<Button className="usuarioCategoriaExcluir" onClick={() => {
     setModalCadastroCategoriaOpen(true);
-    {/*}setPegarId(produto.categorias?.id);*/}
-}}>
-			<DeleteIcon/>
+    setPegarId(produto.categorias?.id);
 			</Button>
+}}>*/}
+				<Link to={`/deletarCategoria/${produto.id}`} className="text-decorator-none">
+			<DeleteIcon/>
+				</Link>
 			</Typography>
 			))}
 			</Stack>
-      <Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
+      {/*<Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
         <div>
 			<Box marginBottom="30vh"/>
 			<Container maxWidth="sm" className="background-form">
@@ -268,7 +270,7 @@ endAdornment: (
 			</Link>
 			</Container>
         </div>
-      </Modal>
+      </Modal>*/}
 </Grid>
 </Grid>
 <Grid container alignItems='center' justifyContent='center'>
