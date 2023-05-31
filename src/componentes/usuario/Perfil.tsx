@@ -78,7 +78,7 @@ useEffect(() => {
 				})
 		}, [usuario.usuario])
 
-const [pegarId, setPegarId] = useState<string>('');
+// const [pegarId, setPegarId] = useState<string>('');
 const [confirmarSenha, setConfirmarSenha] = useState<string>('');
 // const [nomeError, setNomeError] = useState<boolean>(false);
 // const [emailError, setEmailError] = useState<boolean>(false);
@@ -159,6 +159,7 @@ return (
 		<TextField
 		name="nome"
 		label="Nome"
+required
 		value={usuario.nome}
 		onChange={(event: ChangeEvent<HTMLInputElement>) =>
 			updateModel(event)
@@ -168,6 +169,7 @@ return (
 name="usuario"
 label="E-mail"
 type="email"
+required
 value={usuario.usuario}
 onChange={(event: ChangeEvent<HTMLInputElement>) => {
 	updateModel(event)
@@ -184,6 +186,7 @@ onChange={(event: ChangeEvent<HTMLInputElement>) =>
 <TextField
 name="senha"
 label="Senha"
+required
 type={showPassword ? "text" : "password"}
 helperText="Digite a senha para confirmar as alterações"
 onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -210,6 +213,7 @@ endAdornment: (
 <TextField
 name="confirmarSenha"
 label="Confirmar senha"
+required
 value={confirmarSenha}
 type={showPassword ? "text" : "password"}
 onChange={(event: ChangeEvent<HTMLInputElement>) => {
