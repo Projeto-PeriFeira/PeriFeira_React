@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
+import { useNavigate } from 'react-router';
 import { Usuario } from '../../model/Usuario';
 import { buscaId, atualiza } from '../../services/Service';
 import { Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
@@ -22,9 +23,19 @@ import {
 import { Link } from 'react-router-dom';
 
 function Perfil() {
-	const token = useSelector<TokenState, TokenState['tokens']>(
+	let navigate = useNavigate();
+	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
 			);
+
+	useEffect(() => {
+			if (token == "") {
+			toast.error("Você precisa estar logado")
+			navigate("/login")
+
+			}
+			}, [token])
+
 	const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
   const [modalCadastroProdutoOpen, setModalCadastroProdutoOpen] = useState(false);
   const [modalCadastroCategoriaOpen, setModalCadastroCategoriaOpen] = useState(false);
