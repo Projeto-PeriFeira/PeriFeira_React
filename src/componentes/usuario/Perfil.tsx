@@ -3,8 +3,11 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import { Usuario } from '../../model/Usuario';
 import { buscaId, atualiza } from '../../services/Service';
-import { Box, Typography, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
+import { Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
 import { toast } from 'react-toastify'
+import FormularioProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
+import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
+import DeletarProduto from '../../componentes/produtos/deletarProduto/DeletarProduto'
 import './Perfil.css';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -23,6 +26,13 @@ function Perfil() {
 			(state) => state.tokens
 			);
 	const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
+  const [modalCadastroProdutoOpen, setModalCadastroProdutoOpen] = useState(false);
+  const [modalCadastroCategoriaOpen, setModalCadastroCategoriaOpen] = useState(false);
+
+  const handleModalClose = () => {
+    setModalCadastroProdutoOpen(false);
+    setModalCadastroCategoriaOpen(false);
+  };
 
 	const [usuario, setUsuario] = useState<Usuario>({
 id: +userId,
@@ -57,6 +67,7 @@ useEffect(() => {
 				})
 		}, [usuario.usuario])
 
+const [pegarId, setPegarId] = useState<string>('');
 const [confirmarSenha, setConfirmarSenha] = useState<string>('');
 const [verificar, setVerificar] = useState<boolean>(false)
 const [nomeError, setNomeError] = useState<boolean>(false);
@@ -95,7 +106,7 @@ function updateModel(event: ChangeEvent<HTMLInputElement>) {
 			usuario.senha.length >= 8 &&
 			usuario.foto.length >= 1
 			)}
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
 
 async function atualizar(event: ChangeEvent<HTMLFormElement>) {
 	event.preventDefault();
@@ -173,18 +184,18 @@ validateSenha(event)
 sx={{
 input: {
 color: "var(--laranja)",
-			 }
+			}
 }}
 InputProps={{
 endAdornment: (
-							 <InputAdornment position="end">
-							 <IconButton
-							 aria-label="toggle password visibility"
-							 onClick={handleClickShowPassword}
-							 >
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
-							 </IconButton>
-							 </InputAdornment>
+							<InputAdornment position="end">
+							<IconButton
+							aria-label="toggle password visibility"
+							onClick={handleClickShowPassword}
+							>
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							</IconButton>
+							</InputAdornment>
 							)
 }}
 />
@@ -200,18 +211,18 @@ onChange={(event: ChangeEvent<HTMLInputElement>) => {
 sx={{
 input: {
 color: "var(--laranja)",
-			 }
+			}
 }}
 InputProps={{
 endAdornment: (
-							 <InputAdornment position="end">
-							 <IconButton
-							 aria-label="toggle password visibility"
-							 onClick={handleClickShowPassword}
-							 >
-							 {showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
-							 </IconButton>
-							 </InputAdornment>
+							<InputAdornment position="end">
+							<IconButton
+							aria-label="toggle password visibility"
+							onClick={handleClickShowPassword}
+							>
+							{showPassword ? <VisibilityIcon className="visibilidadeSenha"/> : <VisibilityOff className="visibilidadeSenha"/>}
+							</IconButton>
+							</InputAdornment>
 							)
 }}
 />
@@ -222,10 +233,47 @@ endAdornment: (
 </Grid>
 <Grid container alignItems='center' justifyContent='center'>
 <Grid xs={9} className="usuarioSecaoProduto">
+<Typography className="titulo" variant="h4" marginBottom="58">Gerenciar categorias</Typography>
+		<Stack marginTop="28px" spacing={3} direction={{ xs: 'column', sm: 'row' }}>
+{usuario?.produtos?.map((produto) => (
+			<Typography className="usuarioCategoriaNome">
+			{produto.categorias?.descricao}
+			<Button className="usuarioCategoriaEditar" onClick={() => {{setModalCadastroProdutoOpen(true)}}}>
+			<EditIcon/>
+			</Button>
+			<Button className="usuarioCategoriaExcluir" onClick={() => {
+    setModalCadastroCategoriaOpen(true);
+    setPegarId(produto.categorias?.id);
+}}>
+			<DeleteIcon/>
+			</Button>
+			</Typography>
+			))}
+			</Stack>
+      <Modal open={modalCadastroProdutoOpen} onClose={handleModalClose}>
+        <div>
+				<CadastrarCategoria/>
+        </div>
+      </Modal>
+      <Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
+        <div>
+			<Box marginBottom="30vh"/>
+			<Container maxWidth="sm" className="background-form">
+			<Typography className="titulo" variant="h4" textAlign="center">Voce deseja realmente excluir a categoria?</Typography>
+			<Link to={`/deletarCategoria/${pegarId}`}>
+			<Button fullWidth className='btn mg-top' variant="contained" color="primary">Deletar</Button>
+			</Link>
+			</Container>
+        </div>
+      </Modal>
+</Grid>
+</Grid>
+<Grid container alignItems='center' justifyContent='center'>
+<Grid xs={9} className="usuarioSecaoProduto">
 <Typography className="titulo" variant="h4" marginBottom="58">Meus produtos</Typography>
 {usuario.produtos?.map((produto) => (
 			<>
-			<Box marginBottom="32px"/>
+			<Box marginBottom="106px"/>
 			<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
 			<Card	className="usuarioProduto">
 			<CardMedia

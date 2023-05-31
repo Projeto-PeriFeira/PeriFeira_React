@@ -192,7 +192,7 @@ useEffect(() => {
 													Carrinho
 												</MenuItem>
 												</Link>
-												<Link to='/perfil' className='reset-link'>
+												<Link className="reset-link" to='/perfil'>
 												<MenuItem>
 													<ListItemIcon className="text">
 														<ManageAccountsSharpIcon fontSize="small" />

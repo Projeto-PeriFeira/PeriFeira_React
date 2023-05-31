@@ -53,3 +53,23 @@ body {
 	background-color: var(--laranja) !important;
 	border-radius: 10px !important;
 }
+
+.usuarioCategoriaNome {
+	color: var(--marrom2) !important;
+	background-color: var(--rosa3) !important;
+	border: 1px solid var(--marrom3) !important;
+	border-radius: 20px !important;
+	text-transform: capitalize !important;
+	font-weight: 400 !important;
+	padding: 10.5px 25px !important;
+	opacity: 100% !important;
+	display: flex !important;
+	align-items: center !important;
+}
+.usuarioCategoriaEditar {
+	color: var(--laranja) !important;
+	padding-left: 24.5px !important;
+}
+.usuarioCategoriaExcluir {
+	color: var(--laranja) !important;
+}

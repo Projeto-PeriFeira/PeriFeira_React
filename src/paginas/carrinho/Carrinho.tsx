@@ -1,8 +1,30 @@
-import { Box, Button, Grid, Typography } from '@material-ui/core'
-import './Carrinho.css';
 import React from 'react'
+import './Carrinho.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { Grid, CardMedia, Badge, Container, AppBar, Toolbar, Modal, Typography, Box, Button } from "@material-ui/core";
+import { Link, useNavigate } from "react-router-dom";
+import { addToken } from '../../store/tokens/actions'
+import { TokenState } from '../../store/tokens/tokensReducer'
+import {toast} from 'react-toastify'
 
 function Carrinho() {
+  
+	let navigate = useNavigate();
+	const token = useSelector<TokenState, TokenState["tokens"]>(
+			(state) => state.tokens
+			);
+
+	const dispatch = useDispatch()
+
+		// function goLogout() {
+		// 	dispatch(addToken(''))
+		// 		toast.error("Usuario deslogado")
+		// 		navigate("/login")
+		// }
+
+const userId = useSelector<TokenState, TokenState['id']>(
+(state) => state.id
+)
   return (
     <>
       <Grid className='container' justifyContent='center' container>
