@@ -61,35 +61,36 @@ async function validateSenha(event: ChangeEvent<HTMLInputElement>) {
 
 async function confirm(event: ChangeEvent<HTMLInputElement>) {
 	setConfirmar(
-	// usuario.nome !== '' 
-	// usuario.foto !== ''
-	// && senhaError 
-	// && emailError
-	usuario.senha
-	=== confirmarSenha
-	)
+			// usuario.nome !== '' 
+			// usuario.foto !== ''
+			// && senhaError 
+			// && emailError
+			usuario.senha
+			=== confirmarSenha
+			)
 }
 
 async function cadastrar(event: ChangeEvent<HTMLFormElement>) {
 	event.preventDefault();
-		if (
-		usuario.senha === confirmarSenha
-		// && emailError
-		// && senhaError
-		) {
+		const toastId = toast.loading('Verificando os dados...')
+	if (
+			usuario.senha === confirmarSenha
+			// && emailError
+			// && senhaError
+		 ) {
 			try {
-	const toastId = toast.loading('Verificando os dados...')
 				await cadastroUsuario('/usuarios/cadastrar', usuario, setUsuarioResp);
-				toast.dismiss(toastId)
-					toast.success('Cadastrado com sucesso')
+				toast.success('Cadastrado com sucesso')
 			} catch (error) {
-				toast.error('Falha ao cadastrar o usuário, verifique as informações dos campos');
+				toast.dismiss(toastId)
+					toast.error('Falha ao cadastrar o usuário, verifique as informações dos campos');
 			}
-		} else {
-				toast.error('Confirme seus dados');
-			setUsuario({ ...usuario, senha: '' });
-			setConfirmarSenha('')
-		}
+	} else {
+		toast.dismiss(toastId)
+			toast.error('Verifique se sua senha esta correta');
+		setUsuario({ ...usuario, senha: '' });
+		setConfirmarSenha('')
+	}
 }
 useEffect(() => {
 		if (usuarioResp.id !== 0) {
@@ -170,7 +171,9 @@ endAdornment: (
 value={usuario.foto}
 onChange={(event: ChangeEvent<HTMLInputElement>) => updateModel(event)} />
 <Box display='flex' justifyContent='center' gap={4} textAlign='center' marginTop={2}>
-<Button type="submit" variant="contained" className='btn'>
+<Button type="submit" variant="contained" className='btn'
+disabled={false}
+>
 Cadastrar
 </Button>
 <Button type="submit" variant="contained" className='btn-cancelar' onClick={voltar}>

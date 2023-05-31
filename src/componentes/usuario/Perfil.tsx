@@ -100,6 +100,10 @@ const handleClickShowPassword = () => setShowPassword(!showPassword);
 //
 function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
 	setConfirmarSenha(event.target.value);
+	setUsuario({
+	...usuario,
+	produtos: null
+	})
 }
 
 // async function confirm(event: ChangeEvent<HTMLInputElement>) {

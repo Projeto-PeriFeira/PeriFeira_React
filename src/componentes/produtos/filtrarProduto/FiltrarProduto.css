@@ -1,6 +1,10 @@
 * {
 	font-family: Poppins !important;
 }
+.MuiTabs-flexContainer {
+	flex-wrap: wrap;
+	gap: 1rem;
+}
 .filtroCategoriaLista {
 	padding-bottom: 102px;
 }
