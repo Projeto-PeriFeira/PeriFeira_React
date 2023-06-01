@@ -31,7 +31,7 @@ function Home() {
 				</Grid>
 			<Grid item justifyContent='center' xs={4}>
 
-						<img className='image-home' src="/src/assets/Camada 5.png" alt="" />
+						<img className='image-home' src="https://media.discordapp.net/attachments/1094735432178221206/1113893229704781904/Camada_5.png?width=780&height=676" alt="" />
 			</Grid>
 			</Grid>
 			<Sobre/>	

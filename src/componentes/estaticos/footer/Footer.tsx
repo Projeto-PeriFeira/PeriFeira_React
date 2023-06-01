@@ -20,7 +20,7 @@ function Footer() {
             <Grid container direction="row" justifyContent='flex-end' alignItems="center">
                 <Grid alignItems="center" justifyContent='center' container xs={4}>
                     <Box>
-                        <img src="/src/assets/logo-bege.svg" alt="" />
+                        <img src="https://media.discordapp.net/attachments/1094735432178221206/1113882968184860742/logo-bege_1.png" alt="" />
                     </Box>
                 </Grid>
                 <Grid alignItems="center" direction='column' justifyContent='center' container xs={4}>

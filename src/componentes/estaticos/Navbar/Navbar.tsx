@@ -50,7 +50,7 @@ return(
 			<Grid container alignItems='center' justifyContent={'space-between'}>
 			<Box style={{ cursor: 'pointer' }}>
 			<Typography variant="h5" color="inherit">
-			<img className='image' src="/src/assets/logo.svg" alt="" style={{ width: '205px', height: '40px' }} />
+			<img className='image-logo' src="https://media.discordapp.net/attachments/1094735432178221206/1113882967891251231/logo_1.png" alt="" style={{ width: '205px', height: '40px' }} />
 			</Typography>
 			</Box>
 			<Box display="flex" alignItems='center' gridGap={20} justifyContent="start">
