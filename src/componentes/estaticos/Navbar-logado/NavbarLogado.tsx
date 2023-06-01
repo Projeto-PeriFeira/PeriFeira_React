@@ -48,6 +48,9 @@ function NavbarLogado() {
 	(state) => state.produtos
 	)
 	let quant = 0
+	carrinho.map((valor) => {
+				{quant += 1}
+				})
 
   const handleModalClose = () => {
 		setModalLogoutOpen(false);
