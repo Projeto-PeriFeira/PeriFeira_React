@@ -10,17 +10,17 @@ const desenvolvedores = [
 {
 nome: "Renato da Silva Nunes",
 github: "https://github.com/renatonunes74",
-linkedin: "",
+linkedin: "https://www.linkedin.com/in/renato-nunes",
 },
 {
 nome: "Jéssica Mendes",
 github: "https://github.com/JesscMendesr",
-linkedin: "",
+linkedin: "https://www.linkedin.com/in/jessicamendesraulino",
 },
 {
 nome: "Igor Menezes",
 github: "https://github.com/IgorWz",
-linkedin: "",
+linkedin: "https://www.linkedin.com/in/igor-menezes-636b60239/",
 },
 {
 nome: "Jonatas Nascimento",
