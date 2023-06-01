@@ -189,7 +189,7 @@ useEffect(() => {
 														<ShoppingBasketIcon fontSize="small" />
 														</Badge>
 													</ListItemIcon>
-												Cesta
+												Sua cesta
 												</MenuItem>
 												</Link>
 												<Link className="reset-link" to='/perfil'>
