@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Carrinho.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { Grid, CardMedia, Badge, Container, AppBar, Toolbar, Modal, Typography, Box, Button } from "@material-ui/core";
@@ -11,17 +11,28 @@ function Carrinho() {
   
 	let navigate = useNavigate();
 	let valor = 0
+	const dispatch = useDispatch()
 	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
 			);
 
-	const dispatch = useDispatch()
+	useEffect(() => {
+			if (token == "") {
+			toast.error("Você precisa estar logado")
+			navigate("/login")
+			return (
+			<Grid container justifyContent="center">
+			<div className="dot-wave">
+			<div className="dot-wave__dot"></div>
+			<div className="dot-wave__dot"></div>
+			<div className="dot-wave__dot"></div>
+			<div className="dot-wave__dot"></div>
+			</div>
+			</Grid>
+			)
+			}
+			}, [token])
 
-		// function goLogout() {
-		// 	dispatch(addToken(''))
-		// 		toast.error("Usuario deslogado")
-		// 		navigate("/login")
-		// }
 
 const userId = useSelector<TokenState, TokenState['id']>(
 (state) => state.id
@@ -50,7 +61,7 @@ const userId = useSelector<TokenState, TokenState['id']>(
           </Grid>
           <Grid item xs={1}>
             <Box>
-              <Typography>R$ {item.preco}</Typography>
+              <Typography>R$ {item.preco.toFixed(2).replace('.', ',')}</Typography>
             </Box>
           </Grid>
           </Box>
@@ -68,7 +79,7 @@ const userId = useSelector<TokenState, TokenState['id']>(
             </Box>
             <Box>
               <Typography className='bold ' variant='h5'>
-							{carrinho.map(item=>{valor += item.preco})}R$ {valor}</Typography>
+							{carrinho.map(item=>{valor += item.preco})}R$ {valor.toFixed(2).replace('.', ',')}</Typography>
             </Box>
           </Box>
         </Grid>

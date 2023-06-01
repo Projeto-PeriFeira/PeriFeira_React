@@ -78,16 +78,10 @@ async function getUserById(id: number) {
 headers: {Authorization: token}
 })
 }
-let valorTotal = 0
 
 useEffect(() => {
 		getUserById(+userId)
 		}, [])
-
-				carrinho.map((valor) => {
-				{valorTotal += valor.preco}
-				{quant += 1}
-				})
 
 		return(
 				<>

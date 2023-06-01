@@ -77,7 +77,7 @@ return (
 		<Typography className='text-prod bold' padding={'4vh'} variant='h3'>{produto?.nome}</Typography>
 		<Typography className='tag-categoria' variant="body1">{produto?.categorias?.descricao}</Typography>
 		<Typography className='pd-top-20' variant="body1">{produto?.descricao}</Typography>
-		<Typography className='preco bold'variant="h5">R$ {produto?.preco}</Typography>
+		<Typography className='preco bold'variant="h5">R$ {produto?.preco.toFixed(2).replace('.', ',')}</Typography>
 		<Button className='btn' onClick={() => {dispatch(addToCart(produto))}} variant='contained' color='primary' >comprar</Button>
 	</Box>
 	</Grid>
@@ -121,7 +121,7 @@ return (
 					<Grid container>
 					<Grid xs={6}>
 					<Typography className="filtroProdutoPreco">
-					R$ {produto.preco}
+					R$ {produto.preco.toFixed(2).replace('.', ',')}
 				</Typography>
 					</Grid>
 					<Grid xs={6}>

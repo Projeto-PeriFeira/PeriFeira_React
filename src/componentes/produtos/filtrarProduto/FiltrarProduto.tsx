@@ -95,7 +95,7 @@ return (
 					))}
 		</Tabs>
 		<Box marginBottom="68px" />
-		<TabPanel value="0" className="secao1">
+		<TabPanel value="0">
 		<Stack justifyContent="center"
 		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 		{
@@ -128,7 +128,7 @@ return (
 					<Grid container>
 					<Grid xs={6}>
 					<Typography className="filtroProdutoPreco">
-					R$ {produto.preco}
+					R$ {produto.preco.toFixed(2).replace('.', ',')}
 				</Typography>
 					</Grid>
 					<Grid xs={6}>
@@ -150,9 +150,8 @@ return (
 						))}
 						</Stack>
 						</TabPanel>
-				<Box marginBottom="68px" />
 		<Stack justifyContent="center"
-		flexWrap="wrap" useFlexGap direction={{ xs: 'column', sm: 'row' }}>
+		flexWrap="wrap" useFlexGap gap="10px" direction={{ xs: 'column', sm: 'row' }}>
 {
 	produtos.map(produto =>(
 				<TabPanel value={produto.categorias?.id}>
@@ -184,7 +183,7 @@ return (
 					<Grid container>
 					<Grid xs={6}>
 					<Typography className="filtroProdutoPreco">
-					R$ {produto.preco}
+					R$ {produto.preco.toFixed(2).replace('.', ',')}
 				</Typography>
 					</Grid>
 					<Grid xs={6}>
