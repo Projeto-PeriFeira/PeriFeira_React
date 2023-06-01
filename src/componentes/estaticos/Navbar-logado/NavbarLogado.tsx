@@ -107,13 +107,13 @@ useEffect(() => {
 											</Typography>
 								</Box>
 									</Link>
-									<Link className='reset-link' to='/cestas'>
+									{/*<Link className='reset-link' to='/cestas'>
 									<Box mx={1} style={{ cursor: 'pointer' }}>
 										<Typography className='item' variant="subtitle1" color="inherit">
 										Cestas
 										</Typography>
 									</Box>
-									</Link>
+									</Link>*/}
 									<Link className='reset-link' to='/loja'>
 										<Box mx={1} style={{ cursor: 'pointer' }}>
 											<Typography className='item' variant="subtitle1" color="inherit">

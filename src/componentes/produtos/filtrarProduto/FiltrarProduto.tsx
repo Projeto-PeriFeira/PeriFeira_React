@@ -88,8 +88,8 @@ function handleChange(event: React.ChangeEvent<{}>, newValue: string){
 
 return (
 		<>
-		<TabContext className="filtroTab" value={value}>
-		<Tabs className="secao2 filtroCategoriaLista" centered onChange={handleChange}>
+		<TabContext className="filtroTab " value={value}>
+		<Tabs className="secao1 filtroCategoriaLista" centered onChange={handleChange}>
 		{categorias.map(categoria =>(
 					<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id}/>
 					))}
@@ -122,7 +122,7 @@ return (
 				</Grid>
 				<Typography className="filtroProdutoNome">
 					<Box width={180} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-				{produto.nome} unid.
+				{produto.nome}
 				</Box>
 				</Typography>
 					<Grid container>
@@ -141,7 +141,6 @@ return (
 					</Box>
 					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 					<Typography noWrap className="filtroProdutoUsuario">
-					{produto.descricao}
 				</Typography>
 					</Box>
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
@@ -151,12 +150,12 @@ return (
 						))}
 						</Stack>
 						</TabPanel>
+				<Box marginBottom="68px" />
+		<Stack justifyContent="center"
+		flexWrap="wrap" useFlexGap direction={{ xs: 'column', sm: 'row' }}>
 {
 	produtos.map(produto =>(
 				<TabPanel value={produto.categorias?.id}>
-				<Box marginBottom="68px" />
-		<Stack justifyContent="center"
-		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 				<Card	className="filtroProduto">
 				<CardMedia
 				className="filtroProdutoImagem"
@@ -179,7 +178,7 @@ return (
 				</Grid>
 				<Typography className="filtroProdutoNome">
 					<Box width={180} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-				{produto.nome} unid.
+				{produto.nome}
 				</Box>
 				</Typography>
 					<Grid container>
@@ -198,16 +197,15 @@ return (
 					</Box>
 					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 					<Typography noWrap className="filtroProdutoUsuario">
-					{produto.descricao}
 				</Typography>
 					</Box>
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
 					<Button onClick={() => {dispatch(addToCart(produto))}} className="filtroProdutoComprar"><AddShoppingCartSharpIcon/></Button>
 					</Box>
 					</Card>
-					</Stack>
 					</TabPanel>
 					))}
+					</Stack>
 					</TabContext>
 					</>
 					);

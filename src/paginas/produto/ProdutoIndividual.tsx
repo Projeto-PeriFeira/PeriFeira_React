@@ -115,7 +115,7 @@ return (
 				</Grid>
 				<Typography className="filtroProdutoNome">
 					<Box width={180} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
-				{produto.nome} unid.
+				{produto.nome}
 				</Box>
 				</Typography>
 					<Grid container>
