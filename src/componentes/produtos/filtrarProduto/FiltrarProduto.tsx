@@ -88,7 +88,6 @@ function handleChange(event: React.ChangeEvent<{}>, newValue: string){
 
 return (
 		<>
-		{/*<Stack spacing={3} direction={{ xs: 'column', sm: 'row' }}>		</Stack>*/}
 		<TabContext className="filtroTab" value={value}>
 		<Tabs className="secao2 filtroCategoriaLista" centered onChange={handleChange}>
 		{categorias.map(categoria =>(

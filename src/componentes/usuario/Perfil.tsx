@@ -246,7 +246,8 @@ endAdornment: (
 <Grid container alignItems='center' justifyContent='center'>
 <Grid xs={9} className="usuarioSecaoProduto">
 <Typography className="titulo" variant="h4" marginBottom="58">Gerenciar categorias</Typography>
-		<Stack marginTop="28px" spacing={3} direction={{ xs: 'column', sm: 'row' }}>
+		<Stack justifyContent="left"
+		flexWrap="wrap" useFlexGap gap="5px" direction={{ xs: 'column', sm: 'row' }}>
 {usuario?.produtos?.map((produto) => (
 			<Typography className="usuarioCategoriaNome">
 			{produto.categorias?.descricao}
@@ -280,10 +281,10 @@ endAdornment: (
 <Grid container alignItems='center' justifyContent='center'>
 <Grid xs={9} className="usuarioSecaoProduto">
 <Typography className="titulo" variant="h4" marginBottom="58px">Meus produtos</Typography>
-			<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
+		<Stack justifyContent="center"
+		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 {usuario.produtos?.map((produto) => (
 			<>
-			<Box marginBottom="106px"/>
 			<Card	className="usuarioProduto">
 			<CardMedia
 			className="filtroProdutoImagem"

@@ -34,7 +34,7 @@ const userId = useSelector<TokenState, TokenState['id']>(
     <>
       <Grid className='container' justifyContent='center' container>
         <Grid justifyContent='center' className='bg-carrinho' direction='row' item xs={8}>
-          <Typography className='text mg-bt-60 bold' align='center' variant='h4'>Carrinho de compras</Typography>
+          <Typography className='text mg-bt-60 bold' align='center' variant='h4'>Cesta atual</Typography>
 		{carrinho.map(item => (
         <Box className='cardProduto' display='flex' justifyContent='space-between'>
           <Grid xs={4} item>
@@ -61,10 +61,10 @@ const userId = useSelector<TokenState, TokenState['id']>(
             <Button className="btn"
 						onClick={() => {
 						dispatch(removeItem([]))
-						toast.success("Compra realizada")
+						toast.success("Cesta criada")
 						navigate("/loja")
 						}}
-						>Finalizar compra</Button>
+						>Criar sua cesta</Button>
             </Box>
             <Box>
               <Typography className='bold ' variant='h5'>

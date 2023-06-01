@@ -20,7 +20,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { Usuario } from '../../../model/Usuario'
 import {toast} from 'react-toastify'
 import CadastrarProduto from '../../../componentes/produtos/cadastrarProduto/CadastrarProduto'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { addToCart } from '../../../store/tokens/actions';
 import CadastrarCategoria from '../../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
 
@@ -186,10 +186,10 @@ useEffect(() => {
 													horizontal: 'right',
 												}}
 											>
-														<ShoppingCartIcon fontSize="small" />
+														<ShoppingBasketIcon fontSize="small" />
 														</Badge>
 													</ListItemIcon>
-													Carrinho
+												Cesta
 												</MenuItem>
 												</Link>
 												<Link className="reset-link" to='/perfil'>
