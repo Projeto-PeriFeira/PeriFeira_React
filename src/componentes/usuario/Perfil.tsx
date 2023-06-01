@@ -23,6 +23,7 @@ import {
 import { Link } from 'react-router-dom';
 
 function Perfil() {
+  const categoriasRenderizadas = [];
 	let navigate = useNavigate();
 	const token = useSelector<TokenState, TokenState["tokens"]>(
 			(state) => state.tokens
@@ -248,7 +249,10 @@ endAdornment: (
 <Typography className="titulo" variant="h4" marginBottom="58">Gerenciar categorias</Typography>
 		<Stack justifyContent="left"
 		flexWrap="wrap" useFlexGap gap="5px" direction={{ xs: 'column', sm: 'row' }}>
-{usuario?.produtos?.map((produto) => (
+{usuario?.produtos?.map((produto) => {
+if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
+          categoriasRenderizadas.push(produto.categorias?.id);
+					return (
 			<Typography className="usuarioCategoriaNome">
 			{produto.categorias?.descricao}
 				<Link to={`/categorias/${produto.id}`} className="text-decorator-none">
@@ -263,7 +267,10 @@ endAdornment: (
 			<DeleteIcon/>
 				</Link>
 			</Typography>
-			))}
+			)
+			}
+			return null
+			})}
 			</Stack>
       {/*<Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
         <div>
