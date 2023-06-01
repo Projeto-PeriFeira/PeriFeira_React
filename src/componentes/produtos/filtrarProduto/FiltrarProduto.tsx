@@ -64,7 +64,11 @@ Authorization: token
 }
  async function getProdutoId(id: string) {
  try {
- await buscaId(`/produtos/{id}`, setProdutos)
+ await buscaId(`/produtos/${id}`, setProdutos, {
+	headers: {
+		Authorization: token
+	}
+ })
  console.log(produtos)
  } catch(error) {
  console.log(error);
@@ -80,7 +84,7 @@ useEffect(() => {
 getProdutoId(id)
 		}, [id])
 
-let [value, setValue] = useState('0')
+const [value, setValue] = useState('0')
 
 function handleChange(event: React.ChangeEvent<{}>, newValue: string){
 	setValue(newValue);
@@ -88,16 +92,17 @@ function handleChange(event: React.ChangeEvent<{}>, newValue: string){
 
 return (
 		<>
-		<TabContext className="filtroTab " value={value}>
+		<TabContext value={value}>
+			<div className="filtroTab">
 		<Tabs className="secao1 filtroCategoriaLista" centered onChange={handleChange}>
 		{categorias.map(categoria =>(
-					<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id}/>
+					<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id.toString()}/>
 					))}
 		</Tabs>
 		<Box marginBottom="68px" />
 		<TabPanel value="0">
 		<Stack justifyContent="center"
-		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
+		flexWrap="wrap" gap='21px' direction={{ xs: 'column', sm: 'row' }}>
 		{
 		produtos.map(produto =>(
 				<Card	className="filtroProduto">
@@ -151,10 +156,10 @@ return (
 						</Stack>
 						</TabPanel>
 		<Stack justifyContent="center"
-		flexWrap="wrap" useFlexGap gap="10px" direction={{ xs: 'column', sm: 'row' }}>
+		flexWrap="wrap" gap='10px' direction={{ xs: 'column', sm: 'row' }}>
 {
 	produtos.map(produto =>(
-				<TabPanel value={produto.categorias?.id}>
+				<TabPanel value={produto.categorias?.id.toString()}>
 				<Card	className="filtroProduto">
 				<CardMedia
 				className="filtroProdutoImagem"
@@ -205,6 +210,7 @@ return (
 					</TabPanel>
 					))}
 					</Stack>
+					</div>
 					</TabContext>
 					</>
 					);

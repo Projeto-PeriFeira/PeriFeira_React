@@ -39,7 +39,12 @@
 .produto {
 	border-radius: 8px;
 	max-width: 224px !important;
+	height: 216px !important;
 }
 .conteudoProduto {
 	border-radius: 26px 26px 8px 8px !important;
+}
+
+.produtoMedia {
+	border-radius: 8px !important
 }

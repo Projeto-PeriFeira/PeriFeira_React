@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import {Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
-import Categoria from '../../../model/Produto';
+import {Categoria} from '../../../model/Categoria';
 import './ListarCategoria.css';
 import {useNavigate} from 'react-router-dom';
 import { busca } from '../../../services/Service';

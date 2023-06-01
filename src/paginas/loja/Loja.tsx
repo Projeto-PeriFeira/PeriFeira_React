@@ -20,16 +20,16 @@ function Loja() {
 			if (token == "") {
 			toast.error("Você precisa estar logado")
 			navigate("/login")
-			return (
-			<Grid container justifyContent="center">
-			<div className="dot-wave">
-			<div className="dot-wave__dot"></div>
-			<div className="dot-wave__dot"></div>
-			<div className="dot-wave__dot"></div>
-			<div className="dot-wave__dot"></div>
-			</div>
-			</Grid>
-			)
+			// return (
+			// <Grid container justifyContent="center">
+			// <div className="dot-wave">
+			// <div className="dot-wave__dot"></div>
+			// <div className="dot-wave__dot"></div>
+			// <div className="dot-wave__dot"></div>
+			// <div className="dot-wave__dot"></div>
+			// </div>
+			// </Grid>
+			// )
 			}
 			}, [token])
 

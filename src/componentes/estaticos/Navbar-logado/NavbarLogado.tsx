@@ -230,7 +230,7 @@ useEffect(() => {
 			<div>
 			<Box marginBottom="30vh"/>
 			<Container maxWidth="sm" className="background-form">
-			<Typography className="titulo" variant="h4" textAlign="center">Voce deseja realmente sair?</Typography>
+			<Typography className="titulo" variant="h4" align="center">Voce deseja realmente sair?</Typography>
 			<Button onClick={goLogout} fullWidth className='btn mg-top' type="submit" variant="contained" color="primary">Sair</Button>
 			</Container>
 			</div>

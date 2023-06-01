@@ -248,7 +248,7 @@ endAdornment: (
 <Grid xs={9} className="usuarioSecaoProduto">
 <Typography className="titulo" variant="h4" marginBottom="58">Gerenciar categorias</Typography>
 		<Stack justifyContent="left"
-		flexWrap="wrap" useFlexGap gap="5px" direction={{ xs: 'column', sm: 'row' }}>
+		flexWrap="wrap"  gap="5px" direction={{ xs: 'column', sm: 'row' }}>
 {usuario?.produtos?.map((produto) => {
 if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
           categoriasRenderizadas.push(produto.categorias?.id);
@@ -289,7 +289,7 @@ if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
 <Grid xs={9} className="usuarioSecaoProduto">
 <Typography className="titulo" variant="h4" marginBottom="58px">Meus produtos</Typography>
 		<Stack justifyContent="center"
-		flexWrap="wrap" useFlexGap gap="21px" direction={{ xs: 'column', sm: 'row' }}>
+		flexWrap="wrap"  gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 {usuario.produtos?.map((produto) => (
 			<>
 			<Card	className="usuarioProduto">

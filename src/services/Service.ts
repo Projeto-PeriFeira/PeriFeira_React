@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-	baseURL: 'https://db-perifeira.onrender.com'
+	baseURL: import.meta.env.VITE_API_URL
 }) 
 
 export const login = async (url: string, dados: object, setDados: any) => {
