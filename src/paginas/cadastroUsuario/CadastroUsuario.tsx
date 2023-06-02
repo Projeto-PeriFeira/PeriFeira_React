@@ -80,6 +80,7 @@ async function cadastrar(event: ChangeEvent<HTMLFormElement>) {
 		 ) {
 			try {
 				await cadastroUsuario('/usuarios/cadastrar', usuario, setUsuarioResp);
+				toast.dismiss(toastId)
 				toast.success('Cadastrado com sucesso')
 			} catch (error) {
 				toast.dismiss(toastId)
