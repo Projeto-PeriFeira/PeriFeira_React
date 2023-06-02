@@ -46,6 +46,7 @@ function CadastrarCategoria() {
 
             setCategoria({
                 ...categoria,
+								produtos: null,
                 [e.target.name]: e.target.value,
             })
     
