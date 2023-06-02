@@ -255,7 +255,7 @@ if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
 					return (
 			<Typography className="usuarioCategoriaNome">
 			{produto.categorias?.descricao}
-				<Link to={`/categorias/${produto.id}`} className="text-decorator-none">
+				<Link to={`/categorias/${produto.categorias?.id}`} className="text-decorator-none">
 				<EditIcon className="usuarioCategoriaEditar"/>
 				</Link>
 			{/*<Button className="usuarioCategoriaExcluir" onClick={() => {
@@ -263,7 +263,7 @@ if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
     setPegarId(produto.categorias?.id);
 			</Button>
 }}>*/}
-				<Link to={`/deletarCategoria/${produto.id}`} className="text-decorator-none">
+				<Link to={`/deletarCategoria/${produto.categorias?.id}`} className="text-decorator-none">
 			<DeleteIcon/>
 				</Link>
 			</Typography>
