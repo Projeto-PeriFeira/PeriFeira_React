@@ -23,12 +23,10 @@ function ProdutoIndividual() {
 			);
 
 	function getProduto() {
-		console.log(token);
 		busca(`/produtos/${id}`, setProduto, {
 headers: {
 Authorization: token
-}
-})
+}})
 }
 
 	function getProdutos() {
@@ -65,6 +63,9 @@ useEffect(() => {
 
 return (
 <>
+<Box display="none">
+{document.title = `PeriFeira - ${produto?.nome}`}
+</Box>
 <Box>
 <Grid className='background-prod' padding={10} container justifyContent='center' gap={8}>
 	<Grid item xs={3}  justifyContent='center' >
@@ -132,7 +133,7 @@ return (
 				</Typography>
 					</Box>
 					<Grid container justifyContent="center">
-					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
+					<Button onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' });}} component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
 					<Button onClick={() => {dispatch(addToCart(produto)); toast.success(`${produto.nome}`+" adicionado a cesta")}} className="filtroProdutoCarrinho"><ShoppingBasketTwoToneIcon/></Button>
 					</Grid>
 					</Box>
@@ -142,7 +143,6 @@ return (
 					))}
 </Grid>
 </Box>
-{document.title = `PeriFeira - ${produto?.nome}`}
 </>
 )
 }
