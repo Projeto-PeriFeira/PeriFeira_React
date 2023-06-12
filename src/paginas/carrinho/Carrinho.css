@@ -3,38 +3,36 @@
   padding: 40px 100px;
   border-radius: 30px;
 }
-
 .container{
   background-color: var(--rosa1) !important;
-
 }
-
 .image{
   width: 100%;
   max-width: 350px;
   border-radius: 20px;
+	transition: 0.5s;
 }
-
+.image:hover{
+	scale: 1.2;
+	transition: 0.5s;
+}
 .cardProduto{
   border-bottom: 1px solid var(--marrom1);
   padding: 20px 0;
   margin-bottom: 20px;
 }
-
-
 .mg-bt-60{
   margin-bottom: 60px !important;
 }
-
 .mg-bt-20{
   margin-bottom: 20px !important;
 }
-
 .text{
   color: var(--marrom1);
 }
-
 .valor-total{
   margin-top: 40px;
 }
-
+.bold{
+	font-weight: 500;
+}

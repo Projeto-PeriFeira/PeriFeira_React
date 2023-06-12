@@ -76,7 +76,7 @@ return (
 		<Typography className='tag-categoria' variant="body1">{produto?.categorias?.descricao}</Typography>
 		<Typography className='pd-top-20' variant="body1">{produto?.descricao}</Typography>
 		<Typography className='preco bold'variant="h5">R$ {produto?.preco.toFixed(2).replace('.', ',')}</Typography>
-		<Button className='btn' onClick={() => {dispatch(addToCart(produto))}} variant='contained' color='primary' >comprar</Button>
+		<Button className='btn' onClick={() => {dispatch(addToCart(produto)); toast.success(`${produto.nome}`+" adicionado a cesta")}} variant='contained' color='primary' >Comprar</Button>
 	</Box>
 	</Grid>
 </Grid>
