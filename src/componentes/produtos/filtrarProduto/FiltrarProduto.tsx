@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { AppBar, Grid, Avatar, Tab, Tabs, Box, Typography, Stack, Button, Card, CardMedia} from '@mui/material'
+import { Badge, Grid, Avatar, Tab, Tabs, Box, Typography, Stack, Button, Card, CardMedia} from '@mui/material'
 import { Link } from 'react-router-dom';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import './FiltrarProduto.css';
@@ -7,12 +7,12 @@ import './FiltrarProduto.css';
 import { Categoria } from '../../../model/Categoria';
 import { Produto } from '../../../model/Produto';
 
-import {useNavigate, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { busca, buscaId } from '../../../services/Service';
 import { addToCart } from '../../../store/tokens/actions';
-import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
 import { useSelector, useDispatch } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import ShoppingBasketTwoToneIcon from '@mui/icons-material/ShoppingBasketTwoTone';
 
 import { toast } from 'react-toastify'
 
@@ -148,8 +148,10 @@ return (
 					<Typography noWrap className="filtroProdutoUsuario">
 				</Typography>
 					</Box>
+					<Grid container justifyContent="center">
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
-					<Button onClick={() => {dispatch(addToCart(produto))}} className="filtroProdutoComprar"><AddShoppingCartSharpIcon/></Button>
+					<Button onClick={() => {dispatch(addToCart(produto)); toast.success(`${produto.nome}`+" adicionado a cesta")}} className="filtroProdutoCarrinho"><ShoppingBasketTwoToneIcon/></Button>
+					</Grid>
 					</Box>
 					</Card>
 						))}
@@ -203,8 +205,10 @@ return (
 					<Typography noWrap className="filtroProdutoUsuario">
 				</Typography>
 					</Box>
+					<Grid container justifyContent="center">
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
-					<Button onClick={() => {dispatch(addToCart(produto))}} className="filtroProdutoComprar"><AddShoppingCartSharpIcon/></Button>
+					<Button onClick={() => {dispatch(addToCart(produto)); toast.success(`${produto.nome}`+" adicionado a cesta")}} className="filtroProdutoCarrinho"><ShoppingBasketTwoToneIcon/></Button>
+					</Grid>
 					</Box>
 					</Card>
 					</TabPanel>
