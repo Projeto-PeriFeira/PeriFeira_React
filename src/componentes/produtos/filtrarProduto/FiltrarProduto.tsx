@@ -122,7 +122,7 @@ return (
 				</Box>
 				</Grid>
 				<Grid item xs={4} alignItems="right">
-				<Avatar src={produto.usuario?.foto}/>
+				<Avatar src={produto.usuario?.foto} className="filtroProdutoUsuarioFoto"/>
 				</Grid>
 				</Grid>
 				<Typography className="filtroProdutoNome">
@@ -179,7 +179,7 @@ return (
 				</Box>
 				</Grid>
 				<Grid item xs={4} alignItems="right">
-				<Avatar src={produto.usuario?.foto}/>
+				<Avatar src={produto.usuario?.foto} className="filtroProdutoUsuarioFoto"/>
 				</Grid>
 				</Grid>
 				<Typography className="filtroProdutoNome">

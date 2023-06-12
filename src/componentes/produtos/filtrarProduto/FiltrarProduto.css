@@ -37,7 +37,12 @@
 	padding-left: 23px;
 	padding-top: 20px;
 }
+.filtroProdutoImagem:hover {
+	scale: 1.2;
+	transition: 0.5s;
+}
 .filtroProdutoImagem {
+	transition: 0.5s;
 	height: 216px;
 	border-radius: 8px;
 }
@@ -75,6 +80,13 @@
 	font-size: 12px !important;
 	padding-top: 9px;
 	padding-left: 23px;
+}
+.filtroProdutoUsuarioFoto {
+	transition: 0.5s;
+}
+.filtroProdutoUsuarioFoto:hover {
+	scale: 1.2;
+	transition: 0.5s;
 }
 .filtroProdutoComprar {
 	background-color: var(--laranja) !important;
