@@ -16,7 +16,7 @@ body {
 	scale: 1.2;
 }
 .usuarioProdutoSecao {
-	padding-top: 25px;
+	padding-top: 20px;
 	padding-left: 23px;
 	padding-right: 14px;
 }
@@ -53,30 +53,54 @@ body {
 	background-color: var(--laranja) !important;
 	border-radius: 10px !important;
 }
-
+.usuarioCategoriaAcoes {
+	padding-left: 10.51px !important;
+}
 .usuarioCategoriaNome {
-	color: var(--marrom2) !important;
-	background-color: var(--rosa3) !important;
 	border: 1px solid var(--marrom3) !important;
 	border-radius: 20px !important;
+	padding: 10.5px 25px !important;
+	color: var(--marrom2) !important;
+	background-color: var(--rosa3) !important;
 	text-transform: capitalize !important;
 	font-weight: 400 !important;
-	padding: 10.5px 25px !important;
 	opacity: 100% !important;
 	display: flex !important;
 	align-items: center !important;
 }
 .usuarioCategoriaEditar {
 	color: var(--laranja) !important;
-	padding-left: 24.5px !important;
 	font-size: 30px !important;
+	justify-content: center !important;
+	padding: 0px !important;
+	margin: 0px !important;
+	min-width: 0px !important;
+}
+.usuarioCategoriaDeletar {
+	color: var(--laranja) !important;
+	font-size: 30px !important;
+	margin: 0px !important;
+	padding: 0px !important;
+	min-width: 0px !important;
 }
 .usuarioCategoriaExcluir {
 	color: var(--laranja) !important;
 	font-size: 30px !important;
+	min-width: 0px !important;
 }
 .usuarioProdutoPreco {
 	color: var(--laranja) !important;
 	font-weight: 700 !important;
 	font-size: 20px !important;
+}
+.usuarioProdutoExcluir {
+	min-width: 0px !important;
+}
+.usuarioProdutoEditar {
+	color: var(--laranja) !important;
+	min-width: 0px !important;
+}
+.usuarioProdutoAcoes {
+	font-size: 33px !important;
+	color: var(--laranja) !important;
 }

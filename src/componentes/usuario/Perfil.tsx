@@ -2,7 +2,8 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Grid, Avatar, TextField, Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
 import CadastrarProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
 import DeletarProduto from '../../componentes/produtos/deletarProduto/DeletarProduto'
-// import ModalCadastrarCategoria from '../../componentes/categorias/modalCadastrarCategoria/ModalCadastrarCategoria'
+import CadastrarCategoria from '../../componentes/categorias/cadastrarCategoria/CadastrarCategoria'
+import DeletarCategoria from '../../componentes/categorias/deletarCategoria/DeletarCategoria'
 
 // icones
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,7 +11,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
@@ -20,7 +20,7 @@ import { buscaId, atualiza } from '../../services/Service';
 import { toast } from 'react-toastify'
 import './Perfil.css';
 
-function Perfil() {
+export default function Perfil() {
 	  useEffect(() => {
     document.title = 'PeriFeira - Perfil';
   }, []);
@@ -41,11 +41,17 @@ function Perfil() {
 
 	const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
   const [modalCadastrarProdutoOpen, setModalCadastrarProdutoOpen] = useState(false);
-  const [modalCadastroCategoriaOpen, setModalCadastroCategoriaOpen] = useState(false);
+  const [modalDeletarProdutoOpen, setModalDeletarProdutoOpen] = useState(false);
+  const [modalCadastrarCategoriaOpen, setModalCadastrarCategoriaOpen] = useState(false);
+  const [modalDeletarCategoriaOpen, setModalDeletarCategoriaOpen] = useState(false);
+const [idCategoria, setIdCategoria] = useState(0);
+const [idProduto, setIdProduto] = useState(0);
 
   const handleModalClose = () => {
     setModalCadastrarProdutoOpen(false);
-    setModalCadastroCategoriaOpen(false);
+    setModalCadastrarCategoriaOpen(false);
+		setModalDeletarProdutoOpen(false);
+setModalDeletarCategoriaOpen(false);
   };
 
 	const [usuario, setUsuario] = useState<Usuario>({
@@ -81,26 +87,10 @@ useEffect(() => {
 				})
 		}, [usuario.usuario])
 
-// const [pegarId, setPegarId] = useState<string>('');
 const [confirmarSenha, setConfirmarSenha] = useState<string>('');
-// const [nomeError, setNomeError] = useState<boolean>(false);
-// const [emailError, setEmailError] = useState<boolean>(false);
-// const [senhaError, setSenhaError] = useState<boolean>(false);
 const [showPassword, setShowPassword] = useState(false);
 const handleClickShowPassword = () => setShowPassword(!showPassword);
 
-// async	function validateNome(event: ChangeEvent<HTMLInputElement>) {
-// 	setNomeError(usuario.nome.length < 1);
-// }
-//
-// async	function validateEmail(event: ChangeEvent<HTMLInputElement>) {
-// 	setEmailError(usuario.usuario.includes('@'));
-// }
-//
-// async function validateSenha(event: ChangeEvent<HTMLInputElement>) {
-// 	setSenhaError(usuario.senha.length < 7 )
-// }
-//
 function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
 	setConfirmarSenha(event.target.value);
 	setUsuario({
@@ -142,8 +132,6 @@ async function atualizar(event: ChangeEvent<HTMLFormElement>) {
       setConfirmarSenha('');
     }
   }
-
-console.log(usuario);
 
 return (
 		<>
@@ -255,43 +243,43 @@ endAdornment: (
 if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
           categoriasRenderizadas.push(produto.categorias?.id);
 					return (
-			<Typography className="usuarioCategoriaNome">
-			{produto.categorias?.descricao}
-				<Link to={`/categorias/${produto.categorias?.id}`} className="text-decorator-none">
-				<EditIcon className="usuarioCategoriaEditar"/>
-				</Link>
-			{/*<Button className="usuarioCategoriaExcluir" onClick={() => {
-    setModalCadastroCategoriaOpen(true);
-    setPegarId(produto.categorias?.id);
-			</Button>
-}}>*/}
-				<Link to={`/deletarCategoria/${produto.categorias?.id}`} className="text-decorator-none">
-			<DeleteIcon/>
-				</Link>
-			</Typography>
-			)
-			}
-			return null
-			})}
-			</Stack>
-      {/*<Modal open={modalCadastroCategoriaOpen} onClose={handleModalClose}>
-        <div>
-			<Box marginBottom="30vh"/>
-			<Container maxWidth="sm" className="background-form">
-			<Typography className="titulo" variant="h4" textAlign="center">Voce deseja realmente excluir a categoria?</Typography>
-			<Link to={`/deletarCategoria/${pegarId}`}>
-			<Button fullWidth className='btn mg-top' variant="contained" color="primary">Deletar</Button>
-			</Link>
-			</Container>
-        </div>
-      </Modal>*/}
+							<Typography className="usuarioCategoriaNome">
+							{produto.categorias?.descricao}
+							<Box className="usuarioCategoriaAcoes" alignItems="center">
+							<Button className="usuarioCategoriaEditar" onClick={() => {
+							setModalCadastrarCategoriaOpen(true);
+							setIdCategoria(produto.categorias?.id)
+							}}>
+							<EditIcon/>
+							</Button>
+							<Button className="usuarioCategoriaDeletar" onClick={() => {
+							setModalDeletarCategoriaOpen(true);
+							setIdCategoria(produto.categorias?.id)
+							}}>
+							<DeleteIcon/>
+							</Button>
+							</Box>
+							</Typography>
+							)
+					}
+return null
+																		 })}
+</Stack>
+<Modal open={modalCadastrarCategoriaOpen} onClose={handleModalClose}>
+<div><CadastrarCategoria
+id = {idCategoria} /></div>
+</Modal>
+<Modal open={modalDeletarCategoriaOpen} onClose={handleModalClose}>
+<div><DeletarCategoria
+id = {idCategoria} /></div>
+</Modal>
 </Grid>
 </Grid>
 <Grid container alignItems='center' justifyContent='center'>
 <Grid xs={9} className="usuarioSecaoProduto">
 <Typography className="titulo" variant="h4" marginBottom="58px">Meus produtos</Typography>
-		<Stack justifyContent="center"
-		flexWrap="wrap"  gap="21px" direction={{ xs: 'column', sm: 'row' }}>
+<Stack justifyContent="center"
+flexWrap="wrap"  gap="21px" direction={{ xs: 'column', sm: 'row' }}>
 {usuario.produtos?.map((produto) => (
 			<>
 			<Card	className="usuarioProduto">
@@ -308,19 +296,25 @@ if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
 			<Typography className="filtroProdutoNome">
 			{produto.nome}
 			</Typography>
-			<Grid container className="usuarioProdutoSecao">
-			<Grid item xs={6} textAlign="left">
+			<Grid container className="usuarioProdutoSecao" alignItems="center">
+			<Grid item xs={4} textAlign="left">
 			<Typography className="usuarioProdutoPreco">
 			R$ {produto.preco}
 			</Typography>
 				</Grid>
-				<Grid item xs={6} textAlign="right">
-				<Link to={`/cadastrarProdutos/${produto.id}`} className="text-decorator-none" >
-				<EditIcon className="usuarioCategoriaEditar"/>
-				</Link>
-				<Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none" >
-				<DeleteIcon className="usuarioCategoriaExcluir"/>
-				</Link>
+				<Grid item xs={8} textAlign="right" justifyContent="center" alignItems="center">
+				<Button className="usuarioProdutoEditar" onClick={() => {
+							setIdProduto(produto.id)
+					setModalCadastrarProdutoOpen(true);
+				}}>
+			<EditIcon className="usuarioProdutoAcoes"/>
+				</Button>
+				<Button className="usuaoProdutoExcluir" onClick={() => {
+							setIdProduto(produto.id)
+					setModalDeletarProdutoOpen(true);
+				}}>
+				<DeleteIcon className="usuarioProdutoAcoes"/>
+				</Button>
 				</Grid>
 				</Grid>
 				</Box>
@@ -328,10 +322,22 @@ if (!categoriasRenderizadas.includes(produto.categorias?.id)) {
 				</>
 				))}
 				</Stack>
+				<Modal open={modalCadastrarProdutoOpen} onClose={handleModalClose}>
+				<div>
+				<CadastrarProduto
+				id={idProduto}
+			/>
+				</div>
+				</Modal>
+				<Modal open={modalDeletarProdutoOpen} onClose={handleModalClose}>
+				<div>
+				<DeletarProduto
+				id={idProduto}
+			/>
+				</div>
+				</Modal>
 				</Grid>
 				</Grid>
 				</>
 				);
 				}
-
-export default Perfil;

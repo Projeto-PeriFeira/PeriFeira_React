@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Typography, Button, Card, CardActions, CardContent } from "@material-ui/core"
+import {Typography, Container, Button, Card, CardActions, CardContent } from "@material-ui/core"
 import './DeletarProduto.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Produto } from '../../../model/Produto';
@@ -7,11 +7,13 @@ import { buscaId, deleta } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import {Box} from '@mui/material';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify'
 
-function DeletarProduto() {
+export default function DeletarProduto(props) {
     let navigate = useNavigate();
-    const { id } = useParams<{id: string}>();
+    let { id } = useParams<{id: string}>();
+		id = props.id
     const token = useSelector<TokenState, TokenState["tokens"]>(
       (state) => state.tokens
     );
@@ -38,52 +40,28 @@ function DeletarProduto() {
             }
           })
         }
-
-        function sim() {
-          navigate('/loja')
+        
+  return (
+    <>
+			<Box marginBottom="30vh"/>
+			<Container maxWidth="sm" className="background-form">
+			<Typography 			className="titulo center" variant="h4">Você deseja realmente excluir o produto:<br/>{post?.nome}?</Typography>
+			<Link to={`/deletarCategoria/`}>
+			<Button
+			fullWidth
+			component={Link}
+			to={'/loja'}
+			onClick={() => {
             deleta(`/produtos/${id}`, {
               headers: {
                 'Authorization': token
               }
             });
             toast.success('Produto deletado com sucesso');
-          }
-        
-          function nao() {
-            navigate('/loja')
-          }
-  return (
-    <>
-      <Box m={2}>
-        <Card variant="outlined" >
-          <CardContent>
-            <Box justifyContent="center">
-              <Typography color="textSecondary" gutterBottom>
-                Deseja deletar a Produto:
-              </Typography>
-              <Typography color="textSecondary" >
-              {post?.descricao}
-              </Typography>
-            </Box>
-
-          </CardContent>
-          <CardActions>
-            <Box display="flex" justifyContent="start" ml={1.0} mb={2} >
-              <Box mx={2}>
-              <Button onClick={sim} variant="contained" className="marginLeft" size='large' color="primary">
-                Sim
-              </Button>
-              </Box>
-              <Box>
-              <Button  onClick={nao} variant="contained" size='large' color="secondary">
-                Não
-              </Button>
-              </Box>
-            </Box>
-          </CardActions>
-        </Card>
-      </Box>
+			}}
+ className='btn mg-top' variant="contained" color="primary">Deletar</Button>
+			</Link>
+			</Container>
     </>
   );
 }
-export default DeletarProduto;

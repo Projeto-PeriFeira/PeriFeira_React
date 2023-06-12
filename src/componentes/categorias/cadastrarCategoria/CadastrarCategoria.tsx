@@ -9,9 +9,10 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
 import { toast } from 'react-toastify'
 
 
-function CadastrarCategoria() {
+export default function CadastrarCategoria(props) {
     let navigate = useNavigate();
-    const { id } = useParams<{id: string}>();
+    let { id } = useParams<{id: string}>();
+		id = props.id
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
       );
@@ -79,7 +80,7 @@ function CadastrarCategoria() {
         <Container maxWidth="sm" className="background-form">
             <form onSubmit={onSubmit}>
                 <Typography className='text bold' variant="h5" color="textSecondary" component="h5" align="left" >{id !== undefined ? 'Atualizar categoria:' : 'Cadastrar nova categoria:'}</Typography>
-                <TextField value={categoria.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="descrição" label="descricao" variant="outlined" name="descricao" margin="normal" fullWidth />
+                <TextField value={categoria.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)} id="descricao" label="Descrição" variant="outlined" name="descricao" margin="normal" fullWidth />
                 <Button className='btn mg-top' type="submit" variant="contained" color="primary" disabled={categoria.descricao.length < 4}>
                 cadastrar
                 </Button>
@@ -88,5 +89,3 @@ function CadastrarCategoria() {
 				</>
     )
 }
-
-export default CadastrarCategoria;

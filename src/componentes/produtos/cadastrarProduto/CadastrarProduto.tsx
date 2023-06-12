@@ -24,7 +24,7 @@ import { Grid } from '@material-ui/core';
 import './CadastrarProduto.css'
 import { toast } from 'react-toastify';
 
-function CadastrarProduto() {
+function CadastrarProduto(props) {
 
   const navigate = useNavigate();
 
@@ -37,7 +37,8 @@ function CadastrarProduto() {
 
   const dispatch = useDispatch()
 
-  const { id } = useParams<{ id: string }>();
+  let { id } = useParams<{ id: string }>();
+	id = props.id
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
 
@@ -104,7 +105,6 @@ function CadastrarProduto() {
       getPostById(id)
     }
   }, []);
-
   function updateModel(event: ChangeEvent<HTMLInputElement>) {
     setProduto({
       ...produto,
@@ -123,7 +123,6 @@ function CadastrarProduto() {
 
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
-
     if (id !== undefined) {
       try {
         await atualiza('/produtos', produto, setProduto, {
