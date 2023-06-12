@@ -49,10 +49,7 @@ function Loja() {
 			<Box className="secao2" paddingBottom="96px"/>
 			<Typography className="titulo secao2" variant="h3" textAlign="center" marginBottom="58" >Loja</Typography>
 			<Box marginBottom="58px"/>
-			<Grid container className="secao1" alignItems='center' justifyContent='center'>
 			<FiltrarProduto/>
-			</Grid>
-			<Box className="secao1" paddingBottom="80px"/>
 			</>
 			)
 }

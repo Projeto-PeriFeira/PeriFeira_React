@@ -94,13 +94,13 @@ return (
 		<>
 		<TabContext value={value}>
 			<div className="filtroTab">
-		<Tabs className="secao1 filtroCategoriaLista" centered onChange={handleChange}>
+		<Tabs className="secao2 filtroCategoriaLista" centered onChange={handleChange}>
 		{categorias.map(categoria =>(
 					<Tab className="filtroCategoria" label={categoria.descricao} value={categoria.id.toString()}/>
 					))}
 		</Tabs>
-		<Box marginBottom="68px" />
-		<TabPanel value="0">
+		<TabPanel value="0" className="secao1">
+		<Box paddingTop="68px" paddingBottom="80px">
 		<Stack justifyContent="center"
 		flexWrap="wrap" gap='21px' direction={{ xs: 'column', sm: 'row' }}>
 		{
@@ -156,9 +156,11 @@ return (
 					</Card>
 						))}
 						</Stack>
+					</Box>
 						</TabPanel>
+						<Grid container className="secao1" justifyContent="center" paddingTop="68px" paddingBottom="80px">
 		<Stack justifyContent="center"
-		flexWrap="wrap" gap='10px' direction={{ xs: 'column', sm: 'row' }}>
+		flexWrap="wrap" direction={{ xs: 'column', sm: 'row' }}>
 {
 	produtos.map(produto =>(
 				<TabPanel value={produto.categorias?.id.toString()}>
@@ -214,6 +216,7 @@ return (
 					</TabPanel>
 					))}
 					</Stack>
+					</Grid>
 					</div>
 					</TabContext>
 					</>
