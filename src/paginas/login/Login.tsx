@@ -13,6 +13,10 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 function Login() {
+  useEffect(() => {
+    document.title = 'PeriFeira - Login';
+  }, []);
+
 	// cria a variavel para navegação interna pela rota
 	const navigate = useNavigate();
 	const dispatch = useDispatch()

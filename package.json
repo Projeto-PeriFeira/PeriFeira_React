@@ -20,6 +20,7 @@
     "axios": "^0.21.4",
     "react": "^17",
     "react-dom": "^17",
+    "react-helmet": "^6.1.0",
     "react-redux": "^8.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.11.2",

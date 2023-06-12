@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './Loja.css'
 import FiltrarProduto from '../../componentes/produtos/filtrarProduto/FiltrarProduto'
-import { Grid, Box, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
 import { TokenState } from '../../store/tokens/tokensReducer'
 import { useNavigate } from 'react-router';
@@ -10,6 +10,9 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 
 function Loja() {
+	  useEffect(() => {
+    document.title = 'PeriFeira - Loja';
+  }, []);
 
 	let navigate = useNavigate();
 	const token = useSelector<TokenState, TokenState["tokens"]>(
@@ -20,16 +23,6 @@ function Loja() {
 			if (token == "") {
 			toast.error("Você precisa estar logado")
 			navigate("/login")
-			// return (
-			// <Grid container justifyContent="center">
-			// <div className="dot-wave">
-			// <div className="dot-wave__dot"></div>
-			// <div className="dot-wave__dot"></div>
-			// <div className="dot-wave__dot"></div>
-			// <div className="dot-wave__dot"></div>
-			// </div>
-			// </Grid>
-			// )
 			}
 			}, [token])
 

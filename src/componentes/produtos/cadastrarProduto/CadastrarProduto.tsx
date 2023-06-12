@@ -25,6 +25,7 @@ import './CadastrarProduto.css'
 import { toast } from 'react-toastify';
 
 function CadastrarProduto() {
+
   const navigate = useNavigate();
 
   const token = useSelector<TokenState, TokenState["tokens"]>(

@@ -1,13 +1,16 @@
 import React, {useEffect} from 'react'
 import './Carrinho.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { Grid, CardMedia, Badge, Container, AppBar, Toolbar, Modal, Typography, Box, Button } from "@material-ui/core";
-import { Link, useNavigate } from "react-router-dom";
-import { addToken, removeItem } from '../../store/tokens/actions'
+import { Grid, Typography, Box, Button } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
+import { removeItem } from '../../store/tokens/actions'
 import { TokenState } from '../../store/tokens/tokensReducer'
 import {toast} from 'react-toastify'
 
 function Carrinho() {
+	  useEffect(() => {
+    document.title = 'PeriFeira - Cesta Atual';
+  }, []);
   
 	let navigate = useNavigate();
 	let valor = 0
@@ -20,23 +23,9 @@ function Carrinho() {
 			if (token == "") {
 			toast.error("Você precisa estar logado")
 			navigate("/login")
-			// return (
-			// <Grid container justifyContent="center">
-			// <div className="dot-wave">
-			// <div className="dot-wave__dot"></div>
-			// <div className="dot-wave__dot"></div>
-			// <div className="dot-wave__dot"></div>
-			// <div className="dot-wave__dot"></div>
-			// </div>
-			// </Grid>
-			// )
 			}
 			}, [token])
 
-
-const userId = useSelector<TokenState, TokenState['id']>(
-(state) => state.id
-)
 
 	const carrinho = useSelector<TokenState, TokenState['produtos']>(
 	(state) => state.produtos

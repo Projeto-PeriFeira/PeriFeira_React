@@ -1,9 +1,13 @@
-import React from 'react'
-import {Typography, Card, CardContent, CardActionArea, CardMedia, Grid, Button, CardActions, Box} from '@mui/material'
+import React, {useEffect} from 'react'
+import {Typography, Card, CardContent, CardActionArea, CardMedia, Grid, Button, Box} from '@mui/material'
 import './Cestas.css'
 
 
 function Cestas() {
+	  useEffect(() => {
+    document.title = 'PeriFeira - Cestas';
+  }, []);
+
 return (
 <Grid>
     <Grid container direction="column" style={{ height: '100%' }}>

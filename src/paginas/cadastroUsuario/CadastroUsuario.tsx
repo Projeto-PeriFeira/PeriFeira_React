@@ -11,6 +11,9 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import {toast} from 'react-toastify'
 
 function cadastrarUsuario() {
+	  useEffect(() => {
+    document.title = 'PeriFeira - Cadastro';
+  }, []);
 
 	const navigate = useNavigate();
 

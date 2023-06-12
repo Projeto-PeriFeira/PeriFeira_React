@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './ProdutoIndividual.css'
 import { Grid, Box, Typography, Stack, Button, Card, CardMedia, Avatar} from '@mui/material'
 import { addToCart } from '../../store/tokens/actions';
-import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
+import ShoppingBasketTwoToneIcon from '@mui/icons-material/ShoppingBasketTwoTone';
 import { Link } from 'react-router-dom';
 import { busca } from '../../services/Service';
 import { useSelector, useDispatch  } from 'react-redux';
@@ -32,7 +32,6 @@ Authorization: token
 }
 
 	function getProdutos() {
-		console.log(token);
 		busca('/produtos', setProdutos, {
 headers: {
 Authorization: token
@@ -64,7 +63,6 @@ useEffect(() => {
 		getProduto()
 		}, [])
 
-
 return (
 <>
 <Box>
@@ -88,11 +86,8 @@ return (
 	<Grid container gap={4} className="secao1" alignItems='center' padding={10} justifyContent='center'>
 	{produtos.map(produto =>(
 		<Grid item  >
-				<Stack spacing={2} direction={{ xs: 'column', sm: 'row' }}>
-
-
-
-
+		<Stack justifyContent="center"
+		flexWrap="wrap" direction={{ xs: 'column', sm: 'row' }}>
 				<Card	className="filtroProduto">
 				<CardMedia
 				className="filtroProdutoImagem"
@@ -110,7 +105,7 @@ return (
 				</Box>
 				</Grid>
 				<Grid item xs={4} alignItems="right">
-				<Avatar src={produto.usuario?.foto}/>
+				<Avatar src={produto.usuario?.foto} className="filtroProdutoUsuarioFoto"/>
 				</Grid>
 				</Grid>
 				<Typography className="filtroProdutoNome">
@@ -134,20 +129,20 @@ return (
 					</Box>
 					<Box width={200} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
 					<Typography noWrap className="filtroProdutoUsuario">
-					{produto.descricao}
 				</Typography>
 					</Box>
+					<Grid container justifyContent="center">
 					<Button component={Link} to={`/produto/${produto.id}`} className="filtroProdutoComprar">Saiba mais</Button>
-					<Button onClick={() => {dispatch(addToCart(produto))}} className="filtroProdutoComprar"><AddShoppingCartSharpIcon/></Button>
+					<Button onClick={() => {dispatch(addToCart(produto)); toast.success(`${produto.nome}`+" adicionado a cesta")}} className="filtroProdutoCarrinho"><ShoppingBasketTwoToneIcon/></Button>
+					</Grid>
 					</Box>
 					</Card>
 					</Stack>
-
-
 					</Grid>
 					))}
 </Grid>
 </Box>
+{document.title = `PeriFeira - ${produto?.nome}`}
 </>
 )
 }

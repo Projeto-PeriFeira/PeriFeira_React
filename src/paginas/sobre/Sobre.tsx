@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import './Sobre.css'
 import { Grid, Box, Typography, Link } from '@mui/material'
-// import {Helmet} from "react-helmet"
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 
 function Sobre() {
+  useEffect(() => {
+    document.title = 'PeriFeira - Sobre';
+  }, []);
 const desenvolvedores = [
 {
 nome: "Renato da Silva Nunes",

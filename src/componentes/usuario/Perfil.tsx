@@ -1,28 +1,30 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { TokenState } from '../../store/tokens/tokensReducer';
-import { useNavigate } from 'react-router';
-import { Usuario } from '../../model/Usuario';
-import { buscaId, atualiza } from '../../services/Service';
-import { Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
-import { toast } from 'react-toastify'
+import { Grid, Avatar, TextField, Box, Typography, Container, Modal, Stack, Button, Card, CardMedia, IconButton, InputAdornment  } from '@mui/material'
 import CadastrarProduto from '../../componentes/produtos/cadastrarProduto/CadastrarProduto'
-// import ModalCadastrarCategoria from '../../componentes/categorias/modalCadastrarCategoria/ModalCadastrarCategoria'
 import DeletarProduto from '../../componentes/produtos/deletarProduto/DeletarProduto'
-import './Perfil.css';
+// import ModalCadastrarCategoria from '../../componentes/categorias/modalCadastrarCategoria/ModalCadastrarCategoria'
+
+// icones
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import {
-	Grid,
-		Avatar,
-		TextField,
-} from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../store/tokens/tokensReducer';
+import { Usuario } from '../../model/Usuario';
+import { buscaId, atualiza } from '../../services/Service';
+
+import { toast } from 'react-toastify'
+import './Perfil.css';
 
 function Perfil() {
+	  useEffect(() => {
+    document.title = 'PeriFeira - Perfil';
+  }, []);
+
   const categoriasRenderizadas = [];
 	let navigate = useNavigate();
 	const token = useSelector<TokenState, TokenState["tokens"]>(
